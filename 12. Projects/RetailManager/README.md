@@ -5,4 +5,5 @@ a retail management system
 
 
 TimCo Retail Manager Course (IAmTimCorey)
- https://youtube.com/playlist?list=PLLWMQd6PeGY0bEMxObA6dtYXuJOGfxSPx
+
+https://youtube.com/playlist?list=PLLWMQd6PeGY0bEMxObA6dtYXuJOGfxSPx
