@@ -67,12 +67,16 @@
    - Natural Language Processing (NLP)
    - Computer Vision
 
-8. Vision and Game Development
-   - OpenCV and Vision Library
+8. Vision
+   - OpenCV
+   - TensorFlow Vision
+   - MIL Library
+ 
+9.Game Development
    - Unreal
    - Unity
 
-9. Communication
+10. Communication
    - REST API
    - GraphQL
    - gRPC
