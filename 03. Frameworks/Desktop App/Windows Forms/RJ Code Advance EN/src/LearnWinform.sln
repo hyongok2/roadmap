@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiColorFlatUI", "ModernFlatUI\MultiColorFlatUI.csproj", "{7C88D006-FDD4-46A0-AA1A-CA1E15E55A40}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModernFlatUI-FA", "ModernFlatUI-FA\ModernFlatUI-FA.csproj", "{CCDF999F-815F-432F-9211-C1953BDC1034}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SnapWindow", "SnapWindow\SnapWindow.csproj", "{5A6BE203-68BC-4898-BFD7-460FA25AFB7B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResponsiveUI", "ResponsiveUI\ResponsiveUI.csproj", "{011D41DA-5ED2-4FBD-90A1-9FED5424FE90}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "WinformDatabase", "WinformDatabase\WinformDatabase.sqlproj", "{741CAE58-D6CF-4ABC-AA0F-A7B151534044}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DashboardApp", "DataDashboardApp\DashboardApp.csproj", "{BA05C6D3-F4B4-4600-ADDF-17574B5EC430}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7C88D006-FDD4-46A0-AA1A-CA1E15E55A40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C88D006-FDD4-46A0-AA1A-CA1E15E55A40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C88D006-FDD4-46A0-AA1A-CA1E15E55A40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C88D006-FDD4-46A0-AA1A-CA1E15E55A40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCDF999F-815F-432F-9211-C1953BDC1034}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCDF999F-815F-432F-9211-C1953BDC1034}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCDF999F-815F-432F-9211-C1953BDC1034}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCDF999F-815F-432F-9211-C1953BDC1034}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A6BE203-68BC-4898-BFD7-460FA25AFB7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A6BE203-68BC-4898-BFD7-460FA25AFB7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A6BE203-68BC-4898-BFD7-460FA25AFB7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A6BE203-68BC-4898-BFD7-460FA25AFB7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{011D41DA-5ED2-4FBD-90A1-9FED5424FE90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{011D41DA-5ED2-4FBD-90A1-9FED5424FE90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{011D41DA-5ED2-4FBD-90A1-9FED5424FE90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{011D41DA-5ED2-4FBD-90A1-9FED5424FE90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{741CAE58-D6CF-4ABC-AA0F-A7B151534044}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{741CAE58-D6CF-4ABC-AA0F-A7B151534044}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{741CAE58-D6CF-4ABC-AA0F-A7B151534044}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{741CAE58-D6CF-4ABC-AA0F-A7B151534044}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{741CAE58-D6CF-4ABC-AA0F-A7B151534044}.Release|Any CPU.Build.0 = Release|Any CPU
+		{741CAE58-D6CF-4ABC-AA0F-A7B151534044}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{BA05C6D3-F4B4-4600-ADDF-17574B5EC430}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA05C6D3-F4B4-4600-ADDF-17574B5EC430}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA05C6D3-F4B4-4600-ADDF-17574B5EC430}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA05C6D3-F4B4-4600-ADDF-17574B5EC430}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E3CB892C-77C8-43E9-BB05-E7B73114961B}
+	EndGlobalSection
+EndGlobal

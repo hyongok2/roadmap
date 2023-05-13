@@ -1,0 +1,54 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <RootNamespace>ModernFlatUI_FA</RootNamespace>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\calendarDark.png" />
+    <None Remove="Resources\calendarWhite.png" />
+    <None Remove="Resources\chat.png" />
+    <None Remove="Resources\error.png" />
+    <None Remove="Resources\exclamation.png" />
+    <None Remove="Resources\information.png" />
+    <None Remove="Resources\question.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\calendarWhite.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FontAwesome.Sharp" Version="6.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\calendarDark.png" />
+    <Resource Include="Resources\chat.png" />
+    <Resource Include="Resources\error.png" />
+    <Resource Include="Resources\exclamation.png" />
+    <Resource Include="Resources\information.png" />
+    <Resource Include="Resources\question.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
