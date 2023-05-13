@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="ModernVPN.MVVM.View.SettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ModernVPN.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Border Background="#1e1e1e"
+            CornerRadius="0,0,10,0">
+        <Grid>
+            <TextBlock Text="SettingsView"
+                   FontSize="28"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   Foreground="LightGray"/>
+        </Grid>
+    </Border>
+</UserControl>
