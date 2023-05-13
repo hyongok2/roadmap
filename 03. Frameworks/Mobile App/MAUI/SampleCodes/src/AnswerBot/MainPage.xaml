@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+             xmlns:viewModel="clr-namespace:AnswerBot.ViewModels"
+             x:DataType="viewModel:MainViewModel"
+             x:Class="AnswerBot.MainPage">
+    <Grid RowDefinitions="Auto,*">
+        <Border HeightRequest="60" 
+                Margin="10,12,10,10" 
+                BackgroundColor="{AppThemeBinding Dark=Black, Light=White}"
+                StrokeShape="RoundRectangle 30"   
+                >
+            <Grid
+                Padding="5,0,15,0"
+                ColumnDefinitions="Auto,*,Auto" ColumnSpacing="5">
+                <Border HeightRequest="52"
+                        WidthRequest="52"
+                        BackgroundColor="{AppThemeBinding Dark=Black, Light=White}"
+                        StrokeShape="RoundRectangle 26"
+                        StrokeThickness="0">
+                    <Image Source="face.png" 
+                               Aspect="Center"/>
+                </Border>
+                <Entry Grid.Column="1" 
+                       Margin="0,8,0,4" 
+                       FontSize="14" 
+                       Placeholder="enter your question"
+                       Text="{Binding EnterQuestionString}"/>
+                <Grid Grid.Column="2">
+                    <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GetAnswerCommand}"/>
+                        </Grid.GestureRecognizers>
+                    <skia:SKLottieView  
+                            Source="search.json"
+                            RepeatCount="-1"
+                            HeightRequest="30"
+                            WidthRequest="30"
+                            HorizontalOptions="Center"/>
+                </Grid>
+            </Grid>
+
+        </Border>
+        <ScrollView Grid.Row="1" Margin="10,0,10,5">
+            <Border 
+                Margin="0,2,0,10" 
+                BackgroundColor="{AppThemeBinding Dark=Black, Light=White}"
+                StrokeShape="RoundRectangle 8">
+                <Grid>
+                    <Grid Padding="10,10,10,10" RowDefinitions="auto,*,Auto,4*" RowSpacing="3" IsVisible="{Binding IsNotBusy}">
+                    
+                    <Label Padding="15,3,3,3" 
+                           FontAttributes="Bold"
+                           Grid.Row="0" 
+                           FontSize="16" 
+                           TextColor="#4545fe"
+                           BackgroundColor="Transparent"
+                           Text="Your question"
+                           HorizontalTextAlignment="Start"/>
+                    <Label Padding="8" 
+                           Grid.Row="1" 
+                           FontSize="16" 
+                           TextColor="#cc6010"
+                           BackgroundColor="{AppThemeBinding Dark=#a030a0c1, Light=#a0f1f0a1}"
+                           Text="{Binding UserQuestionString}"/>
+                    <Label Grid.Row="2" 
+                           FontAttributes="Bold"
+                           Padding="15,3,3,3" 
+                           FontSize="16" 
+                           TextColor="#1297ff"
+                           Text="Answer"
+                           HorizontalTextAlignment="Start"
+                           BackgroundColor="Transparent"/>
+                        
+                     <Button Grid.Row="2" 
+                             Text="STOP SPEAK" 
+                             HorizontalOptions="End" 
+                             Command="{Binding StopSpeakCommand}"
+                             Style="{StaticResource ButtonOutline}"
+                             TextColor="{AppThemeBinding Dark=#4080c1, Light=#f1c0d1}"
+                             BorderColor="{AppThemeBinding Dark=#4080c1, Light=#f1c0d1}"
+                             Padding="0"
+                             FontSize="11"
+                             HeightRequest="20"
+                             WidthRequest="80"
+                             CornerRadius="10"
+                             MinimumHeightRequest="20"/>
+                        
+                    <Label Grid.Row="3" 
+                        Padding="8"
+                        x:Name="AnswerText" 
+                        FontSize="16" 
+                        TextColor="DarkBlue"
+                        BackgroundColor="{AppThemeBinding Dark=#a04080c1, Light=#a0f1c0d1}"
+                        Text="{Binding AnswerString}"/>
+                    
+
+                  </Grid>
+                    <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="CenterAndExpand"/>
+                </Grid>
+            </Border>
+        </ScrollView>
+    </Grid>
+
+
+</ContentPage>

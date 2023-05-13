@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="AnswerBot.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:AnswerBot"
+    xmlns:view="clr-namespace:AnswerBot.Views"
+    xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+    Shell.FlyoutBehavior="Flyout"
+    >
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.BackgroundColor" Value="{AppThemeBinding Dark={StaticResource  PrimaryDark}, Light={StaticResource Primary}}" />
+                <Setter Property="Shell.ForegroundColor" Value="{StaticResource LightBackground}" />
+                <Setter Property="Shell.TitleColor" Value="{AppThemeBinding Dark={StaticResource Primary}, Light={StaticResource PrimaryDark}}" />
+                <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
+                <Setter Property="Shell.UnselectedColor" Value="{AppThemeBinding Dark=#95FFFFFF, Light=#95000000}" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{AppThemeBinding Dark={StaticResource DarkBackground}, Light={StaticResource LightBackground}}" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="{AppThemeBinding Dark={StaticResource LightBackground}, Light={StaticResource DarkBackground}}" />
+                <Setter Property="Shell.TabBarUnselectedColor" Value="{AppThemeBinding Dark=#95FFFFFF, Light=#95000000}" />
+                <Setter Property="Shell.TabBarTitleColor" Value="{AppThemeBinding Dark={StaticResource LightBackground}, Light={StaticResource DarkBackground}}" />
+            </Style>
+            <Style BasedOn="{StaticResource BaseStyle}" TargetType="ShellItem" ApplyToDerivedTypes="True" />
+        </ResourceDictionary>
+    </Shell.Resources>
+    <Shell.MenuItemTemplate>
+        <DataTemplate>
+            <Grid ColumnDefinitions="Auto,*" Padding="0">
+                <Image Source="{Binding Icon}"
+                       Margin="15,0,20,0"
+                       HeightRequest="35" />
+                <Label Grid.Column="1"
+                       Text="{Binding Text}"
+                       FontAttributes="Italic"
+                       VerticalTextAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </Shell.MenuItemTemplate>
+
+    <FlyoutItem Title="Chat Page"
+                Icon="webpack.png">
+        <ShellContent
+            Title="Answer Bot"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Route="MainPage">
+        </ShellContent>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Settings"
+                Icon="settings.png">
+        <ShellContent
+            Title="Settings"
+            ContentTemplate="{DataTemplate view:SettingPage}"
+            Route="SettingPage">
+        </ShellContent>
+    </FlyoutItem>
+
+</Shell>

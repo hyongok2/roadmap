@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helper="clr-namespace:MonkeyFinder.Helper"
+             x:Class="MonkeyFinder.View.MonkeyImagePage"
+             xmlns:local="clr-namespace:MonkeyFinder.View"
+             Title="MonkeyImage"
+             xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+             x:DataType="local:MonkeyImagePage">
+    <VerticalStackLayout>
+        <Label Text="Lotti Animation Sample!!" HorizontalOptions="Center"/>
+        <skia:SKLottieView Source="monkey.json"
+                           RepeatCount="-1"
+                           HeightRequest="300"
+                           WidthRequest="300"
+                           HorizontalOptions="Center"/>
+        <Label Text="Monkey Image that you select!!" HorizontalOptions="Center"/>
+        <helper:PinchToZoomContainer>
+            <Image Source="{Binding MonkeyImage }"
+                   HeightRequest="300"
+                   WidthRequest="300"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+        </helper:PinchToZoomContainer>
+    </VerticalStackLayout>
+
+</ContentPage>

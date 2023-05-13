@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:MonkeyFinder.Model"
+             xmlns:viewmodel="clr-namespace:MonkeyFinder.ViewModel"
+             xmlns:sample="clr-namespace:MonkeyFinder.View"
+             x:DataType="viewmodel:MonkeysViewModel"
+             x:Class="MonkeyFinder.View.MainPage"
+             xmlns:helper="clr-namespace:MonkeyFinder.Helper"
+             Title="{Binding Title}"
+             >
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="REFRESH"                     
+                     Command="{Binding GetMonkeysCommand}"/>
+    </ContentPage.ToolbarItems>
+       
+
+    <Shell.SearchHandler>
+        <helper:MonkeySearchHandler Placeholder="Enter search term"
+                                    ShowsResults="true"
+                                    SearchBoxVisibility="Expanded"
+                                    MonkeyList="{Binding Monkeys}">
+            <helper:MonkeySearchHandler.ItemTemplate>
+                <DataTemplate x:DataType="model:Monkey">
+                    <Grid Padding="10"
+                          ColumnDefinitions="0.15*,0.85*">
+                        <Image Source="{Binding Image}"
+                               HeightRequest="40"
+                               WidthRequest="40" />
+                        <Label Grid.Column="1"
+                               Text="{Binding Name}"
+                               FontAttributes="Bold"
+                               VerticalOptions="Center" />
+                    </Grid>
+                </DataTemplate>
+            </helper:MonkeySearchHandler.ItemTemplate>
+
+        </helper:MonkeySearchHandler>
+    </Shell.SearchHandler>
+    
+    <Grid ColumnDefinitions="*,*"
+          ColumnSpacing="5"
+          RowDefinitions="*,Auto"
+          RowSpacing="0">
+
+        <RefreshView Grid.ColumnSpan="2"
+                     Command="{Binding GetMonkeysCommand}"
+                     IsRefreshing="{Binding IsRefreshing}">
+
+            <CollectionView 
+                IsVisible="{Binding IsNotBusy}"
+                ItemsSource="{Binding Monkeys}"
+                SelectionMode="None">
+                <CollectionView.EmptyView>
+                    <StackLayout VerticalOptions="Center"
+                                 HorizontalOptions="Center"
+                                 WidthRequest="300"
+                                 HeightRequest="300"
+                                 >
+                        <Image Source="nodata.png"
+                               HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="CenterAndExpand"
+                               Aspect="AspectFill"/>
+                    </StackLayout>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"
+                                     Span="{OnIdiom Desktop=1, Default=1}"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Monkey">
+                        <!--<-스윕뷰가 윈도우에서 버그가 있는 것 같다고 하네.. ㅠㅠ 안드로이드는 문제 없는데, 
+                        https://learn.microsoft.com/en-us/answers/questions/971408/maui-net-60-collectionview-with-observablecollecti.html
+                        마이크로 소프트 팀에서 확인 중인 문제..-->
+                        <!--<SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItems>
+                                    <SwipeItem Text="Delete" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MonkeysViewModel}},
+                                        Path=MonkeyDeleteCommand}" CommandParameter="{Binding .}" BackgroundColor="Red"></SwipeItem>
+                                </SwipeItems>
+                            </SwipeView.RightItems>-->
+                        <Grid Padding="10">
+                            <Frame HeightRequest="125"
+                                   Padding="0"
+                                   Style="{StaticResource CardView}">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer CommandParameter="{Binding .}"
+                                                          Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MonkeysViewModel}},Path=GoToDetailsCommand}"/>
+                                </Frame.GestureRecognizers>
+                                <Grid Padding="0"
+                                      ColumnDefinitions="Auto,Auto">
+
+                                        <Image Aspect="AspectFill"
+                                            Source="{Binding Image}" HeightRequest="125" WidthRequest="125">
+                                            <Image.GestureRecognizers>
+                                                <DragGestureRecognizer  DragStarting="OnDragStarting"/>
+                                                <DropGestureRecognizer Drop="DropGestureRecognizer_Drop"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+
+
+                                    <VerticalStackLayout Grid.Column="1"
+                                                         Padding="10"
+                                                         VerticalOptions="Center"
+                                                         Spacing="10"
+                                                         >
+                                        <Label Text="{Binding Name}" Style="{StaticResource LargeLabel}" />
+                                        <Label Text="{Binding Location}" Style="{StaticResource MediumLabel}" />
+                                        
+                                        <!--<sample:Sample MonkeyTemp="{Binding .}"/>-->
+                                        <sample:Sample/>
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                        <!--</SwipeView>-->
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+        </RefreshView>
+        <Button Text="Get Monkeys" 
+                Grid.Row="1" 
+                Margin="8" 
+                IsEnabled="{Binding IsNotBusy}"
+                Style="{StaticResource ButtonOutline}" 
+                Command="{Binding GetMonkeysCommand}"
+                ></Button>
+        <Button Text="Find Closest Monkeys" 
+                Grid.Row="1"
+                Grid.Column="1" 
+                Margin="8" 
+                Command="{Binding GetClosestMonkeyCommand}"
+                Style="{StaticResource ButtonOutline}"></Button>
+
+        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           Grid.ColumnSpan="2"
+                           Grid.RowSpan="2"/>
+
+    </Grid>
+
+</ContentPage>

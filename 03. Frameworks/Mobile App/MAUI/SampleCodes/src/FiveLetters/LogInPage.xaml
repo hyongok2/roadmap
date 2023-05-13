@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FiveLetters.LogInPage"
+             xmlns:font="clr-namespace:FiveLetters.Helper"
+             Title="LogInPage">
+    <VerticalStackLayout Spacing="10">
+
+        <Border
+            Margin="3,0,3,0"
+            HeightRequest="200"
+                BackgroundColor="ForestGreen"
+                StrokeShape="RoundRectangle 0 0 60 60"
+                Padding="0">
+
+            <Border HeightRequest="80"
+                    WidthRequest="80"
+                    StrokeShape="RoundRectangle 40"
+                    BackgroundColor="White"
+                    Padding="0">
+                <Label Text="{x:Static font:FontAwesomeSolid.User}"
+                       FontFamily="FontAwesomeSolid"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontSize="50"
+                       TextColor="Blue"
+                       />
+            </Border>
+        </Border>
+
+        <Label Text="Welcome!" HorizontalOptions="Center" FontSize="Medium"></Label>
+        <Label Text="Sign in to continue" HorizontalOptions="Center" FontSize="Micro"></Label>
+
+        <Border HeightRequest="50" 
+                Margin="20,50,20,0" 
+                BackgroundColor="DimGray"
+                StrokeShape="RoundRectangle 25"
+                >
+            <Grid
+                Padding="5,0,15,0"
+                ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                <Border HeightRequest="44"
+                        WidthRequest="44"
+                        BackgroundColor="Black"
+                        StrokeShape="RoundRectangle 22"
+                        >
+                    <Label Text="{x:Static font:FontAwesomeSolid.User}"
+                       FontFamily="FontAwesomeSolid"
+                       FontSize="20"
+                       TextColor="Blue"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       />
+                </Border>
+                <Entry Grid.Column="1" Placeholder="User Id" 
+                       PlaceholderColor="White"
+                       VerticalTextAlignment="Center" 
+                       VerticalOptions="Center" 
+                       HorizontalOptions="FillAndExpand"
+                       />
+            </Grid>
+            
+        </Border>
+        <Border HeightRequest="50" 
+                Margin="20,10,20,0" 
+                BackgroundColor="DimGray"
+                StrokeShape="RoundRectangle 25"
+                >
+            <Grid
+                Padding="5,0,15,0"
+                ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                <Border HeightRequest="44"
+                        WidthRequest="44"
+                        BackgroundColor="Black"
+                        StrokeShape="RoundRectangle 22"
+                        >
+                    <Label Text="{x:Static font:FontAwesomeSolid.Lock}"
+                       FontFamily="FontAwesomeSolid"
+                       FontSize="20"
+                       TextColor="White"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       />
+                </Border>
+                <Entry Grid.Column="1" Placeholder="Password" 
+                       PlaceholderColor="White"
+                       VerticalTextAlignment="Center" 
+                       VerticalOptions="Center" 
+                       HorizontalOptions="FillAndExpand"
+                       />
+            </Grid>
+
+        </Border>
+
+        <StackLayout Margin="20,0,20,0" Orientation="Horizontal">
+
+            <CheckBox IsChecked="False" />
+            <Label Text="Remember Me" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Label Text="Forgot Password" TextColor="Green" FontAttributes="Bold" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Padding="0,0,20,0"/>
+        </StackLayout>
+
+        <Button Margin="60,20,60,0" CornerRadius="20" HeightRequest="40" Text="SIGN IN"/>
+        
+        
+
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewmodel="clr-namespace:AnswerBot.ViewModels"
+             x:DataType="viewmodel:SettingViewModel"
+             x:Class="AnswerBot.Views.SettingPage"
+             Title="SettingPage">
+    <VerticalStackLayout Padding="10">
+        <Grid ColumnDefinitions="*,Auto">
+            <Label Grid.Column="0" Text="Dark Mode" VerticalOptions="Center" HorizontalOptions="Center"/>
+
+            <Switch Grid.Column="1" IsToggled="{Binding IsDarkMode, Mode=TwoWay}"
+                    VerticalOptions="Center"  HorizontalOptions="End" >
+                <Switch.Behaviors>
+                    <toolkit:EventToCommandBehavior
+                        EventName="Toggled"
+                        Command="{Binding ChangeModeCommand}" />
+                </Switch.Behaviors>
+            </Switch>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>

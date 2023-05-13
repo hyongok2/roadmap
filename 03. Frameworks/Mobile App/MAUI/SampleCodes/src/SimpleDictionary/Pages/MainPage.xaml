@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SimpleDictionary"
+             xmlns:model="clr-namespace:SimpleDictionary.Models"
+             xmlns:viewmodel="clr-namespace:SimpleDictionary.ViewModels"
+             xmlns:converter="clr-namespace:SimpleDictionary.Converter"
+             xmlns:font="clr-namespace:SimpleDictionary.Helper"
+             xmlns:behaviors="clr-namespace:SimpleDictionary.Behaviors"
+             x:Class="SimpleDictionary.MainPage"
+             x:DataType="viewmodel:MainViewModel"
+             Title="Simple Dictionary"
+             >
+    
+    <ContentPage.Resources>
+        <converter:IsNotNullConverter x:Key="IsNotNullConverter" />
+        <converter:UrlStringConvert x:Key="UrlStringConvert"/>
+    </ContentPage.Resources>
+    
+
+    <Shell.TitleView>
+        <Image Source="dotnet_bot.png"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"/>
+    </Shell.TitleView>
+    <ScrollView>
+        <Grid>
+        <VerticalStackLayout
+            IsVisible="{Binding IsNotBusy}"
+            Spacing="5"
+            Padding="5,0"
+            Margin="10">
+
+                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+
+                    <Label Grid.Column="0"
+                            Text="{x:Static font:FontAwesomeSolid.Question}"
+                            TextColor="Blue"
+                            FontSize="Header"
+                            FontFamily="FontAwesomeSolid"/>
+
+                    <Entry                           
+                        Grid.Column="1"
+                        Placeholder="Enter Your Curious Word" 
+                        PlaceholderColor="{AppThemeBinding Light=LightGray, Dark=DarkGray}" 
+                        FontSize="Medium"
+                        TextColor="{AppThemeBinding Light={StaticResource DarkBackground}, Dark={StaticResource LightBackground}}"  
+                        BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}"
+                        Text="{Binding InputText}"
+                        HorizontalOptions="FillAndExpand"
+                        HorizontalTextAlignment="Center"
+                        ReturnCommand="{Binding GetMeaningOfWordCommand}"
+                        Style="{StaticResource Key=NumericValidationStyle}"
+                        >
+                        <!--<Entry.Behaviors>
+                            <behaviors:NumericValidationBehavior></behaviors:NumericValidationBehavior>
+                        </Entry.Behaviors>-->
+                        
+                    </Entry>
+                        
+                        <!--<Button 
+                        Style="{StaticResource ButtonOutline}"
+                        IsEnabled="{Binding IsBusy}" 
+                        Text="Check it out!" 
+                        Command="{Binding GetMeaningOfWordCommand}"
+                         />-->
+                </Grid>
+                <CollectionView ItemsSource="{Binding DictionaryModels}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:DictionaryModel">
+                            <Frame Style="{StaticResource CardView}" Margin="0">
+                                <Grid ColumnSpacing="10"
+                                      RowSpacing="10"
+                                      RowDefinitions="Auto,Auto,Auto"
+                                      Padding="5">
+                                    <HorizontalStackLayout Grid.Row="0" Spacing="20">
+                                        <Label  Text="{Binding Phonetic}" 
+                                                       FontAttributes="Italic" Style="{StaticResource MediumLabel}"
+                                                       VerticalOptions="Center">
+                                            <Label.GestureRecognizers>
+                                                <DragGestureRecognizer/>
+                                                <DropGestureRecognizer/>
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                        <HorizontalStackLayout Spacing="20" BindableLayout.ItemsSource="{Binding Phonetics}">
+                                            <!--<Button IsVisible="{Binding ., Converter={StaticResource IsNotNullConverter}}" 
+                                                    Text="Listen" 
+                                                    Style="{StaticResource ButtonOutline}" 
+                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}},Path=ListenCommand}"
+                                                    CommandParameter="{Binding Word}"
+                                                    WidthRequest="80"
+                                                    HorizontalOptions="Start"/>-->
+                                            <BindableLayout.ItemTemplate>
+                                                <DataTemplate x:DataType="model:Phonetic">
+                                                    <Button Text="{Binding Audio, Converter={StaticResource UrlStringConvert}}"
+                                                            IsVisible="{Binding Audio, Converter={StaticResource IsNotNullConverter}}" 
+                                                            Style="{StaticResource ButtonOutline}"
+                                                            CommandParameter="{Binding Audio}"
+                                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}},Path=LinkListenCommand}"
+                                                            HorizontalOptions="Start"/>
+                                                    </DataTemplate>
+                                                </BindableLayout.ItemTemplate>
+                                        </HorizontalStackLayout>
+                                    </HorizontalStackLayout>
+                                    
+                                    <VerticalStackLayout Grid.Row="1" BindableLayout.ItemsSource="{Binding SourceUrls}" Spacing="10">
+                                        <BindableLayout.ItemTemplate>
+                                            <DataTemplate >
+                                                <Button Text="{Binding .}" 
+                                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}},Path=GoToLinkCommand}"
+                                                        CommandParameter="{Binding .}"
+                                                        BorderWidth="0"
+                                                        TextColor="Blue"
+                                                        FontAttributes="Italic"
+                                                        HorizontalOptions="Start"
+                                                        BackgroundColor="AliceBlue"
+                                                        />
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                    </VerticalStackLayout>
+
+                                    <VerticalStackLayout Grid.Row="2" BindableLayout.ItemsSource="{Binding Meanings}" Spacing="10">
+                                        <BindableLayout.ItemTemplate>
+                                            <DataTemplate x:DataType="model:Meaning">
+                                                <Grid>
+                                                    <Frame Style="{StaticResource CardView}" Padding="10">
+                                                        <VerticalStackLayout BindableLayout.ItemsSource="{Binding Definitions}" Spacing="5">
+                                                            <BindableLayout.ItemTemplate>
+                                                                <DataTemplate x:DataType="model:Definition">
+                                                                <Label
+                                                                    Text="{Binding definition}"
+                                                                       />
+                                                                </DataTemplate>
+                                                            </BindableLayout.ItemTemplate>
+                                                        </VerticalStackLayout>
+                                                    </Frame>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+            
+            <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="CenterAndExpand"/>
+        </Grid>
+    </ScrollView>
+
+</ContentPage>
