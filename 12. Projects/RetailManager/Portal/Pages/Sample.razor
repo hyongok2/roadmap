@@ -1,0 +1,28 @@
+﻿@page "/sample"
+@using System.Security.Claims;
+@*@attribute [Authorize(Roles ="Admin")]*@
+<h3>Sample Page</h3>
+
+<AuthorizeView Roles ="Admin">
+    <Authorized>
+        <h4>The user (@context.User.FindFirst(ClaimTypes.Name).Value) is authorized. </h4>
+        <p></p>
+        <p>Current Count : @currentCount</p>
+        <p></p>
+        <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+    </Authorized>
+    <NotAuthorized>
+        <h4>The user is not authorized</h4>
+    </NotAuthorized>
+</AuthorizeView>
+
+
+
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+}

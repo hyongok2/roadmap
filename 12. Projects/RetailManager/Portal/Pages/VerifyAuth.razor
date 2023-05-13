@@ -1,0 +1,57 @@
+﻿@using System.Security.Claims;
+@page "/verifyauth"
+@inject IProductEndPoint Products
+
+<h3>Verify Auth</h3>
+
+@if(isAuthenticated)
+{
+    <h4>@userName is authenticated</h4>
+    <ul>
+        <li>Access to Admin role : @isAdminUser</li>
+        <li>Access to Cashier role : @isCashier</li>
+        <li>Access to Manager role : @isManager</li>
+    </ul>
+}
+@code {
+    [CascadingParameter]
+    public Task<AuthenticationState> AuthState { get; set; }
+
+    private bool isAuthenticated = false;
+    private string userName = string.Empty;
+    private bool isAdminUser = false;
+    private bool isCashier = false;
+    private bool isManager = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthState;
+
+        if (authState.User.Identity is null) return;
+
+        if(authState.User.Identity.IsAuthenticated)
+        {
+            isAuthenticated = true;
+
+            try
+            {
+                var data = await Products.GetAll();
+
+                foreach(var p in data)
+                {
+                    Console.WriteLine(p.Description);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            userName = authState.User.FindFirst(ClaimTypes.Name).Value;
+
+            isAdminUser = authState.User.IsInRole("Admin");
+            isCashier = authState.User.IsInRole("Cashier");
+            isManager = authState.User.IsInRole("Manager");
+        }
+    }
+}

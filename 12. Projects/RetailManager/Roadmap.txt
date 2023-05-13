@@ -1,0 +1,17 @@
+
+Application Ideas:
+ * Actually interact with the inventory
+ * Introduce a web-based inventory control system(Blazor?)
+ * Web-based reporting
+ * A Xamarin Forms app for a mobile register
+ * Blazor app
+ * Microservices
+
+
+Phase 3 Roadmap
+ 1. Hook up inventory so it really increments/decrements
+ 2. Administrative portal(web-based)
+ 3. User Blazor WebAssembly PWA
+ 4. Dockerlize backend (API, etc.)
+ 5. Break off a piece as a microservice
+ 6. Upgrade to .NET 5

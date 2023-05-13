@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewmodel="clr-namespace:RMMobileApp.ViewModels"
+             xmlns:model="clr-namespace:RMMobileApp.Models"
+             xmlns:converter="clr-namespace:RMMobileApp.Converters"
+             x:Class="RMMobileApp.Views.ProductsView"
+             x:DataType="viewmodel:ProductsViewModel"
+             Title="{Binding Title}">
+    <ContentPage.Resources>
+        <converter:ProductImageUrlConverter x:Key="ProductImageUrlConverter" />
+    </ContentPage.Resources>
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior
+        EventName="Appearing"
+        Command="{Binding GetProductsListCommand}" />    
+    </ContentPage.Behaviors>
+
+    <ScrollView>
+        <CollectionView 
+            IsVisible="{Binding IsNotBusy}" 
+            ItemsSource="{Binding Products}" 
+            SelectionMode="None">
+            <CollectionView.EmptyView>
+                <StackLayout VerticalOptions="Center"
+                                 HorizontalOptions="Center"
+                                 WidthRequest="300"
+                                 HeightRequest="300">
+                    <Image Source="dotnet_bot.png"
+                               HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="CenterAndExpand"
+                               Aspect="AspectFill"/>
+                </StackLayout>
+            </CollectionView.EmptyView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:ProductDisplayModel">
+                    <Grid Padding="10" RowDefinitions="Auto,Auto" RowSpacing="10">
+                        <Frame HeightRequest="150"
+                               Padding="0"
+                               Style="{StaticResource CardView}">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ProductsViewModel}},
+                                                                        Path=GoToDetailCommand }"
+                                                      CommandParameter="{Binding .}"/>
+                            </Frame.GestureRecognizers>
+                            <Grid Padding="0" ColumnDefinitions="Auto,Auto">
+                                
+                                <Image Aspect="Fill"
+                                       Source="{Binding ProductImage, Converter={StaticResource ProductImageUrlConverter}}" 
+                                       HeightRequest="150"
+                                       WidthRequest="150">
+                                </Image>
+                                
+                                <VerticalStackLayout Grid.Column="1"
+                                                         Padding="10"
+                                                         VerticalOptions="Start"
+                                                         Spacing="10"
+                                                         >
+                                    <Label Text="{Binding ProductName}" Style="{StaticResource LargeLabel}" />
+                                    <HorizontalStackLayout Spacing="20">
+                                        <Label Text="QuantityInStock: " Style="{StaticResource MediumLabel}" TextColor="{StaticResource Gray500}"/>
+                                        <Label Text="{Binding QuantityInStock, StringFormat='{}{0}EA'}" Style="{StaticResource MediumLabel}" />
+                                    </HorizontalStackLayout>
+
+                                    <HorizontalStackLayout Spacing="20">
+                                        <Label Text="RetailPrice: " Style="{StaticResource MediumLabel}" TextColor="{StaticResource Gray500}"/>
+                                        <Label Text="{Binding RetailPrice, StringFormat='{}${0}'}" Style="{StaticResource MediumLabel}" />
+                                    </HorizontalStackLayout>
+                                    
+                                </VerticalStackLayout>
+
+                            </Grid>
+                        </Frame>
+                        <HorizontalStackLayout Grid.Row="1" Spacing="20" HorizontalOptions="End">
+                            <Entry Text="{Binding SelectedQuantity, Mode=TwoWay}"  Keyboard="Numeric" HorizontalTextAlignment="Center">
+                                <Entry.Behaviors>
+                                    <toolkit:NumericValidationBehavior 
+                                        InvalidStyle="{StaticResource InvalidEntryStyle}"
+                                        ValidStyle="{StaticResource ValidEntryStyle}"
+                                        Flags="ValidateOnValueChanged"
+                                        MinimumValue="0"
+                                        MaximumValue="{Binding QuantityInStock}"
+                                        MaximumDecimalPlaces="0" />
+                                </Entry.Behaviors>
+                            </Entry>
+                            <Button Style="{StaticResource ButtonOutline}" Text="+" FontSize="Medium"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ProductsViewModel}},
+                                                                        Path=AddToCartCommand }"
+                                    CommandParameter="{Binding .}"/>
+                            <Button Style="{StaticResource ButtonOutline}" Text="-" FontSize="Medium"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ProductsViewModel}},
+                                                                        Path=RemoveFromCartCommand }"
+                                    CommandParameter="{Binding .}"/>
+                        </HorizontalStackLayout>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+    </ScrollView>
+</ContentPage>

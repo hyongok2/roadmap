@@ -1,0 +1,93 @@
+﻿@page "/products"
+@inject IProductEndPoint ProductEndPoint
+@inject IConfiguration Config
+@inject Blazored.LocalStorage.ILocalStorageService LocalStorage
+@attribute [Authorize(Roles = "Cashier")]
+
+<h3>Products</h3>
+
+<div class="container-fluid">
+    @if (products is null)
+    {
+        <div class="row">
+            <p>No product have been loaded.</p>
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            @foreach (ProductModel product in products)
+            {
+                <div class="col-xl-4 col-lg-6 mb-3">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <a href="">
+                                    @if(string.IsNullOrEmpty(product.ProductImage))
+                                    {
+                                        <img src="https://dummyimage.com/1200x900/000/0011ff&text=ComingSoon" class="img-fluid" alt="Placeholder image" />
+                                    }
+                                    else
+                                    {
+                                        <img src="@($"{api}{product.ProductImage}")" class="img-fluid" alt="@product.ProductName" />
+                                    }
+
+                                </a>
+                                <p class="my-2 text-justify">
+                                    @product.Description
+                                </p>
+                                <p class="mb-1">
+                                    <strong>Quantity:</strong> @product.QuantityInStock
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <p class="h4 mb-3">@product.ProductName - $@product.RetailPrice</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    }
+
+</div>
+
+@code {
+    private List<ProductModel>? products;
+    private string? api;
+    private const string ProductListName = "productList";
+    private const string ProductCacheDate = "productCacheDate";
+
+    protected override async Task OnInitializedAsync()
+    {
+        api = Config.GetValue<string>("api");
+
+        products = await LocalStorage.GetItemAsync<List<ProductModel>>(ProductListName);
+        DateTime? cacheDate = await LocalStorage.GetItemAsync<DateTime?>(ProductCacheDate);
+
+        double totalMinites = 0;
+
+        if (cacheDate is not null)
+        {
+            totalMinites = DateTime.UtcNow.Subtract((DateTime)cacheDate).TotalMinutes;
+        }
+
+        if(products is null || cacheDate is null || totalMinites > 5)
+        {
+            try
+            {
+                products = await ProductEndPoint.GetAll();
+                await LocalStorage.SetItemAsync(ProductListName, products);
+                await LocalStorage.SetItemAsync(ProductCacheDate, DateTime.UtcNow);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+    }
+}

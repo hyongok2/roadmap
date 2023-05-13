@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewmodel="clr-namespace:RMMobileApp.ViewModels"
+             x:DataType="viewmodel:PlayVideoViewModel"
+             x:Class="RMMobileApp.Views.PlayVideoView"
+            Title="PlayVideoView">
+    <ScrollView>
+        <VerticalStackLayout VerticalOptions="Start" Spacing="30">
+            <toolkit:MediaElement x:Name="VideoControl" WidthRequest="400" HeightRequest="300"
+                      Source="{Binding VideoUrl}"/>
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="20" >
+
+                <Button Text="Play" 
+                        Clicked="PlayButton_Clicked"
+                        WidthRequest="100" 
+                        Style="{StaticResource ButtonOutline}"/>
+                <Button Text="Pause" 
+                        BindingContext="{x:Reference VideoControl}"
+                        Clicked="PauseButton_Clicked"
+                        WidthRequest="100" 
+                        Style="{StaticResource ButtonOutline}"/>
+                <Button Text="Stop" 
+                        BindingContext="{x:Reference VideoControl}"
+                        Clicked="StopButton_Clicked"
+                        WidthRequest="100" 
+                        Style="{StaticResource ButtonOutline}"/>
+
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

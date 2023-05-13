@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:RMMobileApp.ViewModels"
+             x:Class="RMMobileApp.Views.MainPage"
+             x:DataType="viewmodel:MainViewModel">
+
+    <ScrollView>
+        <Grid>
+            
+
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Start"
+            IsVisible="{Binding IsNotBusy}">
+
+            <Label Text="Log In" FontSize="Header" HorizontalOptions="Center"/>
+            <Entry Placeholder="Email Address" FontSize="Medium" Text="{Binding EmailAddress}"/>
+            <Entry IsPassword="True" Placeholder="Password" FontSize="Medium" Text="{Binding InputPassword}"/>
+            <Button Style="{StaticResource ButtonOutline}" Text="Log In" Command="{Binding LogInCommand}" IsEnabled="{Binding IsNotBusy}"/>
+                <Label Text="{Binding ErrorMessage}" IsVisible="{Binding IsErrorVisible}" TextColor="Red" />
+            </VerticalStackLayout>
+            
+        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="CenterAndExpand"/>
+        </Grid>
+    </ScrollView>
+
+</ContentPage>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="RMMobileApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:font="clr-namespace:RMMobileApp.FontClasses"
+    xmlns:view="clr-namespace:RMMobileApp.Views"
+    xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+    Shell.FlyoutBehavior="Flyout">
+
+    <Shell.MenuItemTemplate>
+        <DataTemplate>
+            <Grid ColumnDefinitions="Auto,*">
+                <Image Source="{Binding Icon}"
+                       Margin="15,0,20,0"
+                       HeightRequest="35" />
+                <Label Grid.Column="1"
+                       Text="{Binding Text}"
+                       FontAttributes="Italic"
+                       VerticalTextAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </Shell.MenuItemTemplate>
+
+    <FlyoutItem Title="Product Management">
+        <FlyoutItem.Icon>
+            <FontImageSource FontFamily="FontAwesomeSolid"
+                             Color="{StaticResource Primary}"
+                             Glyph="{x:Static font:FontAwesomeSolid.CloudMoon}"/>
+        </FlyoutItem.Icon>
+        <ShellContent
+        Title="Product Management"
+        ContentTemplate="{DataTemplate view:MainPage}"
+        Route="ProductManagementPage" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Play Video">
+        <FlyoutItem.Icon>
+            <FontImageSource FontFamily="FontAwesomeSolid"
+                             Color="{StaticResource Primary}"
+                             Glyph="{x:Static font:FontAwesomeSolid.Video}"/>
+        </FlyoutItem.Icon>
+        <ShellContent
+        Title="Play Video"
+        ContentTemplate="{DataTemplate view:PlayVideoView}"
+        Route="PlayVideoPage" />
+    </FlyoutItem>
+
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <Grid BackgroundColor="{StaticResource DarkBackground}"
+                  HeightRequest="200">
+                <!--https://lottiefiles.com/ <- you can find animation files from this page.
+                If you don't have connections and write like below, you can't see animation--> 
+                <!--<skia:SKLottieView Source="https://assets6.lottiefiles.com/packages/lf20_4kmUDEKo63.json"-->
+                <skia:SKLottieView Source="HologramAnimation.json"
+                           RepeatCount="-1"
+                           HeightRequest="200"
+                           WidthRequest="200"
+                           HorizontalOptions="Center"/>
+            </Grid>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+</Shell>

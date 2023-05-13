@@ -1,0 +1,29 @@
+﻿@inherits LayoutComponentBase
+@using System.Security.Claims;
+
+
+<div class="page">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <main>
+        <div class="top-row px-4">
+            <AuthorizeView>
+                <Authorized>
+                    Welcome @context.User.FindFirst(ClaimTypes.Name)?.Value
+                    <NavLink class="nav-link" href="logout">
+                        <span class="oi oi-account-logout"></span> Log Out
+                    </NavLink>
+                </Authorized>
+                <NotAuthorized>
+                    <Portal.Pages.LogIn/>
+                </NotAuthorized>
+            </AuthorizeView>
+        </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
