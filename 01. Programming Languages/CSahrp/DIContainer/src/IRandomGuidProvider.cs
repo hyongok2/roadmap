@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DIContainer
+{
+    public interface IRandomGuidProvider
+    {
+        Guid RandomGuid { get; }
+    }
+
+    public class RandomGuidProvider : IRandomGuidProvider
+    {
+        public Guid RandomGuid {get; } = Guid.NewGuid();    
+    }
+}
