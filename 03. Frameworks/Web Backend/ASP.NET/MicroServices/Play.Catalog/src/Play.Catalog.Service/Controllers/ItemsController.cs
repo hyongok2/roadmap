@@ -24,9 +24,15 @@ namespace Paly.Catalog.Service.Contollers
         }
 
         [HttpGet("{id}")]
-        public ItemDto GetById(Guid id)
+        public ActionResult<ItemDto> GetById(Guid id)
         {
             var item = items.Where(item => item.Id == id).SingleOrDefault();
+
+            if (item == null)
+            {
+                return NoContent();
+            }
+
             return item;
         }
         [HttpPost]
@@ -43,6 +49,11 @@ namespace Paly.Catalog.Service.Contollers
         {
             var existingItem = items.Where(item => item.Id == id).SingleOrDefault();
 
+            if (existingItem == null)
+            {
+                return NotFound();
+            }
+
             var updateItem = existingItem with
             {
                 Name = updateItemDto.Name,
@@ -52,6 +63,21 @@ namespace Paly.Catalog.Service.Contollers
 
             var index = items.FindIndex(item => item.Id == id);
             items[index] = updateItem;
+
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(Guid id)
+        {
+            var index = items.FindIndex(item => item.Id == id);
+
+            if (index < 0)
+            {
+                return NotFound();
+            }
+
+            items.RemoveAt(index);
 
             return NoContent();
         }
