@@ -11,3 +11,7 @@
 | 4 | C# channel by Jamie King | https://www.youtube.com/@JamieKingCS/playlists | - |
 | 5 | Advanced C# Tutorial by Saiful Anwar | https://youtube.com/playlist?list=PL1OYTSGn7ia-drv5-xugztYN6D9Jx2wJX | - |
 | 6 | C# Tutorial by Derek Banas | https://youtube.com/playlist?list=PLGLfVvz_LVvRX6xK1oi0reKci6ignjdSa | - |
+| 7 | C# REST API Tutorials by Les Jackson | https://youtube.com/playlist?list=PLpSmZmoBaROZNRmR3BHPHY6cqNOLqLkKA | - |
+| 8 | Essential Nuget Packages in .NET by Nick Chapsas | https://youtube.com/playlist?list=PLUOequmGnXxM1L_nj63YIWB8B5wdNk6dA | - |
+| 9 | 10 C# Libraries To Save You Time And Energy by IAmTimCorey | https://youtu.be/uS0hRJqamfU | - |
+| 9 | Intro to MediatR - Implementing CQRS and Mediator Patterns by IAmTimCorey | https://youtu.be/yozD5Tnd8nw | - |

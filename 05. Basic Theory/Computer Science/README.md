@@ -1,6 +1,5 @@
-# 참고 자료
+# Computer Science 학습 참고 자료
 
 | 순번 | 제목 | 링크 | 비고 |
 | ---| --- | --- | --- |
-| 1 | a |  a | - |
-| 2 | b | b | - |
+| 1 | Computer Science by Crash cource | https://youtube.com/playlist?list=PL8dPuuaLjXtNlUrzyH5r6jN9ulIgZBpdo | - |
