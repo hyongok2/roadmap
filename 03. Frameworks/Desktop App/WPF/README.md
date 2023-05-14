@@ -13,3 +13,4 @@
 | 9 | WPF - MVVM Based Modern Dashboard by C# Design Pro | https://youtu.be/8Lv1elXm-iE | - |
 | 10 | WPF Online Education Dashboard UI by JD's Code Lab | https://youtu.be/9YbimKI32Wk | - |
 | 11 | WPF - Circular / Radial Progress Bar UserControl by C# Design Pro | https://youtu.be/Cm435cCVKCg | - |
+| 12 | XAML Tutorial Point web page | https://www.tutorialspoint.com/xaml/index.htm | - |
