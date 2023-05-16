@@ -31,7 +31,7 @@ namespace Paly.Catalog.Service.Contollers
 
             if (item == null)
             {
-                return NoContent();
+                return NotFound();
             }
 
             return item.AsDto();
