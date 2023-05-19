@@ -7,3 +7,4 @@
 | 3 | .NET MAUI by James Montemagno | https://youtube.com/playlist?list=PLwOF5UVsZWUjN-kBumQtwAT4p9JZ6pt0c | - |
 | 4 | Movies App / .NET MAUI UI Challenge by Javier Suárez | https://youtu.be/ySM9_azBVTI | - |
 | 5 | Chat App / .NET MAUI UI Challenge by Javier Suárez | https://youtu.be/nzciueT0iFA | - |
+| 6 | .Net maui tutorial full course by derek banas |https://youtu.be/FT5P5ZktzZI| - |
