@@ -4,11 +4,10 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
-using Paly.Catalog.Service.Entities;
-using Play.Catalog.Service.Repositories;
-using Play.Catalog.Service.Settings;
+using Play.Common;
+using Play.Common.Settings;
 
-namespace Paly.Catalog.Service.Repositories
+namespace Play.Common.MongDB
 {
     public static class Extensions
     {
@@ -35,7 +34,7 @@ namespace Paly.Catalog.Service.Repositories
             services.AddSingleton<IRepository<T>>(serviceProvider =>
             {
                 var database = serviceProvider.GetService<IMongoDatabase>();
-                return new MongoRepository<T>(database,collectionName);
+                return new MongoRepository<T>(database, collectionName);
             });
             return services;
         }

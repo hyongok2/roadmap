@@ -16,9 +16,8 @@ using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
 using Paly.Catalog.Service.Entities;
-using Paly.Catalog.Service.Repositories;
-using Play.Catalog.Service.Repositories;
-using Play.Catalog.Service.Settings;
+using Play.Common.MongDB;
+using Play.Common.Settings;
 
 namespace Play.Catalog.Service
 {
