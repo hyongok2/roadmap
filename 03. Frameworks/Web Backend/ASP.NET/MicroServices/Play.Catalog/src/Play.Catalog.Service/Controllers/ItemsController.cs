@@ -14,7 +14,7 @@ namespace Paly.Catalog.Service.Contollers
     public class ItemsController : ControllerBase
     {
         private readonly IRepository<Item> itemsRepository;
-
+        private static int requestCounter = 0;
         public ItemsController(IRepository<Item> itemsRepository)
         {
             this.itemsRepository = itemsRepository;
@@ -22,12 +22,29 @@ namespace Paly.Catalog.Service.Contollers
 
 
         [HttpGet]
-        public async Task<IEnumerable<ItemDto>> GetAsync()
+        public async Task<ActionResult<IEnumerable<ItemDto>>> GetAsync()
         {
+            requestCounter++;
+            System.Console.WriteLine($"Request {requestCounter}: starting...");
+
+            if (requestCounter <= 2)
+            {
+                System.Console.WriteLine($"Request {requestCounter}: Delaying...");
+                await Task.Delay(TimeSpan.FromSeconds(10));
+            }
+
+            if (requestCounter <= 4)
+            {
+                System.Console.WriteLine($"Request {requestCounter}: 500 (Internal Server Error)...");
+                return StatusCode(500);
+            }
+
             var items = (await itemsRepository.GetAllAsync())
             .Select(item => item.AsDto());
 
-            return items;
+            System.Console.WriteLine($"Request {requestCounter}: 200 (Ok)...");
+
+            return Ok(items);
         }
 
         [HttpGet("{id}")]
