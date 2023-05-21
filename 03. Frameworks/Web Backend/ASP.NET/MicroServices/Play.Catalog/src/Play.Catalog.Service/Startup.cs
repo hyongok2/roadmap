@@ -17,7 +17,7 @@ using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
 using Paly.Catalog.Service.Entities;
-using Play.Catalog.Service.Settings;
+using Play.Common.MassTransit;
 using Play.Common.MongDB;
 using Play.Common.Settings;
 
@@ -41,15 +41,7 @@ namespace Play.Catalog.Service
             services.AddMongo()
                     .AddMongoRepository<Item>("items");
 
-            services.AddMassTransit(x =>
-            {
-                x.UsingRabbitMq((context, configurator) =>
-                {
-                    var rabbitMQSettings = Configuration.GetSection(nameof(RabbitMQSettings)).Get<RabbitMQSettings>();
-                    configurator.Host(rabbitMQSettings.Host);
-                    configurator.ConfigureEndpoints(context, new KebabCaseEndpointNameFormatter(serviceSettings.ServiceName, false));
-                });
-            });
+            services.AddMassTransitWithRabbitMq();
 
             //services.AddMassTransitHostedService(); // 최신버전의 Masstransit 에서는 호출할 필요 없음.
 
