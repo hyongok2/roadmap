@@ -25,6 +25,7 @@ namespace Play.Catalog.Service
 {
     public class Startup
     {
+        private const string AllowedOriginSetting = "AllowedOrigin";
         private ServiceSettings serviceSettings;
         public Startup(IConfiguration configuration)
         {
@@ -63,6 +64,15 @@ namespace Play.Catalog.Service
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Play.Catalog.Service v1"));
+
+                // Local Test 하는 경우에 브라우저 App에서 Api Call 하는 경우 Cors 제약이 걸리는데, 이 것을 허용하는 코드임.
+                // 예를 들어 Google에서 만든 API가 있는데, Google.Com에서만 API 접근하게 만들고 싶다면.. 아래 WithOrigin에 Google.com을 입력하면 되는 것임.
+                app.UseCors(builder =>
+                {
+                    builder.WithOrigins(Configuration[AllowedOriginSetting])
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+                });
             }
 
             app.UseHttpsRedirection();
