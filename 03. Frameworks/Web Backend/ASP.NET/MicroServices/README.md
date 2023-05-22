@@ -11,3 +11,8 @@
 .NET Microservices – Full Course for Beginners
 
 https://youtu.be/ByYyk8eMG6c  
+
+
+아래는 Main 강의 Site 인데, 유료이다. 약 500달러 수준... 조금 비싸다.
+만약 Micro Service 프로젝트를 하려면 해볼만 할 것 같다.
+https://dotnetmicroservices.com/building-microservices-with-dotnet
