@@ -10,6 +10,8 @@
 2016년부터 디스플레이/반도체 설비 SW 엔지니어로 일하고 있다. 
 꾸준히 SW 개발자로 성장해 나가고자 한다.
 
+** 연락처 : hyongok2@naver.com
+
 1. Programming Languages
    - C#
    - C++
