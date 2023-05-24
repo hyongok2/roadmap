@@ -15,3 +15,6 @@
 | 8 | Essential Nuget Packages in .NET by Nick Chapsas | https://youtube.com/playlist?list=PLUOequmGnXxM1L_nj63YIWB8B5wdNk6dA | - |
 | 9 | 10 C# Libraries To Save You Time And Energy by IAmTimCorey | https://youtu.be/uS0hRJqamfU | - |
 | 9 | Intro to MediatR - Implementing CQRS and Mediator Patterns by IAmTimCorey | https://youtu.be/yozD5Tnd8nw | - |
+
+* Github 참고
+   - 음성인식 : https://github.com/alphacep/vosk-api
