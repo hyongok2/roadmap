@@ -8,3 +8,6 @@
 | 4 | Suggestion Site App by IAmTimCorey | https://youtube.com/playlist?list=PLLWMQd6PeGY0cZFMqx5ijmdaD87sJKCsU | - |
 | 5 | Blazor WebAssembly & Web API on .NET 6 – Full Course (C#) by Gavin Lon | https://youtu.be/sHuuo9L3e5c | - |
 | 6 | Blazor File Upload Mini Course by IAmTimCorey | https://youtube.com/playlist?list=PLLWMQd6PeGY2yqBcxsKvsNHplMrGa-SeK | - |
+
+* GitHub 학습 참고
+ - https://github.com/nakov/IMDB-Tech-Module
