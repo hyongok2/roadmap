@@ -9,3 +9,6 @@
 | 5 | Chat App / .NET MAUI UI Challenge by Javier Suárez | https://youtu.be/nzciueT0iFA | - |
 | 6 | .Net maui tutorial full course by derek banas | https://youtu.be/FT5P5ZktzZI | - |
 | 7 | MAUI for cars by Christian Strydom | https://youtube.com/playlist?list=PL0jJqThQHxikbetR1ODplARyLG6YAPKlz | - |
+
+* Github 학습 참고
+  - https://github.com/VladislavAntonyuk/MauiSamples
