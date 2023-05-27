@@ -6,6 +6,7 @@
 | 2 | Unity for Beginners (C#) 2023 by Gavin Lon | https://youtube.com/playlist?list=PL4LFuHwItvKYl6zPFGm9I9ejmR3uX8izX | - |
 | 3 | Unity Beginner Tutorials by Brackeys | https://youtube.com/playlist?list=PLPV2KyIb3jR5QFsefuO2RlAgWEz6EvVi6 | - |
 | 4 | Awesome Tuts - Anyone Can Learn To Make Games | https://www.youtube.com/@awesometuts/playlists | - |
+| 5 | 유니티 무료 강의 (Crash Course) - 5시간 만에 게임 만드는 법 배우기 by 나도코딩 | https://youtu.be/rJE6bhVUNhk | - |
 
 * Github 학슴 참고
  - https://github.com/Unity-Technologies/Megacity-Sample
