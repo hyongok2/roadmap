@@ -2,11 +2,41 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="400"
+		Width="500" Height="400"
         x:Class="Tutorial.MainWindow"
         Title="Tutorial">
-	<StackPanel>
-		<Label>Test</Label>
-		<Button Content="Test"></Button>
-	</StackPanel>
+	<Grid RowDefinitions="Auto,*,Auto">
+		<!--Title Bar-->
+		<Grid Grid.Row="0" Background="Orange" Height="40" ColumnDefinitions="Auto, Auto,*,Auto,Auto">
+			<Rectangle Grid.Column="0" Fill="Red" Width="40"></Rectangle>
+			<Rectangle Grid.Column="1" Fill="Blue" Width="40"></Rectangle>
+			<StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="2">
+				<Label FontWeight="Black">AVALONIA</Label>
+				<Label>LOUDNESS METER</Label>
+			</StackPanel>
+			<Rectangle Grid.Column="3" Fill="Green" Width="40"></Rectangle>
+			<Rectangle Grid.Column="4" Fill="Yellow" Width="40"></Rectangle>
+		</Grid>
+		
+		<!--Main Area-->
+		<Grid Grid.Row="1" ColumnDefinitions="Auto,Auto,*" Background="Gray">
+			<!-- Volume Bar -->
+			<Rectangle Grid.Column="0" Fill="Purple" Width="110"></Rectangle>
+			<!-- Loudness Details -->
+			<Rectangle Grid.Column="1" Fill="#ccc" Width="140"></Rectangle>
+			<!-- Graph -->
+			<Rectangle Grid.Column="2" Fill="Black"></Rectangle>
+		</Grid>
+		
+		<!--Bottom Bar-->
+		<Grid Grid.Row="2" Margin="8"  ColumnDefinitions="Auto,Auto,*,Auto,Auto,Auto,Auto,Auto">
+			<Button Grid.Column="0" Margin="0,0,8,0" >Stereo</Button>
+			<Button Grid.Column="1">Youtube</Button>
+			<Button Grid.Column="3" Margin="0,0,8,0">10 SEC</Button>
+			<Button Grid.Column="4" Margin="0,0,8,0">CONTINUOUS</Button>
+			<Rectangle Grid.Column="5" Fill="Orange" Width="30" Margin="0,0,8,0"></Rectangle>
+			<Rectangle Grid.Column="6" Fill="Red" Width="30"></Rectangle>
+		</Grid>
+	</Grid>
 </Window>
