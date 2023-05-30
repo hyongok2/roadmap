@@ -12,4 +12,5 @@ func main() {
 	study.Day1()
 	study.Day2()
 	study.Day3()
+	study.Day4()
 }
