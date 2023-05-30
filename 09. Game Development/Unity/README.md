@@ -11,6 +11,3 @@
 * Github 학습 참고
  - https://github.com/Unity-Technologies/Megacity-Sample
 
-
-* Unity 학습 저장소
- - https://github.com/hyongok2/Unity
