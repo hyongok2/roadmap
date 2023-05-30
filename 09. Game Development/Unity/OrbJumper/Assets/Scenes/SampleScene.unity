@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 16939583}
   - component: {fileID: 16939582}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -411,8 +411,9 @@ GameObject:
   - component: {fileID: 2071379880}
   - component: {fileID: 2071379879}
   - component: {fileID: 2071379878}
+  - component: {fileID: 2071379883}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -512,3 +513,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2071379883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071379877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 942614d69320f194bb13f6e4fef39c3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
