@@ -6,7 +6,7 @@ import (
 	"strconv"
 )
 
-func Day3() {
+func ErrorHandle() {
 
 	user, err := getUser()
 

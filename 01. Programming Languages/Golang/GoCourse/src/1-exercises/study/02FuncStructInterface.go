@@ -58,7 +58,7 @@ func showName(t things) string {
 	}
 }
 
-func Day2() {
+func FuncStructInterface() {
 	valueA := 10
 	valueB := 20
 

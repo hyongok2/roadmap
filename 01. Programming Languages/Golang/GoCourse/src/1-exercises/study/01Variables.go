@@ -2,7 +2,7 @@ package study
 
 import "fmt"
 
-func Day1() {
+func Variables() {
 
 	var smsSendingLimit int
 	var cost float64
