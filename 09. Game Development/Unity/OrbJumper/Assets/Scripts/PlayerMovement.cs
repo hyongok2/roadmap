@@ -8,6 +8,9 @@ public class PlayerMovement : MonoBehaviour
 
     public float ForwardForce;
     public float SideForce;
+    public float jumpForce;
+
+    private bool offGround = false;
 
     // Start is called before the first frame update    
     void Start()
@@ -17,6 +20,11 @@ public class PlayerMovement : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+
+    }
+
+    void FixedUpdate()
     {
         if (Input.GetKey("w"))
         {
@@ -35,6 +43,20 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(-SideForce * Time.deltaTime, 0, 0);
         }
+        if (Input.GetKey("j") && offGround == false)
+        {
+            offGround = true;
+            rb.velocity = Vector3.up * jumpForce;
+        }
 
     }
+
+    void OnCollisionStay(Collision collisionInfo)
+    {
+        if (collisionInfo.collider.name == "Ground")
+        {
+            offGround = false;
+        }
+    }
+
 }
