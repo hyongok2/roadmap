@@ -12,6 +12,10 @@ public class PlayerMovement : MonoBehaviour
 
     private bool offGround = false;
 
+    public int energyLevel;
+
+    private bool gameOver = false;
+
     // Start is called before the first frame update    
     void Start()
     {
@@ -21,7 +25,12 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (gameObject.transform.position.y <= -10 && gameOver == false)
+        {
+            Debug.Log("Game Over");
+            gameOver = true;
+            return;
+        }
     }
 
     void FixedUpdate()
@@ -47,6 +56,22 @@ public class PlayerMovement : MonoBehaviour
         {
             offGround = true;
             rb.velocity = Vector3.up * jumpForce;
+        }
+
+    }
+
+    void OnCollisionEnter(Collision collisionInfo)
+    {
+        if (collisionInfo.collider.tag == "Obstacle")
+        {
+            energyLevel--;
+            if (energyLevel == 0)
+            {
+                Debug.Log("Game Over");
+                gameOver = true;
+                return;
+            }
+            Debug.Log(energyLevel);
         }
 
     }
