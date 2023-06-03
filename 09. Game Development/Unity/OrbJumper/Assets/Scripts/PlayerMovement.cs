@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public TMP_Text StopWatchDisplay;
     private Rigidbody rb;
 
     public float ForwardForce;
@@ -12,9 +15,13 @@ public class PlayerMovement : MonoBehaviour
 
     private bool offGround = false;
 
+    private bool timerActive = false;
+
     public int energyLevel;
 
     private bool gameOver = false;
+    private TimeSpan stopwatchTime;
+    private float timeTrack = 0;
 
     // Start is called before the first frame update    
     void Start()
@@ -30,6 +37,12 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Game Over");
             gameOver = true;
             return;
+        }
+        if (timerActive)
+        {
+            timeTrack = timeTrack + Time.deltaTime;
+            stopwatchTime = TimeSpan.FromSeconds(timeTrack);
+            StopWatchDisplay.text = stopwatchTime.ToString(@"mm\:ss\:fff");
         }
     }
 
@@ -81,6 +94,21 @@ public class PlayerMovement : MonoBehaviour
         if (collisionInfo.collider.name == "Ground")
         {
             offGround = false;
+        }
+    }
+
+    void OnTriggerEnter(Collider collier)
+    {
+        if (collier.name == "Start")
+        {
+            timerActive = true;
+            Debug.Log("Stopwatch activated!");
+        }
+
+        if (collier.name == "End")
+        {
+            timerActive = false;
+            Debug.Log("Stopwatch deactivated!");
         }
     }
 
