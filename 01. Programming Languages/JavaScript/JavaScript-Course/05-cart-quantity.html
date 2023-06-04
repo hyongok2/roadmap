@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Cart Quantity
+    </title>
+</head>
+
+<body>
+    <hi>Cart Quantity</hi>
+    <p></p>
+    <button onclick="
+    alert(cartQuantity)
+    ">Show Quantity</button>
+
+    <button onclick="
+    cartQuantity++;
+    console.log(cartQuantity)
+     ">Add to Cart</button>
+
+    <button onclick="
+    cartQuantity +=2;
+    console.log(cartQuantity)
+     ">+2</button>
+
+    <button onclick="
+    cartQuantity +=3;
+    console.log(cartQuantity)
+     ">+3</button>
+
+    <button onclick="
+    cartQuantity = 0;
+    console.log(cartQuantity)
+    ">Reset Cart</button>
+
+    <script>
+        let cartQuantity = 3;
+        console.log(cartQuantity)
+
+        let message = 'hello';
+        console.log(message);
+        console.log(typeof message);
+        const sample = 3.4;//cannot change variable
+        console.log(typeof sample);
+
+
+
+        //최근 자바스크립트에서는 var 를 사용하지 않는다고 함.
+        //그냥 let과 const만 쓴다고 기억하자.
+    </script>
+</body>
+
+</html>
