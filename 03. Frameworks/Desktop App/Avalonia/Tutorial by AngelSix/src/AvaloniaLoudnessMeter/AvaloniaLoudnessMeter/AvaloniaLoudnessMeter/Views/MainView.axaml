@@ -1,15 +1,20 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:AvaloniaLoudnessMeter.ViewModels"
+			 xmlns:controls="clr-namespace:AvaloniaLoudnessMeter"
+			 mc:Ignorable="d" d:DesignWidth="1048" d:DesignHeight="645"
+			 Width="1048" Height="645"
+             x:Class="AvaloniaLoudnessMeter.Views.MainView"
+             x:DataType="vm:MainViewModel">
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:MainViewModel />
+  </Design.DataContext>
 
-<Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:controls="clr-namespace:AvaloniaUI"
-		mc:Ignorable="d" d:DesignWidth="1048" d:DesignHeight="630"
-		Width="1048" Height="630"
-        x:Class="AvaloniaUI.MainWindow"
-        Title="AvaloniaUI">
-
-	<Window.Styles>
+	<UserControl.Styles>
 		<Style Selector="Button.small">
 			<Setter Property="FontSize" Value="12"/>
 			<Setter Property="Foreground" Value="White"/>
@@ -22,8 +27,7 @@
 			<Setter Property="Background" Value="{DynamicResource BrightBlueHoverBrush}"/>
 			<Setter Property="TextBlock.Foreground" Value="White"/>
 		</Style>
-	</Window.Styles>
-	
+	</UserControl.Styles>
 	<Grid RowDefinitions="Auto,*,Auto">
 		<!--Title Bar-->
 		<Grid Grid.Row="0" Background="{DynamicResource MediumGrayBrush}" Height="60" ColumnDefinitions="Auto, Auto,*,Auto,Auto">
@@ -49,36 +53,36 @@
 					<Setter Property="Opacity" Value="0.6"/>
 				</Style>
 			</Grid.Styles>
-			
+
 			<Button Grid.Column="0" >
-				<!--<Image Source="{SvgImage /Assets/Images/monitor.svg}"/>-->
-				<Image Source="/Assets/Images/monitor.png"/>
+				<Image Source="{SvgImage /Assets/Images/monitor.svg}"/>
+				<!--<Image Source="/Assets/Images/monitor.png"/>-->
 			</Button>
 			<Button Grid.Column="1" >
-				<!--<Image Source="{SvgImage /Assets/Images/lock.svg}"/>-->
-				<Image Source="/Assets/Images/lock.png"/>
+				<Image Source="{SvgImage /Assets/Images/lock.svg}"/>
+				<!--<Image Source="/Assets/Images/lock.png"/>-->
 			</Button>
 			<StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="2">
 				<Label FontSize="24" FontWeight="Black">AVALONIA</Label>
 				<Label FontSize="24">LOUDNESS METER</Label>
 			</StackPanel>
 			<Button Grid.Column="3" >
-				<!--<Image Source="{SvgImage /Assets/Images/export.svg}"/>-->
-				<Image Source="/Assets/Images/export.png"/>
+				<Image Source="{SvgImage /Assets/Images/export.svg}"/>
+				<!--<Image Source="/Assets/Images/export.png"/>-->
 			</Button>
 			<Button Grid.Column="4">
-				<!--<Image Source="{SvgImage /Assets/Images/setting.svg}"/>-->
-				<Image Source="/Assets/Images/setting.png"/>
+				<Image Source="{SvgImage /Assets/Images/setting.svg}"/>
+				<!--<Image Source="/Assets/Images/setting.png"/>-->
 			</Button>
 		</Grid>
-		
+
 		<!--Main Area-->
 		<Grid Grid.Row="1" ColumnDefinitions="Auto,Auto,*" Background="{DynamicResource DarkBlueBrush}">
 			<!-- Volume Bar -->
 			<Grid Grid.Column="0" Width="150" RowDefinitions="*,Auto,Auto" Margin="0,20">
 
 				<!-- Volume meter gauge-->
-				<Grid Grid.Row="0" 
+				<Grid Grid.Row="0"
 					  Margin="10,0"
 					  RowDefinitions="3*,3*,3*,9*,5*,4*,9*,9*,9*,6*,Auto"
 					  ColumnDefinitions="Auto,*,Auto,Auto">
@@ -111,7 +115,7 @@
 						<Rectangle Grid.Row="1" Canvas.Top="0"
 								   Margin="0,8,0,0" Fill="White" Width="20"></Rectangle>
 					</Grid>
-					
+
 					<Label Grid.Column="2" Grid.Row="0">—</Label>
 					<Label Grid.Column="2" Grid.Row="1">—</Label>
 					<Label Grid.Column="2" Grid.Row="2">—</Label>
@@ -128,21 +132,22 @@
 					<Canvas Grid.Column="3" Grid.Row="0" Grid.RowSpan="11" Width="20">
 						<Rectangle Canvas.Top="0" Fill="White" Width="20" Height="20"/>
 					</Canvas>
-					
+
 				</Grid>
-								
+
 				<!-- LUFS Label -->
-				<Label Grid.Row="1" Foreground="White" 
+				<Label Grid.Row="1" Foreground="White"
 					   FontSize="20" HorizontalAlignment="Center"
 					   Margin="0,5">LUFS</Label>
-				
+
 				<!-- Volume bar buttons -->
 				<StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-					
+
 					<Button Classes="small" CornerRadius="30" Margin="0,0,20,0" Width="30" Height="30" Padding="4,0,0,0" >
-						<Image Width="17" Source="/Assets/Images/fastforward.png"/>
+						<Image Width="17" Source="{SvgImage /Assets/Images/fastforward.svg}"/>
+						<!--<Image Width="17" Source="/Assets/Images/fastforward.png"/>-->
 					</Button>
-					<Button Classes="small">INT-LRA</Button>		
+					<Button Classes="small">INT-LRA</Button>
 				</StackPanel>
 			</Grid>
 			<!-- Loudness Details -->
@@ -162,13 +167,13 @@
 					<Button Classes="small" FontSize="20" FontFamily="Arial" Background="{DynamicResource FadedRedBrush}">X</Button>
 				</StackPanel>
 			</StackPanel>
-			
+
 			<!-- Graph -->
 			<Rectangle Grid.Column="2" Fill="Black"></Rectangle>
 		</Grid>
-		
+
 		<!--Bottom Bar-->
-		<Grid Grid.Row="2" Margin="8" ColumnDefinitions="Auto,Auto,*,Auto,Auto,Auto,Auto,Auto">
+		<Grid Grid.Row="2" Background="{DynamicResource MediumGrayBrush}" Margin="8" ColumnDefinitions="Auto,Auto,*,Auto,Auto,Auto,Auto,Auto">
 			<Button Grid.Column="0" Margin="0,0,8,0">Stereo</Button>
 			<Button Grid.Column="1">Youtube</Button>
 			<Button Grid.Column="3" Margin="0,0,8,0">10 SEC</Button>
@@ -177,4 +182,5 @@
 			<Rectangle Grid.Column="6" Fill="Red" Width="30"></Rectangle>
 		</Grid>
 	</Grid>
-</Window>
+  
+</UserControl>

@@ -2,7 +2,7 @@ using Avalonia;
 using Avalonia.Controls.Primitives;
 using Avalonia.Styling;
 
-namespace AvaloniaUI;
+namespace AvaloniaLoudnessMeter;
 
 public class LargeLableControl : TemplatedControl
 {
