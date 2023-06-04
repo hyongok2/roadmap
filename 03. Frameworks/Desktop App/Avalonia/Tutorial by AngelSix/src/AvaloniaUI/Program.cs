@@ -1,7 +1,7 @@
 ﻿using Avalonia;
 using System;
 
-namespace Tutorial;
+namespace AvaloniaUI;
 
 class Program
 {
