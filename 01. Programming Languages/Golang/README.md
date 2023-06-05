@@ -1,5 +1,8 @@
 # Go Lang 학습 참고 자료
 
+https://go.dev/doc/effective_go
+https://github.com/golangkorea/effective-go/blob/master/SUMMARY.md
+
 | 순번 | 컨텐츠 | 링크 | 비고 |
 | ---| --- | --- | --- |
 | 1 | Go Main Home Page |  https://go.dev/ | - |

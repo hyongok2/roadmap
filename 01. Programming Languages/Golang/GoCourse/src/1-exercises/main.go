@@ -13,5 +13,6 @@ func main() {
 	// study.FuncStructInterface()
 	// study.ErrorHandle()
 	// study.GoLoop()
-	study.ArraySlice()
+	//study.ArraySlice()
+	study.Map()
 }
