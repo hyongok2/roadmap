@@ -1,4 +1,5 @@
 using Avalonia.Controls;
+using AvaloniaLoudnessMeter.ViewModels;
 
 namespace AvaloniaLoudnessMeter.Views
 {
@@ -7,6 +8,7 @@ namespace AvaloniaLoudnessMeter.Views
         public MainView()
         {
             InitializeComponent();
+            DataContext = new MainViewModel();
         }
     }
 }

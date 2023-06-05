@@ -11,7 +11,7 @@
   <Design.DataContext>
     <!-- This only sets the DataContext for the previewer in an IDE,
          to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-    <vm:MainViewModel />
+    <!--<vm:MainViewModel />-->
   </Design.DataContext>
 
 	<UserControl.Styles>
@@ -63,8 +63,8 @@
 				<!--<Image Source="/Assets/Images/lock.png"/>-->
 			</Button>
 			<StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="2">
-				<Label FontSize="24" FontWeight="Black">AVALONIA</Label>
-				<Label FontSize="24">LOUDNESS METER</Label>
+				<Label Content="{Binding BoldTitle}" FontSize="24" FontWeight="Black"></Label>
+				<Label Content="{Binding RegularTitle}" FontSize="24"></Label>
 			</StackPanel>
 			<Button Grid.Column="3" >
 				<Image Source="{SvgImage /Assets/Images/export.svg}"/>
