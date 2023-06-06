@@ -18,3 +18,6 @@ Creating a New Application
 Once the templates are installed, you can create a new Avalonia application by running the following command:
 
 dotnet new avalonia.app -o MyApp
+
+
+https://github.com/angelsix/youtube/tree/develop/Avalonia/AvaloniaLoudnessMeter
