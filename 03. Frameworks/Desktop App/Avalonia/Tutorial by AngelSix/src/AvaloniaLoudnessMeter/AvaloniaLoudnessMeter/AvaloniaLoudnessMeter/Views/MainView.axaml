@@ -27,7 +27,7 @@
 			<Setter Property="TextBlock.Foreground" Value="White"/>
 		</Style>
 		
-		<Style Selector="Border.channel">
+		<Style Selector="controls|AnimatedPopUp.channel">
 			<Setter Property="Width" Value="0"></Setter>
 			<Setter Property="Height" Value="0"></Setter>
 			<Setter Property="Transitions">
@@ -38,7 +38,7 @@
 			</Setter>
 		</Style>
 		
-		<Style Selector="Border.channel.open">
+		<Style Selector="controls|AnimatedPopUp.channel.open">
 			<Setter Property="Width" Value="300"></Setter>
 			<Setter Property="Height" Value="600"></Setter>
 		</Style>
@@ -47,6 +47,7 @@
 	<!-- Main Grid -->
 	<Grid Name="MainGrid" RowDefinitions="Auto,*,Auto" Background="White">
 		
+		<!-- Channel Configuration PopUp Closer -->
 		<Border Grid.Row="0" Grid.RowSpan="3" 
 		        PointerPressed="InputElement_OnPointerPressed" 
 		        Background="Transparent" 
@@ -54,18 +55,13 @@
 		        ZIndex="1"></Border>
 		
 		<!-- Channel Configuration PopUp -->
-		<Border Grid.Row="0" Grid.RowSpan="3"
+		<controls:AnimatedPopUp Grid.Row="0" Grid.RowSpan="3"
 		        Classes="channel"
 		        Classes.open = "{Binding ChannelConfigurationListIsOpen}"
 		        Name="ChannelConfigurationPopUp"
-		        Background="Red"
-		        ZIndex="2"
-		        Opacity="0.5"
-		        HorizontalAlignment="Left"
-		        VerticalAlignment="Bottom">
-			<Label>Test</Label>
-		</Border>
-		
+		        Background="Red">
+			<Label Content="Hello World"></Label>
+		</controls:AnimatedPopUp>
 		
 		<!--Title Bar-->
 		<Grid Grid.Row="0" Background="{DynamicResource MediumGrayBrush}" Height="60" ColumnDefinitions="Auto, Auto,*,Auto,Auto">

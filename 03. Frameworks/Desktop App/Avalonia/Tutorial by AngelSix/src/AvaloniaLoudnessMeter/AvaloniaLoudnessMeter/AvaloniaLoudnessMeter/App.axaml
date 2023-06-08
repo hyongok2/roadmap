@@ -8,6 +8,7 @@
 		<FluentTheme />
 		<StyleInclude Source="Styles/LargeLableControl.axaml"/>
 		<StyleInclude Source="Styles/AppDefaultStyles.axaml"/>
+		<StyleInclude Source="Styles/AnimatedPopUp.axaml"/>
 	</Application.Styles>
 	<Application.Resources>
 		<SolidColorBrush x:Key="MediumGrayBrush">#e5e5e5</SolidColorBrush>
