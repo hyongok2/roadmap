@@ -14,5 +14,6 @@ func main() {
 	// study.ErrorHandle()
 	// study.GoLoop()
 	//study.ArraySlice()
-	study.Map()
+	//study.Map()
+	study.AdFunction()
 }
