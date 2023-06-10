@@ -68,4 +68,12 @@ public class MyBall : MonoBehaviour
             isGround = false;
         }
     }
+
+    public void Jump()
+    {
+        if (isGround == true)
+        {
+            rigid.AddForce(Vector3.up * 10f, ForceMode.Impulse);
+        }
+    }
 }
