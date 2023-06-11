@@ -27,21 +27,6 @@
 			<Setter Property="TextBlock.Foreground" Value="White"/>
 		</Style>
 		
-		<!-- <Style Selector="controls|AnimatedPopUp.channel"> -->
-		<!-- 	<Setter Property="Width" Value="0"></Setter> -->
-		<!-- 	<Setter Property="Height" Value="0"></Setter> -->
-		<!-- 	<Setter Property="Transitions"> -->
-		<!-- 		<Transitions> -->
-		<!-- 			<DoubleTransition Property="Width" Duration="0:0:0.2" Easing="QuadraticEaseIn"/> -->
-		<!-- 			<DoubleTransition Property="Height" Duration="0:0:0.2" Easing="QuadraticEaseIn"/> -->
-		<!-- 		</Transitions> -->
-		<!-- 	</Setter> -->
-		<!-- </Style> -->
-		<!-- -->
-		<!-- <Style Selector="controls|AnimatedPopUp.channel.open"> -->
-		<!-- 	<Setter Property="Width" Value="300"></Setter> -->
-		<!-- 	<Setter Property="Height" Value="600"></Setter> -->
-		<!-- </Style> -->
 	</UserControl.Styles>
 	
 	<!-- Main Grid -->
@@ -56,7 +41,8 @@
 		
 		<!-- Channel Configuration PopUp -->
 		<controls:AnimatedPopUp Grid.Row="0" Grid.RowSpan="3"
-		        Name="ChannelConfigurationPopUp">
+		                        Name="ChannelConfigurationPopUp"
+		                        AnimationTime="0:0:0.3">
 			<Border Padding="20" Background="White" BorderThickness="1" BorderBrush="#ddd" CornerRadius="5">
 				<StackPanel>
 					<Label Content="Hello world"></Label>
@@ -217,7 +203,7 @@
 
 		<!--Bottom Bar-->
 		<Grid Grid.Row="2" Background="{DynamicResource MediumGrayBrush}" Margin="8" ColumnDefinitions="Auto,Auto,*,Auto,Auto,Auto,Auto,Auto">
-			<Button Grid.Column="0" Name="ChannelConfigurationButton" Command="{Binding ChannelConfigurationButtonPressedCommand }" Margin="0,0,8,0">Stereo</Button>
+			<Button Grid.Column="0" Name="ChannelConfigurationButton" Command="{Binding #ChannelConfigurationPopUp.BeginOpen }" Margin="0,0,8,0">Stereo</Button>
 			<Button Grid.Column="1" Content="YouTube"></Button>
 			<Button Grid.Column="3" Margin="0,0,8,0">10 SEC</Button>
 			<Button Grid.Column="4" Margin="0,0,8,0">CONTINUOUS</Button>
