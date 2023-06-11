@@ -6,3 +6,6 @@
 | 2 | Design Pattern Web Site | https://dotnettutorials.net/course/dot-net-design-patterns/ | - |
 | 3 | Design Patterns & Principles by IAmTimcorey | https://youtube.com/playlist?list=PLLWMQd6PeGY3ob0Ga6vn1czFZfW6e-FLr | - |
 | 4 | Design Patterns C# 2022 by Teddy Smith | https://youtube.com/playlist?list=PL82C6-O4XrHeS_EJlqBSvvvAfZr9mus-V | - |
+
+
+https://youtu.be/GWYhtksrmhE
