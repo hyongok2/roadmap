@@ -9,15 +9,17 @@ public class PlayerBall : MonoBehaviour
     bool isJump;
     Rigidbody body;
     public int itemCount;
+    AudioSource audio;
 
     private void Awake()
     {
         isJump = false;
         body = GetComponent<Rigidbody>();
+        audio = GetComponent<AudioSource>();
     }
     private void Update()
     {
-        if(Input.GetButtonDown("Jump") && isJump == false)
+        if (Input.GetButtonDown("Jump") && isJump == false)
         {
             isJump = true;
             body.AddForce(new Vector3(0, jumpPower, 0), ForceMode.Impulse);
@@ -29,17 +31,26 @@ public class PlayerBall : MonoBehaviour
     {
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
-        body.AddForce(new Vector3(h, 0, v),ForceMode.Impulse);
+        body.AddForce(new Vector3(h, 0, v), ForceMode.Impulse);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.name=="Floor")
+        if (collision.gameObject.name == "Floor")
         {
             isJump = false;
         }
     }
 
-    
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.name == "Item")
+        {
+            itemCount++;
+            audio.Play();
+            other.gameObject.SetActive(false);
+        }
+
+    }
 
 }
