@@ -15,5 +15,6 @@ func main() {
 	// study.GoLoop()
 	//study.ArraySlice()
 	//study.Map()
-	study.AdFunction()
+	//study.AdFunction()
+	study.Pointers()
 }
