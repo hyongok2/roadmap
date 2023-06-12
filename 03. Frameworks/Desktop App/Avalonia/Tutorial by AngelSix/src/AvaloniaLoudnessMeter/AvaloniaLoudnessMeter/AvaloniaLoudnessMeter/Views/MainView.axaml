@@ -32,17 +32,11 @@
 	<!-- Main Grid -->
 	<Grid Name="MainGrid" RowDefinitions="Auto,*,Auto" Background="White">
 		
-		<!-- Channel Configuration PopUp Closer -->
-		<Border Grid.Row="0" Grid.RowSpan="3" 
-		        PointerPressed="InputElement_OnPointerPressed" 
-		        Background="Transparent" 
-		        IsVisible="{Binding ChannelConfigurationListIsOpen}"
-		        ZIndex="1"></Border>
-		
 		<!-- Channel Configuration PopUp -->
 		<controls:AnimatedPopUp Grid.Row="0" Grid.RowSpan="3"
 		                        Name="ChannelConfigurationPopUp"
-		                        AnimationTime="0:0:0.3">
+		                        AnimationTime="0:0:0.3"
+		                        UnderlayOpacity="0.2">
 			<Border Padding="20" Background="White" BorderThickness="1" BorderBrush="#ddd" CornerRadius="5">
 				<StackPanel>
 					<Label Content="Hello world"></Label>

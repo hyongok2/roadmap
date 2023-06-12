@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using Avalonia;
+using Avalonia.Animation;
 using Avalonia.Animation.Easings;
 using Avalonia.Controls;
 using Avalonia.Media;
@@ -13,6 +14,11 @@ public partial class AnimatedPopUp : ContentControl
 {
     #region Private Members
 
+    /// <summary>
+    /// for closing this popup
+    /// </summary>
+    private Control _underlayControl;
+    
     private bool _firstAnimation = true;
 
     private double _originalOpacity;
@@ -51,6 +57,7 @@ public partial class AnimatedPopUp : ContentControl
     /// Sets whether the control should be opening or closing
     /// </summary>
 
+    #region Open Property
     private bool _open;
 
     public static readonly DirectProperty<AnimatedPopUp, bool> OpenProperty = AvaloniaProperty.RegisterDirect<AnimatedPopUp, bool>(
@@ -59,9 +66,26 @@ public partial class AnimatedPopUp : ContentControl
     public bool Open
     {
         get => _open;
-        set => SetAndRaise(OpenProperty, ref _open, value);
-    }
+        set
+        {
+            if (value == true)
+            {
+                if (Parent is Grid grid)
+                {
+                    if(grid.RowDefinitions?.Count > 1)
+                        _underlayControl.SetValue(Grid.RowSpanProperty, grid.RowDefinitions?.Count);
+                    if(grid.ColumnDefinitions?.Count > 1)
+                        _underlayControl.SetValue(Grid.ColumnProperty, grid.ColumnDefinitions?.Count);
+                    grid.Children.Insert(0,_underlayControl);
+                }
+            }
 
+            SetAndRaise(OpenProperty, ref _open, value);
+        }
+    }
+    
+
+    #endregion
     public bool IsOpened => _animationCurrentTick >= _totalTicks;
     
     #region Animation Time Property
@@ -75,6 +99,19 @@ public partial class AnimatedPopUp : ContentControl
     {
         get => _animationTime;
         set => SetAndRaise(AnimationTimeProperty, ref _animationTime, value);
+    }
+    #endregion
+
+    #region Underlay Opacity Property
+    private double _underlayOpacity = 0.2;
+
+    public static readonly DirectProperty<AnimatedPopUp, double> UnderlayOpacityProperty = AvaloniaProperty.RegisterDirect<AnimatedPopUp, double>(
+        nameof(UnderlayOpacity), o => o.UnderlayOpacity, (o, v) => o.UnderlayOpacity = v);
+
+    public double UnderlayOpacity
+    {
+        get => _underlayOpacity;
+        set => SetAndRaise(UnderlayOpacityProperty, ref _underlayOpacity, value);
     }
     #endregion
 
@@ -100,6 +137,18 @@ public partial class AnimatedPopUp : ContentControl
     #region Constructor
     public AnimatedPopUp()
     {
+        _underlayControl = new Border
+        {
+            //IsVisible = false,
+            Background = Brushes.Black,
+            Opacity = 0,
+            ZIndex = 9,
+        };
+        _underlayControl.PointerPressed += (sender, args) =>
+        {
+            BeginClose();
+        };
+        
         _originalOpacity = Opacity;
 
         Opacity = 0;
@@ -153,9 +202,7 @@ public partial class AnimatedPopUp : ContentControl
             
             Opacity = _originalOpacity;
             
-            Width = _open ? _desiredSize.Width : 0;
-            Height = _open ? _desiredSize.Height : 0;
-
+            AnimationComplete();
             return;
         }
 
@@ -164,9 +211,7 @@ public partial class AnimatedPopUp : ContentControl
         {
             _animationTimer.Stop();
             
-            Width = _open ? _desiredSize.Width : 0;
-            Height = _open ? _desiredSize.Height : 0;
-            
+            AnimationComplete();
             _animating = false;
             return;
         }
@@ -181,8 +226,34 @@ public partial class AnimatedPopUp : ContentControl
         var easingValue = easing.Ease(percentageAnimated);
         Width = _desiredSize.Width * easingValue;
         Height = _desiredSize.Height * easingValue;
+
+        _underlayControl.Opacity = UnderlayOpacity * easingValue;
     }
-    
+
+    private void AnimationComplete()
+    {
+        if (_open)
+        {
+            Width = _desiredSize.Width;
+            Height = _desiredSize.Height;
+
+        }
+        else
+        {
+            Width = 0;
+            Height = 0;
+            
+            if (Parent is Grid grid)
+            {
+                _underlayControl.Opacity = 0;
+                
+                if (grid.Children.Contains(_underlayControl))
+                {
+                    grid.Children.Remove(_underlayControl);
+                }
+            }
+        }
+    }
 
     #endregion
 
