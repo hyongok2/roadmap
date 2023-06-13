@@ -6,5 +6,4 @@
 | 2 | C# Practical Interview Questions And Answers by Dr MILAN | https://youtube.com/playlist?list=PLnMapBjq2hh_Ffp9dcKp49eedMMXVzg7G | - |
 | 3 | MIT 6.006 Introduction to Algorithms, Spring 2020 by MIT OpenCourseWare | https://youtube.com/playlist?list=PLUl4u3cNGP63EdVPNLG3ToM6LaEUuStEY | - |
 | 4 | MIT 6.046J Design and Analysis of Algorithms, Spring 2015 by MIT OpenCourseWare | https://youtube.com/playlist?list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp | - |
-
-https://youtube.com/playlist?list=PLDN4rrl48XKpZkf03iYFl-O29szjTrs_O
+| 5 | Algorithms by Abdul Bari | https://youtube.com/playlist?list=PLDN4rrl48XKpZkf03iYFl-O29szjTrs_O | - |
