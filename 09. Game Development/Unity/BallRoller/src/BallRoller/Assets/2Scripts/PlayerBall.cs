@@ -44,7 +44,7 @@ public class PlayerBall : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.name == "Item")
+        if (other.tag == "Item")
         {
             itemCount++;
             audio.Play();
