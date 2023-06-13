@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Objects
+    </title>
+</head>
+
+<body>
+
+    <button>Button</button>
+    <script>
+        const product = {
+            name: 'door',
+            price: 1000,
+            somelist: {
+                a: 1,
+                cc: 2,
+            },
+            fun: function sample1()
+            {
+                console.log('hello amazing javascript');
+            }
+        };
+
+        product.name = 'window';
+        product.newValue = true;
+        console.log(product);
+
+        delete product.newValue;
+        console.log(product);
+
+        console.log(product['name']);
+        console.log(product['price']);
+        console.log(product['wow']);
+        console.log(product.what);
+        product.fun();
+
+        // 거의 대부분 Dot notation을 사용한다고 함.
+    </script>
+</body>
+
+</html>
