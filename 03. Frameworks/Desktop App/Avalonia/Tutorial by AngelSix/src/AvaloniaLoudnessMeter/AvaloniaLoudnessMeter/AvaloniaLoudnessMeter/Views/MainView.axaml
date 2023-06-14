@@ -38,19 +38,24 @@
 		                        AnimationTime="0:0:0.3"
 		                        UnderlayOpacity="0.2">
 			<Border Padding="20" Background="White" BorderThickness="1" BorderBrush="#ddd" CornerRadius="5">
-				<StackPanel>
-					<Label Content="Hello world"></Label>
-					<Label Content="Hello world"></Label>
-					<Label Content="Hello world"></Label>
-					<Label Content="Hello world"></Label>
-					<Label Content="Hello world"></Label>
-					<Label Content="Hello world"></Label>
-					<Label Content="Hello world"></Label>
-					<Label Content="Hello world"></Label>
-					<Label Content="Hello world"></Label>
-					<Label Content="Hello world"></Label>
-					<Label Content="Hello world"></Label>
-				</StackPanel>
+				<Expander Background="Beige" Margin="0">
+					<Expander.Header>
+						<Label Content="This is a long header text"/>	
+					</Expander.Header>
+					<StackPanel>
+                    	<Label Content="Hello world"></Label>
+                    	<Label Content="Hello world"></Label>
+                    	<Label Content="Hello world"></Label>
+                    	<Label Content="Hello world"></Label>
+                    	<Label Content="Hello world"></Label>
+                    	<Label Content="Hello world"></Label>
+                    	<Label Content="Hello world"></Label>
+                    	<Label Content="Hello world"></Label>
+                    	<Label Content="Hello world"></Label>
+                    	<Label Content="Hello world"></Label>
+                    	<Label Content="Hello world"></Label>
+                    </StackPanel>
+				</Expander>
 			</Border>
 		</controls:AnimatedPopUp>
 		

@@ -70,14 +70,23 @@ public partial class AnimatedPopUp : ContentControl
         {
             if (value == true)
             {
+                if(value == _open)
+                    return;
+                
                 if (Parent is Grid grid)
                 {
                     if(grid.RowDefinitions?.Count > 1)
                         _underlayControl.SetValue(Grid.RowSpanProperty, grid.RowDefinitions?.Count);
                     if(grid.ColumnDefinitions?.Count > 1)
                         _underlayControl.SetValue(Grid.ColumnProperty, grid.ColumnDefinitions?.Count);
-                    grid.Children.Insert(0,_underlayControl);
+                    if(grid.Children.Contains(_underlayControl) == false)
+                        grid.Children.Insert(0,_underlayControl);
                 }
+            }
+            else
+            {
+                if(IsOpened)
+                    UpdateDesiredSize();
             }
 
             SetAndRaise(OpenProperty, ref _open, value);
@@ -100,6 +109,21 @@ public partial class AnimatedPopUp : ContentControl
         get => _animationTime;
         set => SetAndRaise(AnimationTimeProperty, ref _animationTime, value);
     }
+    #endregion
+
+    #region AnimateOpacity
+
+    private bool _animateOpacity = true;
+
+    public static readonly DirectProperty<AnimatedPopUp, bool> AnimateOpacityProperty = AvaloniaProperty.RegisterDirect<AnimatedPopUp, bool>(
+        nameof(AnimateOpacity), o => o.AnimateOpacity, (o, v) => o.AnimateOpacity = v);
+
+    public bool AnimateOpacity
+    {
+        get => _animateOpacity;
+        set => SetAndRaise(AnimateOpacityProperty, ref _animateOpacity, value);
+    }
+
     #endregion
 
     #region Underlay Opacity Property
@@ -170,7 +194,7 @@ public partial class AnimatedPopUp : ContentControl
 
             Dispatcher.UIThread.InvokeAsync(() =>
             {
-                _desiredSize = DesiredSize;
+                UpdateDesiredSize();
                 UpdateAimation();
             });
         });
@@ -179,10 +203,15 @@ public partial class AnimatedPopUp : ContentControl
      ;
     }
 
+
     #endregion
 
     #region Private Methods
     
+    private void UpdateDesiredSize()
+    {
+        _desiredSize = DesiredSize- Margin;
+    }
     private void UpdateAimation()
     {
         if (_sizeFound == false)
@@ -226,6 +255,9 @@ public partial class AnimatedPopUp : ContentControl
         var easingValue = easing.Ease(percentageAnimated);
         Width = _desiredSize.Width * easingValue;
         Height = _desiredSize.Height * easingValue;
+        
+        if(AnimateOpacity)
+            Opacity = _originalOpacity * easingValue;
 
         _underlayControl.Opacity = UnderlayOpacity * easingValue;
     }
@@ -234,9 +266,10 @@ public partial class AnimatedPopUp : ContentControl
     {
         if (_open)
         {
-            Width = _desiredSize.Width;
-            Height = _desiredSize.Height;
+            Width = double.NaN;
+            Height = double.NaN;
 
+            Opacity = _originalOpacity;
         }
         else
         {
