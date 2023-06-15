@@ -19,4 +19,5 @@ public class CameraMoving : MonoBehaviour
     {
         transform.position = playerTransform.position + offset;
     }
+
 }
