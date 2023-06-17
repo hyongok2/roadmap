@@ -12,6 +12,7 @@ using AvaloniaLoudnessMeter.Sevices;
 using CommunityToolkit.Mvvm.Collections;
 using CommunityToolkit.Mvvm.Input;
 
+
 namespace AvaloniaLoudnessMeter.ViewModels
 {
     public partial class MainViewModel : ObservableObject /*: INotifyPropertyChanged*/
@@ -28,7 +29,7 @@ namespace AvaloniaLoudnessMeter.ViewModels
         private bool _channelConfigurationListIsOpen = false;
         
         [ObservableProperty]
-        private ObservableGroupedCollection<string, ChannelConfigurationItem> _channelConfigurations = default;
+        private ObservableGroupedCollection<string, ChannelConfigurationItem> _channelConfigurations = default!;
         
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(ChannelConfigurationButtonText))]

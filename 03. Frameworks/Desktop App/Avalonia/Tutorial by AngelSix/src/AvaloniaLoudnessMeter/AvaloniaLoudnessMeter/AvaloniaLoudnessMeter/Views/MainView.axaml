@@ -6,7 +6,8 @@
 			 xmlns:controls="clr-namespace:AvaloniaLoudnessMeter"
 			 mc:Ignorable="d" d:DesignWidth="1048" d:DesignHeight="645"
              x:Class="AvaloniaLoudnessMeter.Views.MainView"
-             x:DataType="vm:MainViewModel">
+             x:DataType="vm:MainViewModel"
+             x:CompileBindings="False">
   <Design.DataContext>
     <!-- This only sets the DataContext for the previewer in an IDE,
          to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
@@ -36,26 +37,37 @@
 		<controls:AnimatedPopUp Grid.Row="0" Grid.RowSpan="3"
 		                        Name="ChannelConfigurationPopUp"
 		                        AnimationTime="0:0:0.3"
-		                        UnderlayOpacity="0.2">
+		                        UnderlayOpacity="0.2"
+		                        Open="{Binding ChannelConfigurationListIsOpen, Mode=TwoWay}">
 			<Border Padding="20" Background="White" BorderThickness="1" BorderBrush="#ddd" CornerRadius="5">
-				<Expander Background="Beige" Margin="0">
-					<Expander.Header>
-						<Label Content="This is a long header text"/>	
-					</Expander.Header>
-					<StackPanel>
-                    	<Label Content="Hello world"></Label>
-                    	<Label Content="Hello world"></Label>
-                    	<Label Content="Hello world"></Label>
-                    	<Label Content="Hello world"></Label>
-                    	<Label Content="Hello world"></Label>
-                    	<Label Content="Hello world"></Label>
-                    	<Label Content="Hello world"></Label>
-                    	<Label Content="Hello world"></Label>
-                    	<Label Content="Hello world"></Label>
-                    	<Label Content="Hello world"></Label>
-                    	<Label Content="Hello world"></Label>
-                    </StackPanel>
-				</Expander>
+				<ItemsControl 
+					ItemsSource="{Binding ChannelConfigurations}">
+					<ItemsControl.ItemTemplate>
+						<DataTemplate>
+							<Expander>
+								<Expander.Header>
+									<Label FontSize="14"
+									       Foreground="#999"
+									       Content="{Binding Key}"/>
+								</Expander.Header>
+								<ItemsControl ItemsSource="{Binding  }">
+									<ItemsControl.ItemTemplate>
+										<DataTemplate>
+											<Button
+												HorizontalAlignment="Stretch"
+												Background="White"
+												Content="{Binding Text}"
+												Command="{Binding $parent[controls:AnimatedPopUp].((vm:MainViewModel)DataContext).ChannelConfigurationItemPressedCommand, FallbackValue=null}"
+												CommandParameter="{Binding}"
+												></Button>
+										</DataTemplate>
+									</ItemsControl.ItemTemplate>
+								</ItemsControl>
+								
+							</Expander>
+						</DataTemplate>
+					</ItemsControl.ItemTemplate>
+				</ItemsControl>
 			</Border>
 		</controls:AnimatedPopUp>
 		

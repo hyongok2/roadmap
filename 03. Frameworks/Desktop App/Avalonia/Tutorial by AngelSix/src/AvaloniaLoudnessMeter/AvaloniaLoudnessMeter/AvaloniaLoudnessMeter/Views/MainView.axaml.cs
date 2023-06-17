@@ -5,6 +5,7 @@ using Avalonia.Animation.Easings;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Media;
+using Avalonia.Threading;
 using AvaloniaLoudnessMeter.ViewModels;
 
 namespace AvaloniaLoudnessMeter.Views
@@ -42,16 +43,12 @@ namespace AvaloniaLoudnessMeter.Views
             var position = _channelConfigButton.TranslatePoint(new Point(), _mainGrid) ??
                            throw new Exception("Cannot get TranslatePoint from Configuration Button");
 
-            try
+            Dispatcher.UIThread.InvokeAsync(()=>
             {
                 _channelConfigPopUp.Margin = new Thickness(position.X, 0, 0,
                     _mainGrid.Bounds.Height - position.Y - _channelConfigButton.Bounds.Height);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("################" +  e.Message);// 왜 ...? 나만?
-            }
-
+                
+            });
         }
 
     }
