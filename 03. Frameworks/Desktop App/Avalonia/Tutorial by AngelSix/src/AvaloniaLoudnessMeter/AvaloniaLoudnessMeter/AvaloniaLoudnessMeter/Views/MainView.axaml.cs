@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Animation.Easings;
 using Avalonia.Controls;
@@ -26,7 +27,13 @@ namespace AvaloniaLoudnessMeter.Views
             _channelConfigPopUp = this.FindControl<Control>("ChannelConfigurationPopUp") ?? throw new Exception("Cannot find Channel Configuration Popup by name");
             _mainGrid = this.FindControl<Control>("MainGrid") ?? throw new Exception("Cannot find Main Grid by name");
         }
-        
+
+        protected override async void OnLoaded()
+        {
+            await ((MainViewModel)DataContext).LoadSettingsCommand.ExecuteAsync(null);
+            base.OnLoaded();
+        }
+
         public override void Render(DrawingContext context)
         {
             base.Render(context);
