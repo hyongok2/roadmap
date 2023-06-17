@@ -16,5 +16,8 @@ func main() {
 	//study.ArraySlice()
 	//study.Map()
 	//study.AdFunction()
-	study.Pointers()
+	//study.Pointers()
+	//study.Concurrency()
+	//study.Buffers()
+	study.Select()
 }
