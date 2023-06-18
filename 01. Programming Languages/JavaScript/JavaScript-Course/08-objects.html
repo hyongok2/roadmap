@@ -38,6 +38,34 @@
         product.fun();
 
         // 거의 대부분 Dot notation을 사용한다고 함.
+
+        let value = JSON.stringify(product);
+
+        console.log(value);
+
+        console.log(JSON.parse(value));
+
+        localStorage.setItem('message', value);
+
+        value = '0';
+
+        console.log('**' + localStorage.getItem('message'));
+
+        console.log('hello'.length);
+
+        console.log('hello'.toUpperCase())
+
+        const o1 = {
+            message: 'hello'
+        };
+
+        const o2 = o1;
+
+        o2.message = 'goood'
+
+        console.log(o1)
+
+
     </script>
 </body>
 
