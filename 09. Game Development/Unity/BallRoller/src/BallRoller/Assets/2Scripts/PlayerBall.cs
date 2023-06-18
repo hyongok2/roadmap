@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerBall : MonoBehaviour
 {
@@ -51,18 +52,20 @@ public class PlayerBall : MonoBehaviour
         {
             itemCount++;
             audio.Play();
+            manager.playerItemText.text = itemCount.ToString();
             other.gameObject.SetActive(false);
         }
         else if (other.tag == "Finish")
         {
             if(itemCount == manager.totalItemCount)
             {
-                SceneManager.LoadScene("Example2");
+                manager.stage++;
             }
-            else
-            {
-                SceneManager.LoadScene("Example1");
-            }
+
+            if (manager.stage == 3) manager.stage = 0;
+
+
+            SceneManager.LoadScene(manager.stage);
 
         }
     }
