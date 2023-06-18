@@ -39,21 +39,21 @@
 		                        AnimationTime="0:0:0.3"
 		                        UnderlayOpacity="0.2"
 		                        Open="{Binding ChannelConfigurationListIsOpen, Mode=TwoWay}">
-			<Border Padding="20" Background="White" BorderThickness="1" BorderBrush="#ddd" CornerRadius="5">
+			<Border Background="White" BorderThickness="0" CornerRadius="2">
 				<ItemsControl 
 					ItemsSource="{Binding ChannelConfigurations}">
 					<ItemsControl.ItemTemplate>
 						<DataTemplate>
-							<Expander>
+							<Expander HorizontalAlignment="Stretch" Padding="0">
 								<Expander.Header>
 									<Label FontSize="14"
 									       Foreground="#999"
 									       Content="{Binding Key}"/>
 								</Expander.Header>
-								<ItemsControl ItemsSource="{Binding  }">
+								<ItemsControl Margin="0" ItemsSource="{Binding  }">
 									<ItemsControl.ItemTemplate>
 										<DataTemplate>
-											<Button
+											<Button 
 												HorizontalAlignment="Stretch"
 												Background="White"
 												Content="{Binding Text}"
