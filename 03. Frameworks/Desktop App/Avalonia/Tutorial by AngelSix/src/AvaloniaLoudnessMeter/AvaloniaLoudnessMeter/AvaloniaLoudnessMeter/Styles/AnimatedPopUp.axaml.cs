@@ -75,12 +75,16 @@ public partial class AnimatedPopUp : ContentControl
                 
                 if (Parent is Grid grid)
                 {
-                    if(grid.RowDefinitions?.Count > 1)
-                        _underlayControl.SetValue(Grid.RowSpanProperty, grid.RowDefinitions?.Count);
-                    if(grid.ColumnDefinitions?.Count > 1)
-                        _underlayControl.SetValue(Grid.ColumnProperty, grid.ColumnDefinitions?.Count);
-                    if(grid.Children.Contains(_underlayControl) == false)
-                        grid.Children.Insert(0,_underlayControl);
+                    Dispatcher.UIThread.InvokeAsync(() =>
+                    {
+                        if(grid.RowDefinitions?.Count > 1)
+                            _underlayControl.SetValue(Grid.RowSpanProperty, grid.RowDefinitions?.Count);
+                        if(grid.ColumnDefinitions?.Count > 1)
+                            _underlayControl.SetValue(Grid.ColumnProperty, grid.ColumnDefinitions?.Count);
+                        if(grid.Children.Contains(_underlayControl) == false)
+                            grid.Children.Insert(0,_underlayControl);
+                    });
+
                 }
             }
             else
@@ -278,12 +282,17 @@ public partial class AnimatedPopUp : ContentControl
             
             if (Parent is Grid grid)
             {
-                _underlayControl.Opacity = 0;
                 
-                if (grid.Children.Contains(_underlayControl))
+                Dispatcher.UIThread.InvokeAsync(() =>
                 {
-                    grid.Children.Remove(_underlayControl);
-                }
+                    _underlayControl.Opacity = 0;
+                
+                    if (grid.Children.Contains(_underlayControl))
+                    {
+                        grid.Children.Remove(_underlayControl);
+                    }
+                });
+
             }
         }
     }
