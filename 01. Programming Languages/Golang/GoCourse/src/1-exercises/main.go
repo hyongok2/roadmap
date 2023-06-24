@@ -19,5 +19,6 @@ func main() {
 	//study.Pointers()
 	//study.Concurrency()
 	//study.Buffers()
-	study.Select()
+	//study.Select()
+	study.MutexSample()
 }
