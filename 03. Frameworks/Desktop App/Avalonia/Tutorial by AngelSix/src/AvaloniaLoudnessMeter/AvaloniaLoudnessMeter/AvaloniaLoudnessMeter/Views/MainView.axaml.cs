@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using Avalonia;
@@ -7,7 +8,9 @@ using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Media;
 using Avalonia.Threading;
+using AvaloniaLoudnessMeter.Sevices;
 using AvaloniaLoudnessMeter.ViewModels;
+using ManagedBass;
 
 namespace AvaloniaLoudnessMeter.Views
 {
@@ -50,6 +53,37 @@ namespace AvaloniaLoudnessMeter.Views
         protected override async void OnLoaded()
         {
             await ((MainViewModel)DataContext).LoadSettingsCommand.ExecuteAsync(null);
+
+            Task.Run(async () =>
+            {
+                foreach(var device in RecordingDevice.Enumarate())
+                    Console.WriteLine($"{device.Index}: {device.Name}");
+
+                using var _captureDevice = new AudioCaptureService(1);
+
+                var outputPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MBass");
+
+                Directory.CreateDirectory(outputPath);
+
+                var filePath = Path.Combine(outputPath, DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".wav");
+
+                using var _writer = new WaveFileWriter(new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.Read),new WaveFormat());
+
+                _captureDevice.DataAvailable += (buffer, length) =>
+                {
+                    _writer.Write(buffer, length);
+                };
+                _captureDevice.Start();
+
+                await Task.Delay(5000);
+                
+                _captureDevice.Stop();
+                
+                await Task.Delay(100);
+            });
+
+
+
             base.OnLoaded();
         }
 
