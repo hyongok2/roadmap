@@ -24,12 +24,6 @@ namespace AvaloniaLoudnessMeter.Views
 
         private MainViewModel _viewModel => (MainViewModel)DataContext;
         
-        private AudioCaptureService _captureDevice;
-
-        private Queue<double> _Lufs = new Queue<double>();
-
-        private int _capturedFrequency = 44100;
-
         private readonly Control _channelConfigPopUp;
         private readonly Control _channelConfigButton;
         private readonly Control _mainGrid;
@@ -64,62 +58,10 @@ namespace AvaloniaLoudnessMeter.Views
 
         protected override async void OnLoaded()
         {
-            await _viewModel.LoadSettingsCommand.ExecuteAsync(null);
-
-            StartCapture(1,_capturedFrequency);
-            
+            await _viewModel.LoadCommand.ExecuteAsync(null);
+         
             base.OnLoaded();
         }
-
-        private void StartCapture(int deviceId,int frequency)
-        {
-            _captureDevice = new AudioCaptureService(deviceId,frequency);
-            
-            // foreach(var device in RecordingDevice.Enumarate())
-            //     Console.WriteLine($"{device.Index}: {device.Name}");
-
-            // using var _captureDevice = new AudioCaptureService(1);
-
-            // 사운드 파일을 저장하기 위한 방법, 여기에서는 일단 주석처리하지만, 나중에 참고할 수 있다.
-            // var outputPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MBass");
-            // Directory.CreateDirectory(outputPath);
-            // var filePath = Path.Combine(outputPath, DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".wav");
-            // using var _writer = new WaveFileWriter(new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.Read),new WaveFormat());
-            
-            _captureDevice.DataAvailable += (buffer, length) =>
-            {
-                //_writer.Write(buffer, length);
-
-                CalculateValues(buffer);
-            };
-            _captureDevice.Start();
-        }
-
-        private void CalculateValues(byte[] buffer)
-        {
-            //Get total PCM16 samples in this buffers
-            var sampleCount = buffer.Length / 2;
-            var signal = new DiscreteSignal(_capturedFrequency, sampleCount);
-
-            using var reader = new BinaryReader(new MemoryStream(buffer));
-
-            for (int i = 0; i < sampleCount; i++)
-            {
-                signal[i] = reader.ReadInt16() / 32768f;
-            }
-            
-            _Lufs.Enqueue(Scale.ToDecibel(signal.Rms()));
-
-            if(_Lufs.Count > 15) _Lufs.Dequeue();
-            
-            var lufs = _Lufs.Average();
-
-            Dispatcher.UIThread.InvokeAsync(() =>
-            {
-                _viewModel.ShortTermLoudness = $"{lufs:0.0} LUFS";
-            });
-        }
-
 
         public override void Render(DrawingContext context)
         {

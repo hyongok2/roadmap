@@ -16,8 +16,8 @@ namespace AvaloniaLoudnessMeter
 
         public override void OnFrameworkInitializationCompleted()
         {
-            var audioInterface = new DummyAudioInterfaceService();
-            var mainViewModel = new MainViewModel(audioInterface);
+            var audioCaptureService = new BassAudioCaptureService();
+            var mainViewModel = new MainViewModel(audioCaptureService);
             
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {

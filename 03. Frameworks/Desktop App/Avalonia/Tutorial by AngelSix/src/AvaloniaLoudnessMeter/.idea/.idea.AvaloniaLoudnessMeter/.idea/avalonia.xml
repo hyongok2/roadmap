@@ -5,6 +5,7 @@
       <map>
         <entry key="AvaloniaLoudnessMeter/AvaloniaLoudnessMeter/App.axaml" value="AvaloniaLoudnessMeter/AvaloniaLoudnessMeter.Browser/AvaloniaLoudnessMeter.Browser.csproj" />
         <entry key="AvaloniaLoudnessMeter/AvaloniaLoudnessMeter/Styles/AnimatedPopUp.axaml" value="AvaloniaLoudnessMeter/AvaloniaLoudnessMeter.Browser/AvaloniaLoudnessMeter.Browser.csproj" />
+        <entry key="AvaloniaLoudnessMeter/AvaloniaLoudnessMeter/Styles/LargeLabelControl.axaml" value="AvaloniaLoudnessMeter/AvaloniaLoudnessMeter.Browser/AvaloniaLoudnessMeter.Browser.csproj" />
         <entry key="AvaloniaLoudnessMeter/AvaloniaLoudnessMeter/Styles/LargeLableControl.axaml" value="AvaloniaLoudnessMeter/AvaloniaLoudnessMeter.Browser/AvaloniaLoudnessMeter.Browser.csproj" />
         <entry key="AvaloniaLoudnessMeter/AvaloniaLoudnessMeter/Views/MainView.axaml" value="AvaloniaLoudnessMeter/AvaloniaLoudnessMeter.Desktop/AvaloniaLoudnessMeter.Desktop.csproj" />
         <entry key="AvaloniaLoudnessMeter/AvaloniaLoudnessMeter/Views/MainWindow.axaml" value="AvaloniaLoudnessMeter/AvaloniaLoudnessMeter.Desktop/AvaloniaLoudnessMeter.Desktop.csproj" />

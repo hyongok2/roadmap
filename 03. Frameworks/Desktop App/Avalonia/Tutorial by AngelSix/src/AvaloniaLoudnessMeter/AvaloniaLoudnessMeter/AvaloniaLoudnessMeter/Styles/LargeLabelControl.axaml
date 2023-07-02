@@ -3,12 +3,12 @@
         xmlns:controls="using:AvaloniaLoudnessMeter">
   <Design.PreviewWith>
 	  <StackPanel Margin="40">
-		  <controls:LargeLableControl Margin="5"/>
-		  <controls:LargeLableControl Classes="button" />	  
+		  <controls:LargeLabelControl Margin="5"/>
+		  <controls:LargeLabelControl Classes="button" />	  
 	  </StackPanel>
   </Design.PreviewWith>
 
-  <Style Selector="controls|LargeLableControl">
+  <Style Selector="controls|LargeLabelControl">
     <!-- Set Defaults -->
 	  <Setter Property="Background" Value="{DynamicResource MidBlueBrush}"/>
 	  <Setter Property="Foreground" Value="White"/>
@@ -23,7 +23,7 @@
       </ControlTemplate>
     </Setter>
   </Style>
-	<Style Selector="controls|LargeLableControl.button">
+	<Style Selector="controls|LargeLabelControl.button">
 		<!-- Set Defaults -->
 		<Setter Property="Background" Value="{DynamicResource MidBlueBrush}"/>
 		<Setter Property="Foreground" Value="White"/>
