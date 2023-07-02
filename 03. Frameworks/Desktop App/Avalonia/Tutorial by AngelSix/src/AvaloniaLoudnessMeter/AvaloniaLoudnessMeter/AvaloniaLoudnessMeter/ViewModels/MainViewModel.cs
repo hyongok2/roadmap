@@ -25,7 +25,10 @@ namespace AvaloniaLoudnessMeter.ViewModels
         private string _boldTitle  = "AVALONIA";
 
         [ObservableProperty]
-        private string _regularTitle = "LOUDNESS METER2";
+        private string _regularTitle = "LOUDNESS METER";
+        
+        [ObservableProperty]
+        private string _shortTermLoudness = "-20 LUFS";
 
         [ObservableProperty]
         private bool _channelConfigurationListIsOpen = false;

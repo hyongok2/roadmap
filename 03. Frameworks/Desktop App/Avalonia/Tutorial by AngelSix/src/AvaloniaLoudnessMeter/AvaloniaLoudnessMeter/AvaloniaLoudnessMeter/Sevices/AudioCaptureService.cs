@@ -27,14 +27,14 @@ public class AudioCaptureService :IDisposable
         
         return true;
     }
-    public AudioCaptureService(int deviceId)
+    public AudioCaptureService(int deviceId, int frequency = 44100)
     {
         _device = deviceId;
 
         Bass.Init();
         Bass.RecordInit(_device);
 
-        _handle = Bass.RecordStart(44100, 2, BassFlags.RecordPause, Procedure);
+        _handle = Bass.RecordStart(frequency, 2, BassFlags.RecordPause, Procedure);
     }
 
     public event DataAvailableHandler DataAvailable;

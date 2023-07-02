@@ -273,7 +273,7 @@
             </Grid>
             <!-- Loudness Details -->
             <StackPanel Grid.Column="1" Width="170" Margin="0,15,10,10">
-                <controls:LargeLableControl LargeText="-21.1 LUFS" SmallText="SHORT TERM" />
+                <controls:LargeLableControl LargeText="{Binding ShortTermLoudness}" SmallText="SHORT TERM" />
                 <controls:LargeLableControl LargeText="-20.7 LUFS" SmallText="INTEGRATED"
                                             Background="{DynamicResource LightBlueBrush}" />
                 <controls:LargeLableControl LargeText="9.5 LU" SmallText="LOUDNESS RANGE" />
