@@ -935,7 +935,7 @@ Animator:
   m_GameObject: {fileID: 368553808}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f4c7564e07d62764dbb13f30b154ff79, type: 2}
+  m_Controller: {fileID: 9100000, guid: fa40445eedfb4684e88a8b6a178f193e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1841,7 +1841,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 1
+  m_LinearDrag: 2
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
