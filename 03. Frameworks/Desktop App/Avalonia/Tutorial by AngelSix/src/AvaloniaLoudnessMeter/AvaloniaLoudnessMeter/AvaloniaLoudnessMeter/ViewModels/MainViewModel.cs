@@ -21,6 +21,8 @@ namespace AvaloniaLoudnessMeter.ViewModels
     {
         IAudioCaptureService _audioCaptureService;
 
+        private int _updateCounter;
+
         [ObservableProperty]
         private string _boldTitle  = "AVALONIA";
 
@@ -50,8 +52,14 @@ namespace AvaloniaLoudnessMeter.ViewModels
         private double _volumePercentPosition;
         
         [ObservableProperty]
-        private double _volumeContainerSize;
-        
+        private double _volumeContainerHeight;
+
+        [ObservableProperty]
+        private double _volumeBarHeight;
+
+        [ObservableProperty]
+        private double _volumeBarMaskHeight;
+
         [ObservableProperty]
         private ObservableGroupedCollection<string, ChannelConfigurationItem> _channelConfigurations = default!;
         
@@ -82,23 +90,30 @@ namespace AvaloniaLoudnessMeter.ViewModels
                 new ObservableGroupedCollection<string, ChannelConfigurationItem>(
                     channelConfigurations.GroupBy(item => item.Group));
 
+            StartCapture(1);
+        }
+
+        private void StartCapture(int deviceId)
+        {
+            _audioCaptureService.InitCapture(deviceId);
+
             _audioCaptureService.AudioChunkAvailable += audioChuckData =>
             {
                 ProcessAudioChunk(audioChuckData);
             };
-            
+
             _audioCaptureService.Start();
         }
 
         private void ProcessAudioChunk(AudioChunkData audioChuckData)
         {
             // Counter between 0-1-2
-           // mUpdatecounter = (mUpdatecounter+ 1) % 3;
-        
+            _updateCounter = (_updateCounter+ 1) % 3;
+
             // Every time counter is at 0...
-           // if (mUpdatecounter == 0)
+            if (_updateCounter == 0)
             {
-                ShortTermLoudness = $"{Math.Max(-60, audioChuckData.ShortTermLUFS):0.0} LUFS";
+               ShortTermLoudness = $"{Math.Max(-60, audioChuckData.ShortTermLUFS):0.0} LUFS";
                IntegratedLoudness = $"{Math.Max(-60, audioChuckData.IntegratedLUFS):0.0} LUFS";
                LoudnessRange = $"{Math.Max(-60, audioChuckData.LoudnessRange):0.0} LU";
                RealtimeDynamics = $"{Math.Max(-60, audioChuckData.RealtimeDynamics):0.0} LU";
@@ -116,10 +131,10 @@ namespace AvaloniaLoudnessMeter.ViewModels
             }
 
             // Set volume bar height
-           // VolumeBarMaskHeight = Math.Min(_volumeBarHeight, _volumeBarHeight / 60 * -audioChuckData.Loudness);
-        
+            VolumeBarMaskHeight = Math.Min(VolumeBarHeight, VolumeBarHeight / 60 * -audioChuckData.Loudness);
+
             // Set Volume Arrow height
-            VolumePercentPosition = Math.Min(VolumeContainerSize, VolumeContainerSize / 60 * -audioChuckData.ShortTermLUFS);
+            VolumePercentPosition = Math.Min(VolumeContainerHeight, VolumeContainerHeight / 60 * -audioChuckData.ShortTermLUFS);
         }
 
         public MainViewModel(IAudioCaptureService audioCaptureService)
@@ -131,7 +146,7 @@ namespace AvaloniaLoudnessMeter.ViewModels
 
         public MainViewModel()
         {
-            _audioCaptureService = new BassAudioCaptureService(1, 44100);
+            _audioCaptureService = new BassAudioCaptureService();
             
             //Initialize();
         }

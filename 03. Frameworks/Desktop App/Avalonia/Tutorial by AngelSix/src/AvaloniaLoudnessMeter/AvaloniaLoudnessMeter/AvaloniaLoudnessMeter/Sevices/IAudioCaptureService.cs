@@ -9,6 +9,7 @@ public interface IAudioCaptureService
 {
     Task<List<ChannelConfigurationItem>> GetChannelConfigurationsAsync();
 
+    void InitCapture(int deviceId = 1, int frequency = 44100);
     void Start();
     void Stop();
 

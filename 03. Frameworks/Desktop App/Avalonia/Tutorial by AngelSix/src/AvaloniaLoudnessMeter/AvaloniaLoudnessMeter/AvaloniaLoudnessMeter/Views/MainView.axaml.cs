@@ -27,9 +27,10 @@ namespace AvaloniaLoudnessMeter.Views
         private readonly Control _channelConfigPopUp;
         private readonly Control _channelConfigButton;
         private readonly Control _mainGrid;
-        private readonly Control _volumeArrowContainer;
+        private readonly Control _volumeContainer;
+        private readonly Control _volumeBar;
 
-        private Timer _sizingTimer;
+        private readonly Timer _sizingTimer;
 
         #endregion
         public MainView()
@@ -48,12 +49,14 @@ namespace AvaloniaLoudnessMeter.Views
             _channelConfigButton = this.FindControl<Control>("ChannelConfigurationButton") ?? throw new Exception("Cannot find Channel Configuration Button by name");
             _channelConfigPopUp = this.FindControl<Control>("ChannelConfigurationPopUp") ?? throw new Exception("Cannot find Channel Configuration Popup by name");
             _mainGrid = this.FindControl<Control>("MainGrid") ?? throw new Exception("Cannot find Main Grid by name");
-            _volumeArrowContainer= this.FindControl<Control>("VolumeArrowContainer") ?? throw new Exception("Cannot find Volume Arrow Container by name");
+            _volumeContainer= this.FindControl<Control>("VolumeContainer") ?? throw new Exception("Cannot find Volume Container by name");
+            _volumeBar = this.FindControl<Control>("VolumeBar") ?? throw new Exception("Cannot find Volume Bar by name");
         }
 
         private void UpdateSizes()
         {
-            _viewModel.VolumeContainerSize = _volumeArrowContainer.Bounds.Height;
+            _viewModel.VolumeContainerHeight = _volumeContainer.Bounds.Height;
+            _viewModel.VolumeBarHeight = _volumeBar.Bounds.Height;
         }
 
         protected override async void OnLoaded()

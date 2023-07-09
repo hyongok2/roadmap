@@ -129,15 +129,11 @@ public class BassAudioCaptureService :IDisposable, IAudioCaptureService
             new ChannelConfigurationItem("5.1 Surround", "5.1 DTS - (L, C, R, Ls, Rs, LFE)", "5.1 FILM"),
         }));
     }
-    public BassAudioCaptureService(int deviceId = 1, int frequency = 44100)
+    public BassAudioCaptureService()
     {
-        _device = deviceId;
 
         Bass.Init();
-        Bass.RecordInit(_device);
 
-        _handle = Bass.RecordStart(frequency, 2, BassFlags.RecordPause, AudioChuckCaptured);
-        
         // foreach(var device in RecordingDevice.Enumarate())
         //     Console.WriteLine($"{device.Index}: {device.Name}");
 
@@ -148,13 +144,27 @@ public class BassAudioCaptureService :IDisposable, IAudioCaptureService
         // Directory.CreateDirectory(outputPath);
         // var filePath = Path.Combine(outputPath, DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".wav");
         // using var _writer = new WaveFileWriter(new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.Read),new WaveFormat());
-            
+
         // _captureDevice.DataAvailable += (buffer, length) =>
         // {
         //     //_writer.Write(buffer, length);
         //
         //     CalculateValues(buffer);
         // };
+    }
+
+    public void InitCapture(int deviceId = 1, int frequency = 44100)
+    {
+        _device = deviceId;
+        try
+        {
+            Bass.RecordFree();
+        }
+        catch{}
+
+        Bass.RecordInit(_device);
+
+        _handle = Bass.RecordStart(frequency, 2, BassFlags.RecordPause, Period: 20, AudioChuckCaptured);
     }
 
 
