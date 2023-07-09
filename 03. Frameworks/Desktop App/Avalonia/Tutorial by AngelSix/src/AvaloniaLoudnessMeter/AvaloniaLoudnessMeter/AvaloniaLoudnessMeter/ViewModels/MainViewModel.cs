@@ -13,7 +13,8 @@ using AvaloniaLoudnessMeter.Sevices;
 using CommunityToolkit.Mvvm.Collections;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-
+using LiveChartsCore;
+using LiveChartsCore.SkiaSharpView;
 
 namespace AvaloniaLoudnessMeter.ViewModels
 {
@@ -68,6 +69,16 @@ namespace AvaloniaLoudnessMeter.ViewModels
         private ChannelConfigurationItem? _selectedChannelConfiguration;
 
         public string ChannelConfigurationButtonText => SelectedChannelConfiguration?.ShortText ?? "Select Channel";
+
+        public ISeries[] Series { get; set; }
+         = new ISeries[]
+         {
+             new LineSeries<double>
+             {
+                 Values = new double[]{2,1,3,5,3,4,6},
+                 Fill = null
+             }
+         };
 
         [RelayCommand]
         private void ChannelConfigurationButtonPressed() => ChannelConfigurationListIsOpen ^= true;
