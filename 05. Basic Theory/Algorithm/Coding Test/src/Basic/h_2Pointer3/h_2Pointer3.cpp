@@ -29,7 +29,7 @@ int main()
 		int find = A[k];
 
 		int i = 0;
-		int j = k - 1;
+		int j = N - 1;
 
 		while (i < j)
 		{
