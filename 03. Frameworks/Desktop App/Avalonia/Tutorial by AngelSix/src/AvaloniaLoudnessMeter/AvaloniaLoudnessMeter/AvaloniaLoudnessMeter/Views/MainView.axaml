@@ -295,12 +295,45 @@
             </StackPanel>
 
             <!-- Graph -->
-			<Border Grid.Column="2">
+			<Grid Grid.Column="2">
 				<lvc:CartesianChart
-					Series ="{Binding Series}">			
+					Margin="0,15,0,0"
+					Series ="{Binding Series}"
+					YAxes="{Binding YAxis}">			
 				</lvc:CartesianChart>
+				<Grid Grid.Row="0"
+                      Margin="10,10"
+                      RowDefinitions="AUto,3*,3*,3*,9*,5*,4*,9*,9*,9*,6*"
+					  ColumnDefinitions="Auto,*">
+
+					<Label Content="0 —" Grid.Row="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+					<Label Content="-3 —" Grid.Row="1" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+					<Label Content="-6 —" Grid.Row="2" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+					<Label Content="-9 —" Grid.Row="3" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+					<Label Content="-18 —" Grid.Row="4" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+					<Label Content="-23 —" Grid.Row="5" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+					<Label Content="-27 —" Grid.Row="6" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+					<Label Content="-36 —" Grid.Row="7" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+					<Label Content="-45 —" Grid.Row="8" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+					<Label Content="-54 —" Grid.Row="9" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+					<Label Opacity="0" Content="-60 —" Grid.Row="10" Foreground="White" VerticalAlignment="Center"/>
+
+					<Rectangle Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Fill="White" Opacity="0.1" Height="1.5"/>
+					<Rectangle Grid.Row="1"  Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Fill="White" Opacity="0.1" Height="1.5"/>
+					<Rectangle Grid.Row="2"  Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Fill="White" Opacity="0.1" Height="1.5"/>
+					<Rectangle Grid.Row="3"  Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Fill="White" Opacity="0.1" Height="1.5"/>
+					<Rectangle Grid.Row="4"  Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Fill="White" Opacity="0.1" Height="1.5"/>
+					<Rectangle Grid.Row="5"  Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Fill="White" Opacity="0.1" Height="1.5"/>
+					<Rectangle Grid.Row="6"  Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Fill="White" Opacity="0.1" Height="1.5"/>
+					<Rectangle Grid.Row="7"  Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Fill="White" Opacity="0.1" Height="1.5"/>
+					<Rectangle Grid.Row="8"  Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Fill="White" Opacity="0.1" Height="1.5"/>
+					<Rectangle Grid.Row="9"  Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Fill="White" Opacity="0.1" Height="1.5"/>
+					<Rectangle Grid.Row="10"  Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Fill="White" Opacity="0" Height="1.5"/>
+
 					
-			</Border>
+				</Grid>
+					
+			</Grid>
         </Grid>
 
         <!--Bottom Bar-->

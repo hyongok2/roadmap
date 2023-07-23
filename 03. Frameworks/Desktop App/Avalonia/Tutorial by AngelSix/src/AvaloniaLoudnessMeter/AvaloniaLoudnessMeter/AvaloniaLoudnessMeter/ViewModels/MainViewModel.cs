@@ -15,6 +15,7 @@ using CommunityToolkit.Mvvm.Input;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
+using LiveChartsCore.SkiaSharpView.Painting;
 
 namespace AvaloniaLoudnessMeter.ViewModels
 {
@@ -75,10 +76,26 @@ namespace AvaloniaLoudnessMeter.ViewModels
          {
              new LineSeries<double>
              {
-                 Values = new double[]{2,1,3,5,3,4,6},
-                 Fill = null
+                 Values = new double[]{60,30,40,60,20},
+                 GeometrySize = 0,
+                 Fill = new SolidColorPaint(new SkiaSharp.SKColor(63,77,99)),
+                 Stroke = new SolidColorPaint(new SkiaSharp.SKColor(120,152,203)){ StrokeThickness = 3}
              }
          };
+
+        public List<Axis> YAxis { get; set; } = new List<Axis>
+        {
+            new Axis
+            {
+                //IsInverted = true
+                MinStep = 1,
+                ForceStepToMin= true,
+                MinLimit= 0,
+                MaxLimit= 60,
+                Labeler = (val) => (val-60).ToString(),
+                IsVisible = false,
+            }
+        };
 
         [RelayCommand]
         private void ChannelConfigurationButtonPressed() => ChannelConfigurationListIsOpen ^= true;
