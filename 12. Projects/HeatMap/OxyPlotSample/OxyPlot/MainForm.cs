@@ -35,29 +35,38 @@ namespace OxyPlotSample
         {
             var model = new PlotModel { Title = "Contour Plot Example" };
 
-
-
             // Color axis (the X and Y axes are generated automatically)
             model.Axes.Add(new LinearColorAxis
             {
-                Palette = OxyPalettes.Rainbow(100)
+                Palette = OxyPalettes.BlueWhiteRed(100),
+                Position = AxisPosition.Right
             });
 
-            // generate 1d normal distribution
-            var singleData = new double[100];
-            for (int xx = 0; xx < 100; ++xx)
-            {
-                singleData[xx] = Math.Exp((-1.0 / 2.0) * Math.Pow(((double)xx - 50.0) / 20.0, 2.0));
-            }
+            model.Series.Add(CreateHeatMapSeries());
 
-            var data = new double[100, 100];
-            for (int xx = 0; xx < 100; ++xx)
+            model.Series.Add(CreateContour());
+
+            return model;
+        }
+
+        private Series CreateHeatMapSeries()
+        {
+            // generate 1d normal distribution
+
+            var data = new double[5, 5];
+            for (int xx = 0; xx < 5; ++xx)
             {
-                for (int yy = 0; yy < 100; ++yy)
+                for (int yy = 0; yy < 5; ++yy)
                 {
-                    data[yy, xx] = singleData[xx] * singleData[(yy + 30) % 100] * 100;
+                    data[yy, xx] = 100;
                 }
             }
+
+            data[0, 0] = 101.1;
+            data[1, 1] = 100.5;
+            data[2, 2] = 99.2;
+            data[3, 3] = 99.8;
+
 
             var heatMapSeries = new HeatMapSeries
             {
@@ -67,11 +76,15 @@ namespace OxyPlotSample
                 Y1 = 99,
                 Interpolate = true,
                 RenderMethod = HeatMapRenderMethod.Bitmap,
-                Data = data
+                Data = data,
+                EdgeRenderingMode= EdgeRenderingMode.PreferSharpness  
             };
 
-            model.Series.Add(heatMapSeries);
+            return heatMapSeries;
+        }
 
+        private Series CreateContour()
+        {
             // Create data for the contour plot
             int numberOfPoints = 5;
             double[] x = new double[numberOfPoints];
@@ -89,10 +102,24 @@ namespace OxyPlotSample
                 }
             }
 
+            var data = new double[5, 5];
+            for (int xx = 0; xx < 5; ++xx)
+            {
+                for (int yy = 0; yy < 5; ++yy)
+                {
+                    data[yy, xx] = 100;
+                }
+            }
+
+            data[0, 0] = 101.1;
+            data[1, 1] = 100.5;
+            data[2, 2] = 99.2;
+            data[3, 3] = 99.8;
+
             // Create the contour series
             var contourSeries = new ContourSeries
             {
-                Data = z,
+                Data = data,
                 ColumnCoordinates = x,
                 RowCoordinates = y,
                 LabelBackground = OxyColors.White,
@@ -106,10 +133,7 @@ namespace OxyPlotSample
 
             };
 
-            // Add the contour series to the plot model
-            model.Series.Add(contourSeries);
-
-            return model;
+            return contourSeries;
         }
     }
 }
