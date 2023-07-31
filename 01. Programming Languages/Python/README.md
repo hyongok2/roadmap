@@ -7,6 +7,7 @@
 | 1 | Python Tutorials by Programming with Mosh | https://youtube.com/playlist?list=PLTjRvDozrdlxj5wgH4qkvwSOdHLOCx10f | - |
 | 2 | Python Full Course for free by Bro Code | https://youtu.be/XKHEtdqhLK8 | - |
 | 3 | Python Tutorials by freeCodeCamp.org | https://youtube.com/playlist?list=PLWKjhJtqVAbnqBxcdjVGgT3uVR10bzTEB | - |
-| 4 | Harvard Python Claa by freeCodeCamp.org | https://youtu.be/nLRL_NcnK-4| - |
+| 4 | Harvard Python Class by freeCodeCamp.org | https://youtu.be/nLRL_NcnK-4| - |
+| 5 | Build a Tetris Clone with Pygame |https://youtube.com/playlist?list=PL4cUxeGkcC9iurLoO9Mu7GqsKlxEXcf8m| - |
 
 
