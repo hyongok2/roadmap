@@ -7,3 +7,6 @@
 | 3 | Stanford CS229: Machine Learning Full Course taught by Stanford Online | https://youtube.com/playlist?list=PLoROMvodv4rMiGQp3WXShtMGgzqpfVfbU | - |
 | 4 |pytorch for deep learning by freecodecamp| https://youtu.be/V_xro1bcAuA | - |
 | 5 |혼자 공부하는 머신러닝+딥러닝| https://youtube.com/playlist?list=PLJN246lAkhQjoU0C4v8FgtbjOIXxSs_4Q| - |
+| 6 |Deep Learning for Computer Vision with Python and TensorFlow – Complete Course| https://youtu.be/IA3WxTTPXqQ| - |
+
+
