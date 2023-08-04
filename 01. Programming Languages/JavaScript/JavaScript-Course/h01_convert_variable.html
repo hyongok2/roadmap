@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+
+    </title>
+</head>
+
+<body>
+    <h1 id="data"></h1>
+    <script>
+        const input_value = prompt("아무거나 입력해봐");
+        const is_ok = confirm(input_value + ' <- 이 값이 맞으면 확인!');
+        if (is_ok)
+        {
+            console.log(input_value);
+            document.getElementById("data").innerHTML = input_value;
+        }
+        else
+        {
+            alert('화면 표시 없음')
+        }
+
+
+        let a = prompt("첫번째 숫자 입력해")
+        let b = prompt("두번째 숫자 입력해")
+
+        alert(`두 수의 합은 ${a + b}`)
+        alert(`No~~ 진짜 두 수의 합은 ${Number(a) + Number(b)}`)
+
+    </script>
+</body>
+
+</html>
