@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"os"
+)
 
 func main() {
 	var a int = 10
@@ -20,4 +24,28 @@ func main() {
 	fmt.Printf("c: %5d, c: %5d, f: %.1f\n", c, c, f)
 	fmt.Printf("c: %05d, c: %05d, f: %.1f\n", c, c, f)
 	fmt.Printf("c: %-5d, c: %-05d, f: %.1f\n", c, c, f)
+
+	n, err := fmt.Scanln(&a, &b)
+
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println(n, a, b)
+	}
+
+	stdin := bufio.NewReader(os.Stdin)
+
+	var aa int
+	var bb int
+
+	n, err = fmt.Scanln(&aa, &bb)
+
+	if err != nil {
+		fmt.Println(err)
+		input, _ := stdin.ReadString('\n')
+		fmt.Println("Your input value is ", input)
+	} else {
+		fmt.Println(n, aa, bb)
+	}
+
 }
