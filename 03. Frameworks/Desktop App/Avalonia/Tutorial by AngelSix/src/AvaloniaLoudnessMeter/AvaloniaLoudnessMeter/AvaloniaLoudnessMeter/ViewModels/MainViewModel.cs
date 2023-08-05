@@ -16,6 +16,8 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Painting;
+using System.Collections.ObjectModel;
+using LiveChartsCore.Defaults;
 
 namespace AvaloniaLoudnessMeter.ViewModels
 {
@@ -71,17 +73,9 @@ namespace AvaloniaLoudnessMeter.ViewModels
 
         public string ChannelConfigurationButtonText => SelectedChannelConfiguration?.ShortText ?? "Select Channel";
 
+        public ObservableCollection<ObservableValue> MainChartValues = new ObservableCollection<ObservableValue>();
+
         public ISeries[] Series { get; set; }
-         = new ISeries[]
-         {
-             new LineSeries<double>
-             {
-                 Values = new double[]{60,30,40,60,20},
-                 GeometrySize = 0,
-                 Fill = new SolidColorPaint(new SkiaSharp.SKColor(63,77,99)),
-                 Stroke = new SolidColorPaint(new SkiaSharp.SKColor(120,152,203)){ StrokeThickness = 3}
-             }
-         };
 
         public List<Axis> YAxis { get; set; } = new List<Axis>
         {
@@ -153,8 +147,9 @@ namespace AvaloniaLoudnessMeter.ViewModels
                 // Update charge on UI thread
                 Dispatcher.UIThread.Invoke(() =>
                 {
-                 //   MainChartValues.RemoveAt(0);
-                 //   MainChartValues.Add( new (Math.Max(0, 60 + audioChuckData.ShortTermLUFS)));
+                    if(MainChartValues.Count> 170)
+                        MainChartValues.RemoveAt(0);
+                    MainChartValues.Add(new(Math.Max(0, 60 + audioChuckData.ShortTermLUFS)));
                 });
             }
 
@@ -169,41 +164,29 @@ namespace AvaloniaLoudnessMeter.ViewModels
         {
             _audioCaptureService = audioCaptureService;
 
-            //Initialize();
+            Initialize();
         }
 
         public MainViewModel()
         {
             _audioCaptureService = new BassAudioCaptureService();
             
-            //Initialize();
+            Initialize();
         }
-        
-        // private void Initialize()
-        // {
-        //     // temp code to move volume position
-        //     
-        //     var tick = 0;
-        //     var input = 0.0;
-        //
-        //     var tempTimer = new DispatcherTimer
-        //     {
-        //         Interval = TimeSpan.FromSeconds(1/60.0)
-        //     };
-        //
-        //     tempTimer.Tick += (sender, args) =>
-        //     {
-        //         tick++;
-        //
-        //         input = (double)tick / 20;
-        //
-         //        var scale = VolumeContainerSize;
-        //
-        //         VolumePercentPosition = (Math.Sin(input) + 1) / 2 * scale;
-        //     };
-        //     
-        //
-        //     tempTimer.Start();
-        // }
+
+        private void Initialize()
+        {
+            Series  = new ISeries[]
+             {
+                 new LineSeries<ObservableValue>
+                 {
+                     Values = MainChartValues,
+                     GeometrySize = 0,
+                     GeometryStroke = null,
+                     Fill = new SolidColorPaint(new SkiaSharp.SKColor(63,77,99)),
+                     Stroke = new SolidColorPaint(new SkiaSharp.SKColor(120,152,203)){ StrokeThickness = 3}
+                 }
+             };
+        }
     }
 }
