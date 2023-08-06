@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+
+    </title>
+</head>
+
+<body> 
+    <script>
+
+
+
+
+        const date = new Date();
+        const hour = date.getHours();
+        if(hour < 10)
+        {
+            alert('아침');
+        }else if(hour < 16)
+        {
+            alert('점심');
+        }else
+        {
+            alert('저녁');
+
+        }
+
+        const inputValue = Number(prompt('숫자를 입력해 주세요.'));
+
+        if(inputValue % 2 == 0)
+        {
+            alert('짝수를 입력했네요.');
+        }
+        else{
+            alert('홀수를 입력했네요.');
+        }
+
+        const month = (new Date()).getMonth() +1;
+
+        alert(month + '월 이네요.')
+
+        season = '';
+
+        switch(month)
+        {
+            case 12:
+            case 1:
+            case 2:
+                season = '겨울';
+                break;
+            case 3:
+            case 4:
+            case 5:
+                season = '봄';
+                break;
+            case 6:
+            case 7:
+            case 8:
+                season = '여름';
+                break;
+                default:
+                    season = '가을';
+                    break;
+        }
+
+        alert(season);
+
+        hour == 15 && alert("15시 네요.");
+
+        month != 8 || alert("8월 이군요");
+
+    </script>
+</body>
+
+</html>
