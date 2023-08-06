@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -82,6 +83,37 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
+
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Enermy")
+        {
+            OnDamaged(collision.transform.position);
+        }
+    }
+
+    private void OnDamaged(Vector3 position)
+    {
+        // 公利 葛靛
+        gameObject.layer = 11;
+        spriteRenderer.color = new Color(1, 1, 1, 0.4f);
+
+        int dirc = position.x > transform.position.x ? -1 : 1; 
+
+        body.AddForce(new Vector2(dirc,1) * 7 , ForceMode2D.Impulse);
+
+        animator.SetTrigger("doDamaged");
+
+        Invoke("OffDamaged", 3);
+    }
+
+    private void OffDamaged()
+    {
+        // 公利 葛靛 秦力
+        gameObject.layer = 10;
+        spriteRenderer.color = new Color(1, 1, 1, 1);
 
     }
 }
