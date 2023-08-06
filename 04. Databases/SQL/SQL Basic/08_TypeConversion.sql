@@ -12,5 +12,5 @@ select num, concat(cast(price as char), 'X', cast(amount as char), '=') '가격 
 
 select concat(100,'200');
 select '100' + '200';#정수로 변환됨.
-select 1 > '2mega'; #문제가 정수로 변환되어 처리됨.
-select 0 = 'mega2'; # 문제가 0으로 변환됨.
+select 1 > '2mega'; #문자가 정수로 변환되어 처리됨.
+select 0 = 'mega2'; # 문자가 0으로 변환됨.
