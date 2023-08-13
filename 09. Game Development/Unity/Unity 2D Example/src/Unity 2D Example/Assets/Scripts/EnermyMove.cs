@@ -7,6 +7,7 @@ public class EnermyMove : MonoBehaviour
     Rigidbody2D body;
     Animator animator;
     SpriteRenderer spriteRenderer;
+    CapsuleCollider2D capsuleCollider;
     public int nextMove;
 
     void Awake()
@@ -14,6 +15,7 @@ public class EnermyMove : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        capsuleCollider = GetComponent<CapsuleCollider2D>();
         Invoke("Think", 3);
     }
 
@@ -53,5 +55,20 @@ public class EnermyMove : MonoBehaviour
         CancelInvoke();
         spriteRenderer.flipX = nextMove == 1;
         Invoke("Think", 3);
+    }
+
+    public void OnDamaged()
+    {
+        spriteRenderer.color = new Color(1, 1, 1, 0.4f);
+        spriteRenderer.flipY = true;
+        capsuleCollider.enabled= false;
+        body.AddForce(Vector2.up * 5, ForceMode2D.Impulse);
+        //Destroy
+        Invoke("DeActive", 5);
+    }
+
+    private void DeActive()
+    {
+        gameObject.SetActive(false);
     }
 }

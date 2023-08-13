@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Enermy
   - Platform
+  - Item
+  - Spike
   layers:
   - Default
   - TransparentFX

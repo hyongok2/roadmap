@@ -6,9 +6,11 @@ using UnityEngine.UIElements;
 
 public class PlayerMove : MonoBehaviour
 {
+    public GameManager gameManager;
     public float maxSpeed;
     public float jumpPower;
 
+    CapsuleCollider2D capsuleCollider;
     Rigidbody2D body;
     SpriteRenderer spriteRenderer;
     Animator animator;
@@ -20,6 +22,7 @@ public class PlayerMove : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        capsuleCollider = GetComponent<CapsuleCollider2D>();
     }
 
     private void Update()
@@ -36,7 +39,7 @@ public class PlayerMove : MonoBehaviour
             body.velocity = new Vector2(body.velocity.normalized.x * 0.5f, body.velocity.y);
         }
 
-        if(Input.GetButtonDown("Horizontal"))
+        if(Input.GetButton("Horizontal"))
         {
             spriteRenderer.flipX= Input.GetAxisRaw("Horizontal") == -1;
         }
@@ -90,12 +93,35 @@ public class PlayerMove : MonoBehaviour
     {
         if(collision.gameObject.tag == "Enermy")
         {
+            if(body.velocity.y < 0 || transform.position.y > collision.transform.position.y)
+            {
+                OnAttack(collision.transform);
+            }
+            else
+                OnDamaged(collision.transform.position);
+        }
+        else if(collision.gameObject.tag == "Spike")
+        {
             OnDamaged(collision.transform.position);
         }
     }
 
+    private void OnAttack(Transform enemy)
+    {
+        // Point
+        gameManager.stagePoint += 100;
+
+        body.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
+        // Enemy die
+        EnermyMove enermyMove  = enemy.GetComponent<EnermyMove>();
+        if(enermyMove != null)
+             enermyMove.OnDamaged();
+    }
+
     private void OnDamaged(Vector3 position)
     {
+        gameManager.HealthDown();
+
         // 무적 모드
         gameObject.layer = 11;
         spriteRenderer.color = new Color(1, 1, 1, 0.4f);
@@ -115,5 +141,38 @@ public class PlayerMove : MonoBehaviour
         gameObject.layer = 10;
         spriteRenderer.color = new Color(1, 1, 1, 1);
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Item")
+        {
+            bool isBronze = collision.gameObject.name.Contains("Bronze");
+            bool isSliver = collision.gameObject.name.Contains("Silver");
+            bool isGold = collision.gameObject.name.Contains("Gold");
+
+            if(isBronze)        gameManager.stagePoint += 50;
+            else if(isSliver)   gameManager.stagePoint += 100;
+            else if(isGold)     gameManager.stagePoint += 300;
+
+            collision.gameObject.SetActive(false);
+        }
+        else if(collision.gameObject.tag == "Finish")
+        {
+            gameManager.NextStage();
+        }
+    }
+
+    public void OnDie()
+    {
+        spriteRenderer.color = new Color(1, 1, 1, 0.4f);
+        spriteRenderer.flipY = true;
+        capsuleCollider.enabled = false;
+        body.AddForce(Vector2.up * 5, ForceMode2D.Impulse);
+    }
+
+    public void VelocityZero()
+    {
+        body.velocity = Vector2.zero;
     }
 }
