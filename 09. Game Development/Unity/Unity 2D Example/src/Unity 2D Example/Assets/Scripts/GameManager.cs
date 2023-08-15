@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
 
 
 
-        totalPoint = stagePoint;
+        totalPoint += stagePoint;
         stagePoint= 0;
 
     }

@@ -7,6 +7,14 @@ using UnityEngine.UIElements;
 public class PlayerMove : MonoBehaviour
 {
     public GameManager gameManager;
+
+    public AudioClip audioJump;
+    public AudioClip audioAttack;
+    public AudioClip audioDamaged;
+    public AudioClip audioItem;
+    public AudioClip audioDie;
+    public AudioClip audioFinish;
+
     public float maxSpeed;
     public float jumpPower;
 
@@ -15,6 +23,7 @@ public class PlayerMove : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Animator animator;
 
+    AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +32,13 @@ public class PlayerMove : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    void PlaySound(AudioClip clip)
+    {
+        audioSource.clip = clip;
+        audioSource.Play();
     }
 
     private void Update()
@@ -31,6 +47,7 @@ public class PlayerMove : MonoBehaviour
         {
             body.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
             animator.SetBool("isJumping", true);
+            PlaySound(audioJump);
         }
 
         //Stop Speed SetUp
@@ -112,6 +129,9 @@ public class PlayerMove : MonoBehaviour
         gameManager.stagePoint += 100;
 
         body.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
+
+        PlaySound(audioAttack);
+
         // Enemy die
         EnermyMove enermyMove  = enemy.GetComponent<EnermyMove>();
         if(enermyMove != null)
@@ -129,6 +149,8 @@ public class PlayerMove : MonoBehaviour
         int dirc = position.x > transform.position.x ? -1 : 1; 
 
         body.AddForce(new Vector2(dirc,1) * 7 , ForceMode2D.Impulse);
+
+        PlaySound(audioDamaged);
 
         animator.SetTrigger("doDamaged");
 
@@ -156,15 +178,19 @@ public class PlayerMove : MonoBehaviour
             else if(isGold)     gameManager.stagePoint += 300;
 
             collision.gameObject.SetActive(false);
+
+            PlaySound(audioItem);
         }
         else if(collision.gameObject.tag == "Finish")
         {
+            PlaySound(audioFinish);
             gameManager.NextStage();
         }
     }
 
     public void OnDie()
     {
+        PlaySound(audioDie);
         spriteRenderer.color = new Color(1, 1, 1, 0.4f);
         spriteRenderer.flipY = true;
         capsuleCollider.enabled = false;
