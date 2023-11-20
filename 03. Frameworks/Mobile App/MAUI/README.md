@@ -12,3 +12,5 @@
 
 * Github 학습 참고
   - https://github.com/VladislavAntonyuk/MauiSamples
+
+https://youtube.com/playlist?list=PL6n9fhu94yhVxaf291y3jF5rCaPYG8RSl&si=wIZi5_tjULBA2GAY
