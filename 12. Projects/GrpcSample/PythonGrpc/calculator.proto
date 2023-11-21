@@ -4,6 +4,11 @@ message Number{
     float value = 1;
 }
 
+message MyMessage{
+    string SomeMessage= 1;
+}
+
 service Calculator{
     rpc SquareRoot(Number) returns (Number){}
+    rpc SaySomething(MyMessage) returns (MyMessage){}
 }

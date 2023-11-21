@@ -17,6 +17,11 @@ class CalculatorServicer(calculator_pb2_grpc.CalculatorServicer):
         reponse.value = calculator.square_root(request.value)
         return reponse
 
+    def SaySomething(self, request, context):
+        reponse = calculator_pb2.MyMessage()
+        reponse.SomeMessage = request.SomeMessage + " Hello!"
+        return reponse
+
 
 server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
 

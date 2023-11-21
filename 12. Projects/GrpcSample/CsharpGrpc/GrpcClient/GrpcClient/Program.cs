@@ -14,4 +14,13 @@ number.Value = 225;
 
 var response = client.SquareRoot(number);
 
-Console.WriteLine(response.Value); 
+Console.WriteLine(response.Value);
+
+MyMessage message = new MyMessage();
+
+message.SomeMessage = "Luca";
+
+var response2 = client.SaySomething(message);
+
+Console.WriteLine(response2.SomeMessage);
+
