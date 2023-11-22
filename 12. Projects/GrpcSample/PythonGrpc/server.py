@@ -9,6 +9,7 @@ import calculator_pb2
 import calculator_pb2_grpc
 
 import calculator
+import random
 
 
 class CalculatorServicer(calculator_pb2_grpc.CalculatorServicer):
@@ -20,6 +21,14 @@ class CalculatorServicer(calculator_pb2_grpc.CalculatorServicer):
     def SaySomething(self, request, context):
         reponse = calculator_pb2.MyMessage()
         reponse.SomeMessage = request.SomeMessage + " Hello!"
+        list_data = []
+        for i in request.DataArray:
+            print(i)
+            list_data.append(i)
+
+        random.shuffle(list_data)
+        print(request.DataArray)
+        reponse.DataArray = bytes(list_data)
         return reponse
 
 
