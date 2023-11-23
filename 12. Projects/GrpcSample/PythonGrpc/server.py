@@ -22,11 +22,12 @@ class CalculatorServicer(calculator_pb2_grpc.CalculatorServicer):
         reponse = calculator_pb2.MyMessage()
         reponse.SomeMessage = request.SomeMessage + " Hello!"
         list_data = []
+        count = 1
         for i in request.DataArray:
-            print(i)
+            # print(i)
             list_data.append(i)
 
-        random.shuffle(list_data)
+        # random.shuffle(list_data)
         print(request.DataArray)
         reponse.DataArray = bytes(list_data)
         return reponse
