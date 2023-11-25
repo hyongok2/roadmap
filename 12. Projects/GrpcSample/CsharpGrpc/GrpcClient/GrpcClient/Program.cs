@@ -42,7 +42,7 @@ Image _image = Image.FromFile("photo.jpg");
 
 Stream imageStream = new MemoryStream();
 
-_image.Save(imageStream, System.Drawing.Imaging.ImageFormat.Jpeg);
+_image.Save(imageStream, System.Drawing.Imaging.ImageFormat.Png);
 imageStream.Seek(0, SeekOrigin.Begin);// this is important
 
 message.DataArray = ByteString.FromStream(imageStream);
@@ -53,7 +53,7 @@ Stream streamImage = new MemoryStream(response2.DataArray.ToByteArray());
 
 Image imageReturn = Image.FromStream(streamImage);
 
-imageReturn.Save("returnPhoto.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+imageReturn.Save("returnPhoto.jpg", System.Drawing.Imaging.ImageFormat.Png);
 
 Console.WriteLine(response2.SomeMessage);
 

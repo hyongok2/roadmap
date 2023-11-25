@@ -11,6 +11,9 @@ import calculator_pb2_grpc
 import calculator
 import random
 
+from PIL import Image
+import io
+
 
 class CalculatorServicer(calculator_pb2_grpc.CalculatorServicer):
     def SquareRoot(self, request, context):
@@ -28,8 +31,12 @@ class CalculatorServicer(calculator_pb2_grpc.CalculatorServicer):
             list_data.append(i)
 
         # random.shuffle(list_data)
-        print(request.DataArray)
-        reponse.DataArray = bytes(list_data)
+        img_byte_arr = io.BytesIO()
+        image = Image.open(io.BytesIO(request.DataArray))
+        new_image = image.resize((300, 400))
+        new_image.save(img_byte_arr, format='PNG')
+        # reponse.DataArray = bytes(list_data)
+        reponse.DataArray = img_byte_arr.getbuffer().tobytes()
         return reponse
 
 
