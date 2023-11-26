@@ -8,8 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-	  <Protobuf Include="calculator.proto" GrpcServices="Client" />
-    <PackageReference Include="Google.Protobuf" Version="3.25.1" />
+	<Protobuf Include="calculator.proto" GrpcServices="Client" />
+	<Protobuf Include="number_image.proto" GrpcServices="Client" />
+	<PackageReference Include="Google.Protobuf" Version="3.25.1" />
     <PackageReference Include="Grpc" Version="2.46.6" />
     <PackageReference Include="Grpc.Net.Client" Version="2.59.0" />
     <PackageReference Include="Grpc.Tools" Version="2.59.0">

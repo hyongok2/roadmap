@@ -1,0 +1,16 @@
+syntax = "proto3";
+// python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. number_image.proto
+
+message NumberImage{
+    bytes DataArray = 1;
+    int32 Value = 2;
+}
+
+message IntNumber{
+    int32 Value = 1;
+}
+
+service MachineLearning{
+    rpc GetRandomNumberImage(IntNumber) returns(NumberImage){} // 원하는 숫자의 Random 이미지를 찾는다.
+    rpc PredictNumberImage(NumberImage) returns(IntNumber){} 
+}

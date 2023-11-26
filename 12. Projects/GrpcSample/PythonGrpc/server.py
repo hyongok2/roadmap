@@ -8,15 +8,18 @@ import time
 import calculator_pb2
 import calculator_pb2_grpc
 
+import number_image_pb2
+import number_image_pb2_grpc
+
 import calculator
 import random
 
 from PIL import Image
 import io
 
-from machinelearing import MachineLearingSample
+from machinelearning import MachineLearingNumberImage
 
-sample = MachineLearingSample()
+machinelearning = MachineLearingNumberImage()
 
 
 class CalculatorServicer(calculator_pb2_grpc.CalculatorServicer):
@@ -43,25 +46,43 @@ class CalculatorServicer(calculator_pb2_grpc.CalculatorServicer):
         # reponse.DataArray = bytes(list_data)
         # reponse.DataArray = img_byte_arr.getbuffer().tobytes()
 
-        # image, reponse.Value = sample.get_image()
+        # image, reponse.Value = machinelearning.get_image()
         # image.save(img_byte_arr, format='PNG')
         # reponse.DataArray = img_byte_arr.getbuffer().tobytes()
-        reponse.Value = sample.predict(list_data)[0]
+        reponse.Value = machinelearning.predict(list_data)[0]
         return reponse
 
-
-# plt.imshow(some_digit_image,cmap="binary")
-# plt.axis("off")
-# plt.show()
-
 # for _ in range(10):
-#    return_value, real_value = sample.test()
+#    return_value, real_value = machinelearning.test()
 #    print(return_value, " - ", real_value)
+
+
+class MachineLearningServicer(number_image_pb2_grpc.MachineLearningServicer):
+    def GetRandomNumberImage(self, request, context):
+        reponse = number_image_pb2.NumberImage()
+        image, value = machinelearning.get_image(request.Value)
+        img_byte_arr = io.BytesIO()
+        image.save(img_byte_arr, format='PNG')
+        reponse.DataArray = img_byte_arr.getbuffer().tobytes()
+        reponse.Value = value
+        return reponse
+
+    def PredictNumberImage(self, request, context):
+        list_data = []
+        for i in request.DataArray:
+            list_data.append(i)
+        reponse = number_image_pb2.IntNumber()
+        reponse.Value = machinelearning.predict(list_data)[0]
+        return reponse
+
 
 server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
 
 calculator_pb2_grpc.add_CalculatorServicer_to_server(
     CalculatorServicer(), server)
+
+number_image_pb2_grpc.add_MachineLearningServicer_to_server(
+    MachineLearningServicer(), server)
 
 print('Starting server. Listening on port 50051')
 server.add_insecure_port('[::]:50051')

@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option csharp_namespace = "GrpcClient";
+option csharp_namespace = "GrpcClient.Calculator";
 
 message Number{
     float value = 1;

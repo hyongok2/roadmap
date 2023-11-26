@@ -8,7 +8,7 @@ import numpy as np
 from sklearn.linear_model import SGDClassifier
 
 
-class MachineLearingSample:
+class MachineLearingNumberImage:
 
     def __init__(self):
         self.mnist = fetch_openml('mnist_784', version=1, as_frame=False)
@@ -23,6 +23,15 @@ class MachineLearingSample:
         PIL_image = Image.fromarray(
             self.digits[some].reshape(28, 28)).convert('L')
         return (PIL_image, int(self.values[some]))
+
+    def get_image(self, value):
+        while True:
+            some = random.randint(0, 70000)
+            PIL_image = Image.fromarray(
+                self.digits[some].reshape(28, 28)).convert('L')
+            number = int(self.values[some])
+            if value == number:
+                return (PIL_image, number)
 
     def test(self):
         some = random.randint(0, 70000)
