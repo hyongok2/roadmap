@@ -55,7 +55,7 @@ Image imageReturn = Image.FromStream(streamImage);
 
 imageReturn.Save("returnPhoto.jpg", System.Drawing.Imaging.ImageFormat.Png);
 
-Console.WriteLine(response2.SomeMessage);
+Console.WriteLine(response2.SomeMessage + "you've got number " + response2.Value.ToString());
 
 
 

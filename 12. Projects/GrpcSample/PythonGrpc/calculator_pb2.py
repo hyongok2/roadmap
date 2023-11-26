@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x10\x63\x61lculator.proto\"\x17\n\x06Number\x12\r\n\x05value\x18\x01 \x01(\x02\"3\n\tMyMessage\x12\x13\n\x0bSomeMessage\x18\x01 \x01(\t\x12\x11\n\tDataArray\x18\x02 \x01(\x0c\x32X\n\nCalculator\x12 \n\nSquareRoot\x12\x07.Number\x1a\x07.Number\"\x00\x12(\n\x0cSaySomething\x12\n.MyMessage\x1a\n.MyMessage\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x10\x63\x61lculator.proto\"\x17\n\x06Number\x12\r\n\x05value\x18\x01 \x01(\x02\"B\n\tMyMessage\x12\x13\n\x0bSomeMessage\x18\x01 \x01(\t\x12\x11\n\tDataArray\x18\x02 \x01(\x0c\x12\r\n\x05Value\x18\x03 \x01(\x05\x32X\n\nCalculator\x12 \n\nSquareRoot\x12\x07.Number\x1a\x07.Number\"\x00\x12(\n\x0cSaySomething\x12\n.MyMessage\x1a\n.MyMessage\"\x00\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -23,7 +23,7 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['_NUMBER']._serialized_start=20
   _globals['_NUMBER']._serialized_end=43
   _globals['_MYMESSAGE']._serialized_start=45
-  _globals['_MYMESSAGE']._serialized_end=96
-  _globals['_CALCULATOR']._serialized_start=98
-  _globals['_CALCULATOR']._serialized_end=186
+  _globals['_MYMESSAGE']._serialized_end=111
+  _globals['_CALCULATOR']._serialized_start=113
+  _globals['_CALCULATOR']._serialized_end=201
 # @@protoc_insertion_point(module_scope)

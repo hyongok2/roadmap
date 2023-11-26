@@ -14,6 +14,10 @@ import random
 from PIL import Image
 import io
 
+from machinelearing import MachineLearingSample
+
+sample = MachineLearingSample()
+
 
 class CalculatorServicer(calculator_pb2_grpc.CalculatorServicer):
     def SquareRoot(self, request, context):
@@ -32,13 +36,20 @@ class CalculatorServicer(calculator_pb2_grpc.CalculatorServicer):
 
         # random.shuffle(list_data)
         img_byte_arr = io.BytesIO()
-        image = Image.open(io.BytesIO(request.DataArray))
-        new_image = image.resize((300, 400))
-        new_image.save(img_byte_arr, format='PNG')
+        # image = Image.open(io.BytesIO(request.DataArray))
+        # new_image = image.resize((300, 400))
+        # new_image.save(img_byte_arr, format='PNG')
         # reponse.DataArray = bytes(list_data)
+        # reponse.DataArray = img_byte_arr.getbuffer().tobytes()
+        image, reponse.Value = sample.get_image()
+        image.save(img_byte_arr, format='PNG')
         reponse.DataArray = img_byte_arr.getbuffer().tobytes()
         return reponse
 
+
+# plt.imshow(some_digit_image,cmap="binary")
+# plt.axis("off")
+# plt.show()
 
 server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
 

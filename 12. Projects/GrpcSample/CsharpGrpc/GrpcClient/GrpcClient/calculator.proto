@@ -9,6 +9,7 @@ message Number{
 message MyMessage{
     string SomeMessage= 1;
     bytes DataArray = 2;
+    int32 Value = 3;
 }
 
 service Calculator{
