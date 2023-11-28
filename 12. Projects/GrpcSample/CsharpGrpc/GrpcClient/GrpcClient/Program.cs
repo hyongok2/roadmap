@@ -12,11 +12,15 @@ byte[] loadBitmap(string filename, int width, int height)
     byte[] data = new byte[width * height];
     BitmapData bmpData = null;
     Bitmap slice = new Bitmap(filename);
-    Rectangle rect = new Rectangle(0, 0, slice.Width, slice.Height);
-    bmpData = slice.LockBits(rect, ImageLockMode.ReadOnly, PixelFormat.Format8bppIndexed);
+
+    Size resize = new Size(width, height);
+    Bitmap resizeImage = new Bitmap(slice, resize);
+
+    Rectangle rect = new Rectangle(0, 0, resizeImage.Width, resizeImage.Height);
+    bmpData = resizeImage.LockBits(rect, ImageLockMode.ReadOnly, PixelFormat.Format8bppIndexed);
     int size = bmpData.Height * bmpData.Stride;
     System.Runtime.InteropServices.Marshal.Copy(bmpData.Scan0, data, 0, size);
-    slice.UnlockBits(bmpData);
+    resizeImage.UnlockBits(bmpData);
     return data;
 }
 
@@ -27,45 +31,57 @@ var channel = GrpcChannel.ForAddress("http://127.0.0.1:50051");
 
 var mlClient = new GrpcClient.MachineLearning.MachineLearning.MachineLearningClient(channel);
 
-while(true)
-{
-    Console.WriteLine("숫자를 입력해 주세요.");
+string fileName = "Sample.jpg";
 
-    var sendNumber = new GrpcClient.MachineLearning.IntNumber();
+byte[] imageByte = loadBitmap(fileName, 28, 28);
 
-    try
-    {
-        sendNumber.Value = int.Parse(Console.ReadLine()!);
-    }
-    catch (Exception)
-    {
-        break;
-    }
+Stream imageStream = new MemoryStream(imageByte);
+imageStream.Seek(0, SeekOrigin.Begin);// this is important
+var sendMessage = new GrpcClient.MachineLearning.NumberImage();
+sendMessage.DataArray = ByteString.FromStream(imageStream);
+var prediction = mlClient.PredictNumberImage(sendMessage);
 
-    var returnMessage = mlClient.GetRandomNumberImage(sendNumber);
+Console.WriteLine($"숫자 이미지의 예측 값은 {prediction.Value} 입니다.");
 
-    Stream streamImage = new MemoryStream(returnMessage.DataArray.ToByteArray());
+//while(true)
+//{
+//    Console.WriteLine("숫자를 입력해 주세요.");
 
-    Image imageReturn = Image.FromStream(streamImage);
+//    var sendNumber = new GrpcClient.MachineLearning.IntNumber();
 
-    string filerName = $"Number_{sendNumber.Value}_{DateTime.Now.ToString("yyyyMMddHHmmss")}.jpg";
+//    try
+//    {
+//        sendNumber.Value = int.Parse(Console.ReadLine()!);
+//    }
+//    catch (Exception)
+//    {
+//        break;
+//    }
 
-    imageReturn.Save(filerName, System.Drawing.Imaging.ImageFormat.Png);
+//    var returnMessage = mlClient.GetRandomNumberImage(sendNumber);
 
-    Console.WriteLine("결과를 받아서 저장했어요. 받은 파일의 예측 결과를 확인합니다.");
+//    Stream streamImage = new MemoryStream(returnMessage.DataArray.ToByteArray());
 
-    byte[] imageByte = loadBitmap(filerName, 28, 28);
+//    Image imageReturn = Image.FromStream(streamImage);
 
-    Stream imageStream = new MemoryStream(imageByte);
-    imageStream.Seek(0, SeekOrigin.Begin);// this is important
+//    string fileName = $"Number_{sendNumber.Value}_{DateTime.Now.ToString("yyyyMMddHHmmss")}.jpg";
 
-    var sendMessage = new GrpcClient.MachineLearning.NumberImage();
-    sendMessage.DataArray = ByteString.FromStream(imageStream);
+//    imageReturn.Save(fileName, System.Drawing.Imaging.ImageFormat.Png);
 
-    var prediction = mlClient.PredictNumberImage(sendMessage);
+//    Console.WriteLine("결과를 받아서 저장했어요. 받은 파일의 예측 결과를 확인합니다.");
 
-    Console.WriteLine($"숫자 이미지의 예측 값은 {prediction.Value} 입니다.");
-}
+//    byte[] imageByte = loadBitmap(fileName, 28, 28);
+
+//    Stream imageStream = new MemoryStream(imageByte);
+//    imageStream.Seek(0, SeekOrigin.Begin);// this is important
+
+//    var sendMessage = new GrpcClient.MachineLearning.NumberImage();
+//    sendMessage.DataArray = ByteString.FromStream(imageStream);
+
+//    var prediction = mlClient.PredictNumberImage(sendMessage);
+
+//    Console.WriteLine($"숫자 이미지의 예측 값은 {prediction.Value} 입니다.");
+//}
 
 return;
 
@@ -82,7 +98,7 @@ Console.WriteLine(response.Value);
 GrpcClient.Calculator.MyMessage message = new GrpcClient.Calculator.MyMessage();
 
 message.SomeMessage = "Luca";
-//message.DataArray = ByteString.CopyFrom("e#>&*m16", Encoding.Unicode);
+message.DataArray = ByteString.CopyFrom("e#>&*m16", Encoding.Unicode);
 
 
 // Test no.1 just some numbers
