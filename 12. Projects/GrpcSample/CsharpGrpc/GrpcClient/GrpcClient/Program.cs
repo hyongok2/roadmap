@@ -31,7 +31,7 @@ var channel = GrpcChannel.ForAddress("http://127.0.0.1:50051");
 
 var mlClient = new GrpcClient.MachineLearning.MachineLearning.MachineLearningClient(channel);
 
-string fileName = "Sample.jpg";
+string fileName = "Sample2.jpg";
 
 byte[] imageByte = loadBitmap(fileName, 28, 28);
 
