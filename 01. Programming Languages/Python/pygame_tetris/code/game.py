@@ -1,5 +1,6 @@
 from random import choice
 from settings import *
+from timer import Timer
 
 
 class Game:
@@ -17,9 +18,23 @@ class Game:
         self.line_surface.set_colorkey((0, 255, 0))
         self.line_surface.set_alpha(120)
 
-        tetromino = choice(list(TETROMINOS.keys()))
         # tetromino
-        self.tetromino = Tetromino(tetromino, self.sprites)
+        self.tetromino = Tetromino(
+            choice(list(TETROMINOS.keys())), self.sprites)
+
+        # timer
+        self.timers = {
+            'vertical move': Timer(UPDATE_START_SPEED, True, self.move_down)
+        }
+
+        self.timers['vertical move'].activate()
+
+    def timer_update(self):
+        for timer in self.timers.values():
+            timer.update()
+
+    def move_down(self):
+        self.tetromino.move_down()
 
     def draw_grid(self):
         for col in range(1, COLUMNS):
@@ -35,6 +50,10 @@ class Game:
             self.surface.blit(self.line_surface, (0, 0))
 
     def run(self):
+
+        # update
+        self.timer_update()
+        self.sprites.update()
 
         # drawing
         self.surface.fill(GRAY)
@@ -56,6 +75,10 @@ class Tetromino:
         self.blocks = [Block(group, pos, self.color)
                        for pos in self.block_positions]
 
+    def move_down(self):
+        for block in self.blocks:
+            block.pos.y += 1
+
 
 class Block(pygame.sprite.Sprite):
     def __init__(self, group, pos, color):
@@ -67,6 +90,7 @@ class Block(pygame.sprite.Sprite):
 
         # position
         self.pos = pygame.Vector2(pos) + BLOCK_OFFSET
-        x = self.pos.x * CELL_SIZE
-        y = self.pos.y * CELL_SIZE
-        self.rect = self.image.get_rect(topleft=(x, y))
+        self.rect = self.image.get_rect(topleft=self.pos * CELL_SIZE)
+
+    def update(self):
+        self.rect.topleft = self.pos * CELL_SIZE
