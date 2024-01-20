@@ -4,13 +4,16 @@ from timer import Timer
 
 
 class Game:
-    def __init__(self):
+    def __init__(self, get_next_shape):
 
         # general
         self.surface = pygame.Surface((GAME_WIDTH, GAME_HEIGHT))
         self.display_surface = pygame.display.get_surface()
         self.rect = self.surface.get_rect(topleft=(PADDING, PADDING))
         self.sprites = pygame.sprite.Group()
+
+        # game connection
+        self.get_next_shape = get_next_shape
 
         # lines
         self.line_surface = self.surface.copy()
@@ -21,14 +24,18 @@ class Game:
         # tetromino
         self.field_data = [[0 for x in range(COLUMNS)] for y in range(ROWS)]
         self.tetromino = Tetromino(
-            choice(list(TETROMINOS.keys())),
+            self.get_next_shape(),
             self.sprites,
             self.create_new_tetromino,
             self.field_data)
 
         # timer
+        self.down_speed = UPDATE_START_SPEED
+        self.down_speed_faster = UPDATE_START_SPEED * 0.3
+        self.down_pressed = False
+
         self.timers = {
-            'vertical move': Timer(UPDATE_START_SPEED, True, self.move_down),
+            'vertical move': Timer(self.down_speed, True, self.move_down),
             'horizontal move': Timer(MOVE_WAIT_TIME),
             'rotate': Timer(ROTATE_WAIT_TIME)
         }
@@ -38,7 +45,7 @@ class Game:
     def create_new_tetromino(self):
         self.check_finished_rows()
         self.tetromino = Tetromino(
-            choice(list(TETROMINOS.keys())),
+            self.get_next_shape(),
             self.sprites,
             self.create_new_tetromino,
             self.field_data)
@@ -80,6 +87,15 @@ class Game:
             if (keys[pygame.K_UP]):
                 self.tetromino.rotate()
                 self.timers['rotate'].activate()
+
+        # down speed up
+        if not self.down_pressed and keys[pygame.K_DOWN]:
+            self.down_pressed = True
+            self.timers['vertical move'].duration = self.down_speed_faster
+
+        if self.down_pressed and not keys[pygame.K_DOWN]:
+            self.down_pressed = False
+            self.timers['vertical move'].duration = self.down_speed
 
     def check_finished_rows(self):
 
