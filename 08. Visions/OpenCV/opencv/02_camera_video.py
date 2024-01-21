@@ -14,7 +14,7 @@ while cap.isOpened():
 
     if ret == True:
 
-        frame = cv2.flip(frame, 1)  # 반전  양수면 좌우 반전 0이거나 음수면 상하 반전
+        frame = cv2.flip(frame, 1)  # 반전  양수면 좌우 반전 0은 상하 반전 음수면 상하좌우 반전
 
         # Text 추가
         font = cv2.FONT_HERSHEY_SIMPLEX

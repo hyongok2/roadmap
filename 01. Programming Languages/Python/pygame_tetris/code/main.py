@@ -22,9 +22,12 @@ class Main:
                             for shape in range(3)]
 
         # components
-        self.game = Game(self.get_next_shape)
         self.score = Score()
+        self.game = Game(self.get_next_shape, self.update_score)       
         self.preview = Preview()
+
+    def update_score(self, lines, score, level):
+        self.score.update_score(lines, score, level)
 
     def get_next_shape(self):
         next_shape = self.next_shapes.pop(0)
