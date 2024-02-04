@@ -17,13 +17,16 @@ class Main:
         self.clock = pygame.time.Clock()
         pygame.display.set_caption('Tetris')
 
+        pygame.mixer.init()
+        pygame.mixer.music.load('./sound/music.wav')
+        pygame.mixer.music.play(-1, 0.0)
         # shapes
         self.next_shapes = [choice(list(TETROMINOS.keys()))
                             for shape in range(3)]
 
         # components
         self.score = Score()
-        self.game = Game(self.get_next_shape, self.update_score)       
+        self.game = Game(self.get_next_shape, self.update_score)
         self.preview = Preview()
 
     def update_score(self, lines, score, level):
