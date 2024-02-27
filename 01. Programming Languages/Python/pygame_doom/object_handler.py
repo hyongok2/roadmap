@@ -33,6 +33,8 @@ class ObjectHandler:
 
         add_npc(NPC(game))
         add_npc(NPC(game, pos=(11.5, 4.5)))
+        add_npc(NPC(game, pos=(10.5, 3.5)))
+        add_npc(NPC(game, pos=(12.5, 1.5)))
 
     def update(self):
         self.npc_positions = {
