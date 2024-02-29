@@ -31,10 +31,13 @@ class ObjectHandler:
         add_sprite(AnimatedSprite(game, path=self.anim_sprite_path +
                    'red_light/0.png', pos=(9.5, 7.5)))
 
-        add_npc(NPC(game))
-        add_npc(NPC(game, pos=(11.5, 4.5)))
-        add_npc(NPC(game, pos=(10.5, 3.5)))
-        add_npc(NPC(game, pos=(12.5, 1.5)))
+        add_npc(Soldier(game))
+        add_npc(Soldier(game, pos=(11.5, 4.5)))
+        add_npc(Soldier(game, pos=(10.5, 3.5)))
+        add_npc(CacoDemonNPC(game))
+        add_npc(CacoDemonNPC(game, pos=(14.5, 27.5)))
+        add_npc(CacoDemonNPC(game, pos=(9.5, 26.5)))
+        add_npc(CyberDemonNPC(game, pos=(10.5, 25.5)))
 
     def update(self):
         self.npc_positions = {
