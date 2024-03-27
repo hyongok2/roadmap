@@ -18,3 +18,6 @@
 
 * Github 참고
    - 음성인식 : https://github.com/alphacep/vosk-api
+
+* [Easy way to create a C# lambda expression from a string (with Roslyn)](https://www.strathweb.com/2018/01/easy-way-to-create-a-c-lambda-expression-from-a-string-with-roslyn/)
+  - 
