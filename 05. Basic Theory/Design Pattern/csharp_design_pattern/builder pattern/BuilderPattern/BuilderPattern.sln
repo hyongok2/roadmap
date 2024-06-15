@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunctionalBuilderPattern", "BuilderPattern\FunctionalBuilderPattern.csproj", "{C2315CDC-078D-4866-8B17-EA6F1219D5C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunctionalBuilderPattern", "BuilderPattern\FunctionalBuilderPattern.csproj", "{C2315CDC-078D-4866-8B17-EA6F1219D5C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Builder", "Builder\Builder.csproj", "{FFEE3F92-C588-4B51-8062-6F7331C10B4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Builder", "Builder\Builder.csproj", "{FFEE3F92-C588-4B51-8062-6F7331C10B4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentBuilderInheritance", "FluentBuilderInheritance\FluentBuilderInheritance.csproj", "{88D96087-1559-4444-AC2F-E9323D02E5DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentBuilderInheritance", "FluentBuilderInheritance\FluentBuilderInheritance.csproj", "{88D96087-1559-4444-AC2F-E9323D02E5DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StepwiseBuilder", "StepwiseBuilder\StepwiseBuilder.csproj", "{B809B082-CC10-4BCE-9DF9-0EE647648401}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StepwiseBuilder", "StepwiseBuilder\StepwiseBuilder.csproj", "{B809B082-CC10-4BCE-9DF9-0EE647648401}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacetedBuilder", "FacetedBuilder\FacetedBuilder.csproj", "{1ADAFC78-1B9B-4681-8D8C-246A5E0A6897}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{B809B082-CC10-4BCE-9DF9-0EE647648401}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B809B082-CC10-4BCE-9DF9-0EE647648401}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B809B082-CC10-4BCE-9DF9-0EE647648401}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1ADAFC78-1B9B-4681-8D8C-246A5E0A6897}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1ADAFC78-1B9B-4681-8D8C-246A5E0A6897}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1ADAFC78-1B9B-4681-8D8C-246A5E0A6897}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1ADAFC78-1B9B-4681-8D8C-246A5E0A6897}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
