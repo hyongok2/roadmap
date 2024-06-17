@@ -5,7 +5,11 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsyncFactoryMethod", "FactoryPattern\AsyncFactoryMethod.csproj", "{DC27FD75-0409-4DB0-A811-28F527F7A213}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectTracking", "ObjectTracking\ObjectTracking.csproj", "{B396F88F-ABEF-46FE-9E7F-583628B9DF92}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ObjectTracking", "ObjectTracking\ObjectTracking.csproj", "{B396F88F-ABEF-46FE-9E7F-583628B9DF92}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbstractFactory", "AbstractFactory\AbstractFactory.csproj", "{8ABAE11A-DB13-4F01-B023-C3AA5F747E73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbstractFactoryOcp", "AbstractFactoryOcp\AbstractFactoryOcp.csproj", "{B1A62B1D-C148-42B3-9689-41C2CD7AE854}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{B396F88F-ABEF-46FE-9E7F-583628B9DF92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B396F88F-ABEF-46FE-9E7F-583628B9DF92}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B396F88F-ABEF-46FE-9E7F-583628B9DF92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8ABAE11A-DB13-4F01-B023-C3AA5F747E73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8ABAE11A-DB13-4F01-B023-C3AA5F747E73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8ABAE11A-DB13-4F01-B023-C3AA5F747E73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8ABAE11A-DB13-4F01-B023-C3AA5F747E73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1A62B1D-C148-42B3-9689-41C2CD7AE854}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1A62B1D-C148-42B3-9689-41C2CD7AE854}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1A62B1D-C148-42B3-9689-41C2CD7AE854}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1A62B1D-C148-42B3-9689-41C2CD7AE854}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
