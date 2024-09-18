@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.IO.Ports;
 using TemperatureMonitor.Modbus;
 using TemperatureMonitor.Device;
-using TemperatureMonitor.SerialCom;
+using TemperatureMonitor.Communications;
 
 namespace TemperatureMonitor
 {
@@ -54,9 +54,30 @@ namespace TemperatureMonitor
         {
             if (_serialCommunication!.OpenPort() == false) return false;
 
-            RequestToDevice();
+            try
+            {
+                RequestToDevice();
+            }
+            catch (Exception) // 로깅은 나중에..
+            {
+                _serialCommunication!.ClosePort();
+                return false;
+            }
 
             return true;
+        }
+
+        public void Stop()
+        {
+            try
+            {
+                _serialCommunication!.ClosePort();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
         #endregion
 
@@ -107,6 +128,8 @@ namespace TemperatureMonitor
 
         private void RequestToDevice()
         {
+            if (_serialCommunication!.IsOpened() == false) return;
+
             if (_requestQueue.Count == 0)
             {
                 _requestList.ForEach(x => _requestQueue.Enqueue(x));
