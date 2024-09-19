@@ -23,8 +23,8 @@ namespace TemperatureMonitor.Modbus
 
             ushort crc = GenerateCrc(Message, size: 6);
 
-            Message[6] = (byte)(crc >> 8);
-            Message[7] = (byte)crc;
+            Message[6] = (byte)crc;
+            Message[7] = (byte)(crc >> 8);
         }
     }
 }

@@ -30,14 +30,29 @@ namespace TemperatureMonitor.Modbus
 
             IsValid = true;
 
-            DataCount = dataSize / 2;
-
-            DataArray = new short[DataCount];
-
-            for (int i = 0; i < dataSize; i += 2)
+            if(FunctionCode == 4)
             {
-                DataArray[i / 2] = (short)(message[3 + i] << 8 | message[3 + i + 1]);
+                DataCount = dataSize / 2;
+
+                DataArray = new short[DataCount];
+
+                for (int i = 0; i < dataSize; i += 2)
+                {
+                    DataArray[i / 2] = (short)(message[3 + i] << 8 | message[3 + i + 1]);
+                }
             }
+
+            if (FunctionCode == 2)
+            {
+                DataCount = dataSize * 8;//임시로 1바이트만 처리되는 것으로 하자. 나중에 다양하게 호환 가능하게 수정할 것
+                DataArray = new short[DataCount];
+
+                for (int i = 0; i < DataCount; i ++)
+                {
+                    DataArray[i] = (short)(message[3] >> i & 1);
+                }
+            }
+
         }
 
         private static bool ValidCheckCrc(byte[] message)

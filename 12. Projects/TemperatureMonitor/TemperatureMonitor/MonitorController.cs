@@ -181,7 +181,7 @@ namespace TemperatureMonitor
                     continue;
                 }
 
-                if (receiveMessage.DataCount != _currentRequestDataSet!.DataSize) // 요청한 것과 받은 정보의 크기가 일치해야 함. //사실 Slave, Function code도 비교해야 하나.. 그냥 넘어감. 추후 필요하면 할 것..
+                if (receiveMessage.DataCount < _currentRequestDataSet!.DataSize) // 요청한 것과 받은 정보의 크기가 일치해야 함. //사실 Slave, Function code도 비교해야 하나.. 그냥 넘어감. 추후 필요하면 할 것..
                 {
                     RequestToDevice();
                     continue;
