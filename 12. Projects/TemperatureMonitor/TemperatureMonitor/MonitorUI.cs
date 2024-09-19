@@ -29,7 +29,7 @@ namespace TemperatureMonitor
 
             string[] portNames = SerialPort.GetPortNames();
 
-            if(portNames.Length > 0)
+            if (portNames.Length > 0)
             {
                 comboBox_Comport.Items.AddRange(portNames);
                 comboBox_Comport.SelectedIndex = 0;
@@ -70,9 +70,9 @@ namespace TemperatureMonitor
         {
             this.Invoke(new Action(() =>
             {
-                label_Temp1.Text = device.ModbusDataDictionary[DeviceDataType.Temperature1].Value.ToString(); 
+                label_Temp1.Text = device.ModbusDataDictionary[DeviceDataType.Temperature1].Value.ToString();
                 label_Temp2.Text = device.ModbusDataDictionary[DeviceDataType.Temperature2].Value.ToString();
-                if(device.ModbusDataDictionary[DeviceDataType.Alarm1].Value == 1)
+                if (device.ModbusDataDictionary[DeviceDataType.Alarm1].Value == 1)
                 {
                     label_Alarm1.ForeColor = Color.Red;
                 }
