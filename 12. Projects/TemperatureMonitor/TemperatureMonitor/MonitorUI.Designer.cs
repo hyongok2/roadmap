@@ -126,7 +126,7 @@
             label_Alarm1.BackColor = SystemColors.ControlDark;
             label_Alarm1.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             label_Alarm1.ForeColor = Color.Gray;
-            label_Alarm1.Location = new Point(187, 171);
+            label_Alarm1.Location = new Point(186, 171);
             label_Alarm1.Margin = new Padding(4, 0, 4, 0);
             label_Alarm1.Name = "label_Alarm1";
             label_Alarm1.Size = new Size(20, 20);
@@ -189,7 +189,7 @@
             label1.BackColor = SystemColors.ControlDark;
             label1.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.Lime;
-            label1.Location = new Point(409, 120);
+            label1.Location = new Point(412, 120);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(20, 20);
@@ -202,7 +202,7 @@
             label2.BackColor = SystemColors.ControlDark;
             label2.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.Lime;
-            label2.Location = new Point(184, 120);
+            label2.Location = new Point(186, 120);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(20, 20);
@@ -228,6 +228,7 @@
             Controls.Add(comboBox_Comport);
             Controls.Add(button_Start);
             Controls.Add(pictureBox1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
             Name = "MonitorUI";
             Text = "Temperature Monitor";

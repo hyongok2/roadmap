@@ -26,6 +26,7 @@ namespace TemperatureMonitor
         private RequestDataSet? _currentRequestDataSet;
         private readonly ManualResetEvent _resetEvent = new(false);
         private readonly Thread _receiveDataHandleThread;
+        private DateTime _requestTime = DateTime.Now;
         #endregion
 
         #region 생성자
@@ -42,8 +43,6 @@ namespace TemperatureMonitor
             {
                 IsBackground = true
             };
-
-            _receiveDataHandleThread.Start();
         }
 
         #endregion
@@ -57,6 +56,9 @@ namespace TemperatureMonitor
             try
             {
                 RequestToDevice();
+
+                if (_receiveDataHandleThread.ThreadState != ThreadState.Running)
+                    _receiveDataHandleThread.Start();
             }
             catch (Exception) // 로깅은 나중에..
             {
@@ -105,7 +107,7 @@ namespace TemperatureMonitor
             {
                 _device!.ModbusDataDictionary[DeviceDataType.Temperature1],
                 _device!.ModbusDataDictionary[DeviceDataType.Temperature2],
-            }, 
+            },
             _device.SlaveId));
 
             _requestList.Add(new RequestDataSet(new List<ModbusData>
@@ -130,18 +132,18 @@ namespace TemperatureMonitor
         {
             if (_serialCommunication!.IsOpened() == false) return;
 
-            if (_requestQueue.Count == 0)
+            if (_requestQueue.Count == 0)//한 세트 수행이 완료되면, 진행할 DataSet를 다시 큐에 넣어줌.
             {
                 _requestList.ForEach(x => _requestQueue.Enqueue(x));
             }
 
             _currentRequestDataSet = _requestQueue.Dequeue();
 
-            _responseMessage.Clear();
+            _responseMessage.Clear();// 받을 메세지 변수 사전 초기화.
 
-            _serialCommunication!.SendMessage(_currentRequestDataSet.RequestMessage.Message);
+            _serialCommunication!.SendMessage(_currentRequestDataSet.RequestMessage.Message);//요청.
 
-            // 요청 후 응답이 오지 않는 경우에 대한 처리.. Timeout은 필요하면 추가할 것.. 초기엔 구현하지 않음.
+            _requestTime = DateTime.Now;//전송 시간 설정.
         }
         #endregion
 
@@ -153,6 +155,15 @@ namespace TemperatureMonitor
                 _resetEvent.WaitOne(1000);
                 _resetEvent.Reset();
 
+                #region Timeout check
+                if (DateTime.Now - _requestTime > TimeSpan.FromSeconds(3))// 3초 Timeout.. 재 요청.
+                {
+                    RequestToDevice();
+                    continue;
+                }
+                #endregion
+
+                #region Data Valid Check
                 if (_responseMessage.Count < 3) continue; // 사이즈가 3보다 커야 데이터 크기 정보를 알 수 있음.
 
                 int expectedDataSize = _responseMessage[2] + 5;  // 예상되는 완성된 사이즈는 슬레이브번호 + 펑션코드 + 데이터 사이즈 정보 + CRC(2byte) 그리고 실제 Data 정보
@@ -164,17 +175,21 @@ namespace TemperatureMonitor
                     RequestToDevice();
                     continue;
                 }
+                #endregion
 
+                #region 이전 Data와 변경점이 있는지 확인 : 없으면 정보처리 없이 다음 요청 수행.
                 byte[] receivedBytes = _responseMessage.ToArray();
 
-                if(_currentRequestDataSet!.ReceivedBytes.SequenceEqual(receivedBytes)) // 기존 정보와 바뀐 것이 없다면, 다음 요청 수행.
+                if (_currentRequestDataSet!.ReceivedBytes.SequenceEqual(receivedBytes)) // 기존 정보와 바뀐 것이 없다면, 다음 요청 수행.
                 {
                     RequestToDevice();
                     continue;
                 }
+                #endregion
 
                 ReceiveMessage receiveMessage = new(receivedBytes); // 받은 정보 처리
 
+                #region 접수 받은 정보가 비정상인 경우 : 다음 요청 수행.
                 if (receiveMessage.IsValid == false) // 비정상이면 처리하지 않고, 다음 요청 수행.
                 {
                     RequestToDevice();
@@ -186,19 +201,20 @@ namespace TemperatureMonitor
                     RequestToDevice();
                     continue;
                 }
+                #endregion
 
                 _currentRequestDataSet.ReceivedBytes = receivedBytes;// 현재 받은 정보를 백업함.
 
-                for (int i = 0; i < _currentRequestDataSet!.DataList.Count; i++)
+                for (int i = 0; i < _currentRequestDataSet!.DataList.Count; i++) //Data 처리
                 {
                     _currentRequestDataSet.DataList[i].Value = receiveMessage.DataArray[i];
                 }
 
-                RequestToDevice();
+                RequestToDevice();//다음 요청 수행.
             }
             #endregion
 
-        #endregion
+            #endregion
 
         }
     }
