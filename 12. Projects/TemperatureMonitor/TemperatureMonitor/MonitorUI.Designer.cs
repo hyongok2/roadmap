@@ -28,214 +28,175 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button_Start = new Button();
-            comboBox_Comport = new ComboBox();
-            comboBox_Baudrate = new ComboBox();
-            label3 = new Label();
-            label4 = new Label();
-            button_Stop = new Button();
-            label1 = new Label();
-            label2 = new Label();
-            label5 = new Label();
-            label6 = new Label();
-            label7 = new Label();
-            label8 = new Label();
-            textBox_Temperature1 = new TextBox();
-            textBox_Temperature2 = new TextBox();
-            textBox_Alarm1 = new TextBox();
-            textBox_Alarm2 = new TextBox();
-            textBox_Leak2 = new TextBox();
-            textBox_Leak1 = new TextBox();
-            SuspendLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MonitorUI));
+            this.button_Start = new System.Windows.Forms.Button();
+            this.comboBox_Comport = new System.Windows.Forms.ComboBox();
+            this.comboBox_Baudrate = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label_Temp1 = new System.Windows.Forms.Label();
+            this.label_Temp2 = new System.Windows.Forms.Label();
+            this.label_Alarm1 = new System.Windows.Forms.Label();
+            this.label_Alarm2 = new System.Windows.Forms.Label();
+            this.label_Leak1 = new System.Windows.Forms.Label();
+            this.label_Leak2 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.SuspendLayout();
             // 
             // button_Start
             // 
-            button_Start.Location = new Point(338, 21);
-            button_Start.Name = "button_Start";
-            button_Start.Size = new Size(249, 29);
-            button_Start.TabIndex = 2;
-            button_Start.Text = "Start";
-            button_Start.UseVisualStyleBackColor = true;
-            button_Start.Click += button_Start_Click;
+            this.button_Start.Location = new System.Drawing.Point(433, 274);
+            this.button_Start.Margin = new System.Windows.Forms.Padding(2);
+            this.button_Start.Name = "button_Start";
+            this.button_Start.Size = new System.Drawing.Size(72, 22);
+            this.button_Start.TabIndex = 2;
+            this.button_Start.Text = "Start";
+            this.button_Start.UseVisualStyleBackColor = true;
+            this.button_Start.Click += new System.EventHandler(this.button_Start_Click);
             // 
             // comboBox_Comport
             // 
-            comboBox_Comport.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox_Comport.FormattingEnabled = true;
-            comboBox_Comport.Location = new Point(142, 21);
-            comboBox_Comport.Name = "comboBox_Comport";
-            comboBox_Comport.Size = new Size(151, 28);
-            comboBox_Comport.TabIndex = 3;
+            this.comboBox_Comport.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_Comport.FormattingEnabled = true;
+            this.comboBox_Comport.Location = new System.Drawing.Point(93, 273);
+            this.comboBox_Comport.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBox_Comport.Name = "comboBox_Comport";
+            this.comboBox_Comport.Size = new System.Drawing.Size(118, 23);
+            this.comboBox_Comport.TabIndex = 3;
             // 
             // comboBox_Baudrate
             // 
-            comboBox_Baudrate.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox_Baudrate.FormattingEnabled = true;
-            comboBox_Baudrate.Location = new Point(142, 65);
-            comboBox_Baudrate.Name = "comboBox_Baudrate";
-            comboBox_Baudrate.Size = new Size(151, 28);
-            comboBox_Baudrate.TabIndex = 4;
+            this.comboBox_Baudrate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_Baudrate.FormattingEnabled = true;
+            this.comboBox_Baudrate.Location = new System.Drawing.Point(308, 273);
+            this.comboBox_Baudrate.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBox_Baudrate.Name = "comboBox_Baudrate";
+            this.comboBox_Baudrate.Size = new System.Drawing.Size(118, 23);
+            this.comboBox_Baudrate.TabIndex = 4;
             // 
             // label3
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(35, 24);
-            label3.Margin = new Padding(4, 0, 4, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(83, 20);
-            label3.TabIndex = 5;
-            label3.Text = "COMPORT";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(16, 277);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(63, 15);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "COMPORT";
             // 
             // label4
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(35, 68);
-            label4.Margin = new Padding(4, 0, 4, 0);
-            label4.Name = "label4";
-            label4.Size = new Size(85, 20);
-            label4.TabIndex = 6;
-            label4.Text = "BAUDRATE";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(231, 277);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(64, 15);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "BAUDRATE";
             // 
-            // button_Stop
+            // label_Temp1
             // 
-            button_Stop.Location = new Point(338, 64);
-            button_Stop.Name = "button_Stop";
-            button_Stop.Size = new Size(249, 29);
-            button_Stop.TabIndex = 7;
-            button_Stop.Text = "Stop";
-            button_Stop.UseVisualStyleBackColor = true;
-            button_Stop.Click += button_Stop_Click;
+            this.label_Temp1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label_Temp1.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label_Temp1.ForeColor = System.Drawing.Color.Red;
+            this.label_Temp1.Location = new System.Drawing.Point(174, 97);
+            this.label_Temp1.Name = "label_Temp1";
+            this.label_Temp1.Size = new System.Drawing.Size(113, 59);
+            this.label_Temp1.TabIndex = 18;
+            this.label_Temp1.Text = "38";
+            this.label_Temp1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label1
+            // label_Temp2
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(131, 146);
-            label1.Margin = new Padding(4, 0, 4, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(119, 20);
-            label1.TabIndex = 8;
-            label1.Text = "TEMPERATURE1";
+            this.label_Temp2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label_Temp2.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label_Temp2.ForeColor = System.Drawing.Color.Red;
+            this.label_Temp2.Location = new System.Drawing.Point(350, 97);
+            this.label_Temp2.Name = "label_Temp2";
+            this.label_Temp2.Size = new System.Drawing.Size(113, 59);
+            this.label_Temp2.TabIndex = 19;
+            this.label_Temp2.Text = "38";
+            this.label_Temp2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label2
+            // label_Alarm1
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(131, 184);
-            label2.Margin = new Padding(4, 0, 4, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(119, 20);
-            label2.TabIndex = 9;
-            label2.Text = "TEMPERATURE2";
+            this.label_Alarm1.AutoSize = true;
+            this.label_Alarm1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.label_Alarm1.Font = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label_Alarm1.ForeColor = System.Drawing.Color.Gray;
+            this.label_Alarm1.Location = new System.Drawing.Point(143, 128);
+            this.label_Alarm1.Name = "label_Alarm1";
+            this.label_Alarm1.Size = new System.Drawing.Size(19, 15);
+            this.label_Alarm1.TabIndex = 20;
+            this.label_Alarm1.Text = "●";
             // 
-            // label5
+            // label_Alarm2
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(183, 260);
-            label5.Margin = new Padding(4, 0, 4, 0);
-            label5.Name = "label5";
-            label5.Size = new Size(67, 20);
-            label5.TabIndex = 11;
-            label5.Text = "ALARM2";
+            this.label_Alarm2.AutoSize = true;
+            this.label_Alarm2.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.label_Alarm2.Font = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label_Alarm2.ForeColor = System.Drawing.Color.Gray;
+            this.label_Alarm2.Location = new System.Drawing.Point(318, 128);
+            this.label_Alarm2.Name = "label_Alarm2";
+            this.label_Alarm2.Size = new System.Drawing.Size(19, 15);
+            this.label_Alarm2.TabIndex = 21;
+            this.label_Alarm2.Text = "●";
             // 
-            // label6
+            // label_Leak1
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(183, 222);
-            label6.Margin = new Padding(4, 0, 4, 0);
-            label6.Name = "label6";
-            label6.Size = new Size(67, 20);
-            label6.TabIndex = 10;
-            label6.Text = "ALARM1";
+            this.label_Leak1.AutoSize = true;
+            this.label_Leak1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.label_Leak1.Font = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label_Leak1.ForeColor = System.Drawing.Color.Gray;
+            this.label_Leak1.Location = new System.Drawing.Point(147, 188);
+            this.label_Leak1.Name = "label_Leak1";
+            this.label_Leak1.Size = new System.Drawing.Size(19, 15);
+            this.label_Leak1.TabIndex = 25;
+            this.label_Leak1.Text = "●";
             // 
-            // label7
+            // label_Leak2
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(199, 298);
-            label7.Margin = new Padding(4, 0, 4, 0);
-            label7.Name = "label7";
-            label7.Size = new Size(51, 20);
-            label7.TabIndex = 10;
-            label7.Text = "LEAK1";
+            this.label_Leak2.AutoSize = true;
+            this.label_Leak2.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.label_Leak2.Font = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label_Leak2.ForeColor = System.Drawing.Color.Gray;
+            this.label_Leak2.Location = new System.Drawing.Point(147, 221);
+            this.label_Leak2.Name = "label_Leak2";
+            this.label_Leak2.Size = new System.Drawing.Size(19, 15);
+            this.label_Leak2.TabIndex = 26;
+            this.label_Leak2.Text = "●";
             // 
-            // label8
+            // pictureBox1
             // 
-            label8.AutoSize = true;
-            label8.Location = new Point(199, 336);
-            label8.Margin = new Padding(4, 0, 4, 0);
-            label8.Name = "label8";
-            label8.Size = new Size(51, 20);
-            label8.TabIndex = 11;
-            label8.Text = "LEAK2";
-            // 
-            // textBox_Temperature1
-            // 
-            textBox_Temperature1.Location = new Point(287, 143);
-            textBox_Temperature1.Name = "textBox_Temperature1";
-            textBox_Temperature1.Size = new Size(167, 27);
-            textBox_Temperature1.TabIndex = 12;
-            // 
-            // textBox_Temperature2
-            // 
-            textBox_Temperature2.Location = new Point(287, 181);
-            textBox_Temperature2.Name = "textBox_Temperature2";
-            textBox_Temperature2.Size = new Size(167, 27);
-            textBox_Temperature2.TabIndex = 13;
-            // 
-            // textBox_Alarm1
-            // 
-            textBox_Alarm1.Location = new Point(287, 219);
-            textBox_Alarm1.Name = "textBox_Alarm1";
-            textBox_Alarm1.Size = new Size(167, 27);
-            textBox_Alarm1.TabIndex = 12;
-            // 
-            // textBox_Alarm2
-            // 
-            textBox_Alarm2.Location = new Point(287, 257);
-            textBox_Alarm2.Name = "textBox_Alarm2";
-            textBox_Alarm2.Size = new Size(167, 27);
-            textBox_Alarm2.TabIndex = 13;
-            // 
-            // textBox_Leak2
-            // 
-            textBox_Leak2.Location = new Point(287, 333);
-            textBox_Leak2.Name = "textBox_Leak2";
-            textBox_Leak2.Size = new Size(167, 27);
-            textBox_Leak2.TabIndex = 15;
-            // 
-            // textBox_Leak1
-            // 
-            textBox_Leak1.Location = new Point(287, 295);
-            textBox_Leak1.Name = "textBox_Leak1";
-            textBox_Leak1.Size = new Size(167, 27);
-            textBox_Leak1.TabIndex = 14;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(493, 250);
+            this.pictureBox1.TabIndex = 27;
+            this.pictureBox1.TabStop = false;
             // 
             // MonitorUI
             // 
-            AutoScaleDimensions = new SizeF(9F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(599, 388);
-            Controls.Add(textBox_Leak2);
-            Controls.Add(textBox_Leak1);
-            Controls.Add(textBox_Alarm2);
-            Controls.Add(textBox_Alarm1);
-            Controls.Add(textBox_Temperature2);
-            Controls.Add(textBox_Temperature1);
-            Controls.Add(label8);
-            Controls.Add(label7);
-            Controls.Add(label5);
-            Controls.Add(label6);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(button_Stop);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(comboBox_Baudrate);
-            Controls.Add(comboBox_Comport);
-            Controls.Add(button_Start);
-            Margin = new Padding(4);
-            Name = "MonitorUI";
-            Text = "Temperature Monitor";
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(514, 304);
+            this.Controls.Add(this.label_Leak2);
+            this.Controls.Add(this.label_Leak1);
+            this.Controls.Add(this.label_Alarm2);
+            this.Controls.Add(this.label_Alarm1);
+            this.Controls.Add(this.label_Temp2);
+            this.Controls.Add(this.label_Temp1);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.comboBox_Baudrate);
+            this.Controls.Add(this.comboBox_Comport);
+            this.Controls.Add(this.button_Start);
+            this.Controls.Add(this.pictureBox1);
+            this.Name = "MonitorUI";
+            this.Text = "Temperature Monitor";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
@@ -244,18 +205,12 @@
         private ComboBox comboBox_Baudrate;
         private Label label3;
         private Label label4;
-        private Button button_Stop;
-        private Label label1;
-        private Label label2;
-        private Label label5;
-        private Label label6;
-        private Label label7;
-        private Label label8;
-        private TextBox textBox_Temperature1;
-        private TextBox textBox_Temperature2;
-        private TextBox textBox_Alarm1;
-        private TextBox textBox_Alarm2;
-        private TextBox textBox_Leak2;
-        private TextBox textBox_Leak1;
+        private Label label_Temp1;
+        private Label label_Temp2;
+        private Label label_Alarm1;
+        private Label label_Alarm2;
+        private Label label_Leak1;
+        private Label label_Leak2;
+        private PictureBox pictureBox1;
     }
 }

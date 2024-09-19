@@ -27,13 +27,20 @@ namespace TemperatureMonitor
 
             comboBox_Baudrate.SelectedIndex = 3;
 
-            comboBox_Comport.Items.AddRange(SerialPort.GetPortNames());
-            comboBox_Comport.SelectedIndex = 0;
+            string[] portNames = SerialPort.GetPortNames();
+
+            if(portNames.Length > 0)
+            {
+                comboBox_Comport.Items.AddRange(portNames);
+                comboBox_Comport.SelectedIndex = 0;
+            }
         }
 
         bool _isStarting = false;
         private async void button_Start_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(comboBox_Comport.Text)) return;
+
             if (_isStarting) return;
             _isStarting = true;
 
@@ -63,18 +70,49 @@ namespace TemperatureMonitor
         {
             this.Invoke(new Action(() =>
             {
-                textBox_Temperature1.Text = device.ModbusDataDictionary[DeviceDataType.Temperature1].Value.ToString(); ;
-                textBox_Temperature2.Text = device.ModbusDataDictionary[DeviceDataType.Temperature2].Value.ToString(); ;
-                textBox_Alarm1.Text = device.ModbusDataDictionary[DeviceDataType.Alarm1].Value.ToString(); ;
-                textBox_Alarm2.Text = device.ModbusDataDictionary[DeviceDataType.Alarm2].Value.ToString(); ;
-                textBox_Leak1.Text = device.ModbusDataDictionary[DeviceDataType.Leak1].Value.ToString(); ;
-                textBox_Leak1.Text = device.ModbusDataDictionary[DeviceDataType.Leak2].Value.ToString(); ;
+                label_Temp1.Text = device.ModbusDataDictionary[DeviceDataType.Temperature1].Value.ToString(); 
+                label_Temp2.Text = device.ModbusDataDictionary[DeviceDataType.Temperature2].Value.ToString();
+                if(device.ModbusDataDictionary[DeviceDataType.Alarm1].Value == 1)
+                {
+                    label_Alarm1.ForeColor = Color.Red;
+                }
+                else
+                {
+                    label_Alarm1.ForeColor = Color.Gray;
+                }
+                if (device.ModbusDataDictionary[DeviceDataType.Alarm2].Value == 1)
+                {
+                    label_Alarm2.ForeColor = Color.Red;
+                }
+                else
+                {
+                    label_Alarm2.ForeColor = Color.Gray;
+                }
+
+                if (device.ModbusDataDictionary[DeviceDataType.Leak1].Value == 1)
+                {
+                    label_Leak1.ForeColor = Color.Red;
+                }
+                else
+                {
+                    label_Leak1.ForeColor = Color.Gray;
+                }
+                if (device.ModbusDataDictionary[DeviceDataType.Leak2].Value == 1)
+                {
+                    label_Leak2.ForeColor = Color.Red;
+                }
+                else
+                {
+                    label_Leak2.ForeColor = Color.Gray;
+                }
+
             }));
         }
 
-        private void button_Stop_Click(object sender, EventArgs e)
-        {
-            Task.Run(_controller!.Stop);
-        }
+        //private void button_Stop_Click(object sender, EventArgs e)
+        //{
+        //    Task.Run(_controller!.Stop);
+        //}
+
     }
 }
