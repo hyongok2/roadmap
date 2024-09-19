@@ -17,9 +17,7 @@ namespace TemperatureMonitor.Modbus
         public ReceiveMessage(byte[] message)
         {
             if (message == null) return;
-
             if (message.Length < 5) return; // 최소 5개 이상이어야 함. Slave / Function Code / DataSize / Data array... / CRC Code
-
             if (ValidCheckCrc(message) == false) return;
 
             SlaveId = message[0];
@@ -30,29 +28,31 @@ namespace TemperatureMonitor.Modbus
 
             IsValid = true;
 
-            if(FunctionCode == 4)
+            if (FunctionCode == 2) DataHandleFunctionCode2(dataSize, message);
+            if (FunctionCode == 4) DataHandleFunctionCode4(dataSize, message);
+        }
+
+        private void DataHandleFunctionCode2(byte dataSize, byte[] message)
+        {
+            DataCount = dataSize * 8;
+            DataArray = new short[DataCount];
+
+            for (int i = 0; i < DataCount; i++)
             {
-                DataCount = dataSize / 2;
-
-                DataArray = new short[DataCount];
-
-                for (int i = 0; i < dataSize; i += 2)
-                {
-                    DataArray[i / 2] = (short)(message[3 + i] << 8 | message[3 + i + 1]);
-                }
+                DataArray[i] = (short)(message[3 + (i / 8)] >> (i % 8) & 1);
             }
+        }
 
-            if (FunctionCode == 2)
+        private void DataHandleFunctionCode4(byte dataSize, byte[] message)
+        {
+            DataCount = dataSize / 2;
+
+            DataArray = new short[DataCount];
+
+            for (int i = 0; i < dataSize; i += 2)
             {
-                DataCount = dataSize * 8;//임시로 1바이트만 처리되는 것으로 하자. 나중에 다양하게 호환 가능하게 수정할 것
-                DataArray = new short[DataCount];
-
-                for (int i = 0; i < DataCount; i ++)
-                {
-                    DataArray[i] = (short)(message[3] >> i & 1);
-                }
+                DataArray[i / 2] = (short)(message[3 + i] << 8 | message[3 + i + 1]);
             }
-
         }
 
         private static bool ValidCheckCrc(byte[] message)
