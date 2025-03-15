@@ -412,6 +412,7 @@
             this.button_OpenFileFolder.TabIndex = 42;
             this.button_OpenFileFolder.Text = "파일 경로 열기";
             this.button_OpenFileFolder.UseVisualStyleBackColor = true;
+            this.button_OpenFileFolder.Click += new System.EventHandler(this.button_OpenFileFolder_Click);
             // 
             // textBox_FileName
             // 

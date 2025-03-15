@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace TemperatureMonitor.Forms
 {
     public partial class MonitorCh2 : Form
     {
+        #region 멤버 변수
         private MonitorController? _controller;
 
         private const string ModelName = "TML-R";
@@ -27,7 +29,8 @@ namespace TemperatureMonitor.Forms
 
         private DateTime _loggingStartTime = DateTime.Now;
 
-        private CancellationTokenSource cts = new ();
+        private CancellationTokenSource cts = new();
+        #endregion
 
         #region 생성자
         public MonitorCh2()
@@ -157,7 +160,7 @@ namespace TemperatureMonitor.Forms
         }
         #endregion
 
-
+        #region Logging 공통 함수
         private async void button_LoggingStart_Click(object sender, EventArgs e)
         {
             #region 사전 조건  Check
@@ -258,23 +261,35 @@ namespace TemperatureMonitor.Forms
             }
         }
 
+        #endregion
+
+        #region Model별 Logging 상세
         private string GetHeaderString()
         {
             return "시간,모터온도,알람,누수";
         }
 
-        private string GetMeasuredDataString(DateTime current, Dictionary<DeviceDataType, ModbusData> modbusDataDictionary)
+        private string GetMeasuredDataString(DateTime current, Dictionary<DeviceDataType, ModbusData> data)
         {
-            return $"{current:yyyy-MM-dd HH:mm:ss},{modbusDataDictionary[DeviceDataType.Temperature1]},{modbusDataDictionary[DeviceDataType.Alarm1]},{modbusDataDictionary[DeviceDataType.Leak1]}";
+            return $"{current:yyyy-MM-dd HH:mm:ss},{data[DeviceDataType.Temperature1].Value},{data[DeviceDataType.Alarm1].Value},{data[DeviceDataType.Leak1].Value}";
         }
+        #endregion
 
+        #region 기타 지원 함수
         private int GetSamplingRate()
         {
             if (radioButton_1sec.Checked) return 1;
             if (radioButton_5sec.Checked) return 5;
-            /*if (radioButton_10sec.Checked)*/ return 10;
+            /*if (radioButton_10sec.Checked)*/
+            return 10;
         }
 
+        private void button_OpenFileFolder_Click(object sender, EventArgs e)
+        {
+            if (Directory.Exists(LoggingFilePath))
+                Process.Start("explorer.exe", LoggingFilePath);
+        }
 
+        #endregion
     }
 }
