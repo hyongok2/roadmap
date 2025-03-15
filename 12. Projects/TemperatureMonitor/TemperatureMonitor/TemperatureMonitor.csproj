@@ -18,6 +18,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Forms\MonitorCh7.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\MonitorCh3.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

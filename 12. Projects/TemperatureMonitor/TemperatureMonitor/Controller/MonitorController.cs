@@ -8,9 +8,9 @@ using TemperatureMonitor.Modbus;
 using TemperatureMonitor.Device;
 using TemperatureMonitor.Communications;
 
-namespace TemperatureMonitor
+namespace TemperatureMonitor.Controller
 {
-    public class MonitorController
+    public abstract class MonitorController
     {
         #region Event 정의
         public event Action<TemperatureDevice>? OnTemperatureDeviceValueChanged;
@@ -18,10 +18,10 @@ namespace TemperatureMonitor
 
         #region Member 변수 정의
         private readonly SerialCommunication? _serialCommunication;
-        private readonly TemperatureDevice? _device;
+        protected readonly TemperatureDevice? _device;
 
         private readonly Queue<RequestDataSet> _requestQueue = new();
-        private readonly List<RequestDataSet> _requestList = new();
+        protected readonly List<RequestDataSet> _requestList = new();
         private readonly List<byte> _responseMessage = new();
         private RequestDataSet? _currentRequestDataSet;
         private readonly ManualResetEvent _resetEvent = new(false);
@@ -30,11 +30,11 @@ namespace TemperatureMonitor
         #endregion
 
         #region 생성자
-        public MonitorController(string portName, int baudRate)
+        public MonitorController(string portName, int baudRate, TemperatureDevice temperatureDevice)
         {
             _serialCommunication = new SerialCommunication(portName, baudRate, dataBit: 8, Parity.None, StopBits.One);// 본 설비에서는 databit 등의 옵션은 고정이므로 여기에 하드코드 함.
             _serialCommunication.OnDataReceived += SerialCommunication_DataReceived;
-            _device = new TemperatureDevice(1);// slave 1 번 기준으로 작성함. 필요 시 확장성 고려하여 처리할 것
+            _device = temperatureDevice;
             _device.OnValueChanged += Device_OnValueChanged;
 
             InitialModbusDataSet();
@@ -99,31 +99,8 @@ namespace TemperatureMonitor
         #endregion
 
         #region 정보 초기화 처리
-        private void InitialModbusDataSet()
-        {
-            _requestList.Clear();
+        protected abstract void InitialModbusDataSet();
 
-            _requestList.Add(new RequestDataSet(new List<ModbusData>
-            {
-                _device!.ModbusDataDictionary[DeviceDataType.Temperature1],
-                _device!.ModbusDataDictionary[DeviceDataType.Temperature2],
-            },
-            _device.SlaveId));
-
-            _requestList.Add(new RequestDataSet(new List<ModbusData>
-            {
-                _device!.ModbusDataDictionary[DeviceDataType.Alarm1],
-                _device!.ModbusDataDictionary[DeviceDataType.Alarm2],
-            },
-            _device.SlaveId));
-
-            _requestList.Add(new RequestDataSet(new List<ModbusData>
-            {
-                _device!.ModbusDataDictionary[DeviceDataType.Leak1],
-                _device!.ModbusDataDictionary[DeviceDataType.Leak2],
-            },
-            _device.SlaveId));
-        }
         #endregion
 
         #region 정보 읽기 요청

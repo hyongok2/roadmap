@@ -1,4 +1,5 @@
 using System.IO.Ports;
+using TemperatureMonitor.Controller;
 using TemperatureMonitor.Device;
 
 namespace TemperatureMonitor
@@ -46,7 +47,7 @@ namespace TemperatureMonitor
 
             try
             {
-                _controller = new MonitorController(comboBox_Comport.Text, int.Parse(comboBox_Baudrate.Text));
+                _controller = new ControllerCh3(comboBox_Comport.Text, int.Parse(comboBox_Baudrate.Text));
                 _controller.OnTemperatureDeviceValueChanged += Controller_OnTemperatureDeviceValueChanged;
 
                 var result = await Task.Run(_controller.Start);

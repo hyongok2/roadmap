@@ -10,6 +10,9 @@ namespace TemperatureMonitor.Device
     {
         Temperature1,
         Temperature2,
+        Temperature3,
+        Temperature4,
+        Temperature5,
         Alarm1,
         Alarm2,
         Leak1,
