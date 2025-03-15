@@ -38,34 +38,35 @@
             this.button_Connect = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton_60sec = new System.Windows.Forms.RadioButton();
+            this.radioButton_30sec = new System.Windows.Forms.RadioButton();
+            this.radioButton_10sec = new System.Windows.Forms.RadioButton();
+            this.radioButton_5sec = new System.Windows.Forms.RadioButton();
+            this.radioButton_1sec = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox_SettingHours = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.button_LoggingStart = new System.Windows.Forms.Button();
+            this.button_LoggingStop = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.textBox_SamplingTime = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBox_ProgressTime = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.button_OpenFileFolder = new System.Windows.Forms.Button();
+            this.textBox_FileName = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox_SetHour = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
+            this.label_Status = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -163,73 +164,73 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Gainsboro;
-            this.panel2.Controls.Add(this.radioButton5);
-            this.panel2.Controls.Add(this.radioButton4);
-            this.panel2.Controls.Add(this.radioButton3);
-            this.panel2.Controls.Add(this.radioButton2);
-            this.panel2.Controls.Add(this.radioButton1);
+            this.panel2.Controls.Add(this.radioButton_60sec);
+            this.panel2.Controls.Add(this.radioButton_30sec);
+            this.panel2.Controls.Add(this.radioButton_10sec);
+            this.panel2.Controls.Add(this.radioButton_5sec);
+            this.panel2.Controls.Add(this.radioButton_1sec);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Location = new System.Drawing.Point(485, 12);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(142, 273);
+            this.panel2.Size = new System.Drawing.Size(142, 230);
             this.panel2.TabIndex = 36;
             // 
-            // radioButton5
+            // radioButton_60sec
             // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.radioButton5.Location = new System.Drawing.Point(18, 179);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(68, 24);
-            this.radioButton5.TabIndex = 37;
-            this.radioButton5.Text = "60 sec";
-            this.radioButton5.UseVisualStyleBackColor = true;
+            this.radioButton_60sec.AutoSize = true;
+            this.radioButton_60sec.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.radioButton_60sec.Location = new System.Drawing.Point(18, 179);
+            this.radioButton_60sec.Name = "radioButton_60sec";
+            this.radioButton_60sec.Size = new System.Drawing.Size(68, 24);
+            this.radioButton_60sec.TabIndex = 37;
+            this.radioButton_60sec.Text = "60 sec";
+            this.radioButton_60sec.UseVisualStyleBackColor = true;
             // 
-            // radioButton4
+            // radioButton_30sec
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.radioButton4.Location = new System.Drawing.Point(18, 145);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(68, 24);
-            this.radioButton4.TabIndex = 36;
-            this.radioButton4.Text = "30 sec";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButton_30sec.AutoSize = true;
+            this.radioButton_30sec.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.radioButton_30sec.Location = new System.Drawing.Point(18, 145);
+            this.radioButton_30sec.Name = "radioButton_30sec";
+            this.radioButton_30sec.Size = new System.Drawing.Size(68, 24);
+            this.radioButton_30sec.TabIndex = 36;
+            this.radioButton_30sec.Text = "30 sec";
+            this.radioButton_30sec.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // radioButton_10sec
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.radioButton3.Location = new System.Drawing.Point(18, 111);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(68, 24);
-            this.radioButton3.TabIndex = 35;
-            this.radioButton3.Text = "10 sec";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton_10sec.AutoSize = true;
+            this.radioButton_10sec.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.radioButton_10sec.Location = new System.Drawing.Point(18, 111);
+            this.radioButton_10sec.Name = "radioButton_10sec";
+            this.radioButton_10sec.Size = new System.Drawing.Size(68, 24);
+            this.radioButton_10sec.TabIndex = 35;
+            this.radioButton_10sec.Text = "10 sec";
+            this.radioButton_10sec.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // radioButton_5sec
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.radioButton2.Location = new System.Drawing.Point(18, 77);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(60, 24);
-            this.radioButton2.TabIndex = 34;
-            this.radioButton2.Text = "5 sec";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton_5sec.AutoSize = true;
+            this.radioButton_5sec.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.radioButton_5sec.Location = new System.Drawing.Point(18, 77);
+            this.radioButton_5sec.Name = "radioButton_5sec";
+            this.radioButton_5sec.Size = new System.Drawing.Size(60, 24);
+            this.radioButton_5sec.TabIndex = 34;
+            this.radioButton_5sec.Text = "5 sec";
+            this.radioButton_5sec.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // radioButton_1sec
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.radioButton1.Location = new System.Drawing.Point(18, 43);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(60, 24);
-            this.radioButton1.TabIndex = 33;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "1 sec";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton_1sec.AutoSize = true;
+            this.radioButton_1sec.Checked = true;
+            this.radioButton_1sec.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.radioButton_1sec.Location = new System.Drawing.Point(18, 43);
+            this.radioButton_1sec.Name = "radioButton_1sec";
+            this.radioButton_1sec.Size = new System.Drawing.Size(60, 24);
+            this.radioButton_1sec.TabIndex = 33;
+            this.radioButton_1sec.TabStop = true;
+            this.radioButton_1sec.Text = "1 sec";
+            this.radioButton_1sec.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -245,7 +246,7 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.Gainsboro;
             this.panel3.Controls.Add(this.label6);
-            this.panel3.Controls.Add(this.textBox1);
+            this.panel3.Controls.Add(this.textBox_SettingHours);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Location = new System.Drawing.Point(645, 12);
             this.panel3.Name = "panel3";
@@ -262,16 +263,16 @@
             this.label6.TabIndex = 34;
             this.label6.Text = "hour";
             // 
-            // textBox1
+            // textBox_SettingHours
             // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(15, 50);
-            this.textBox1.MaxLength = 6;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 29);
-            this.textBox1.TabIndex = 33;
-            this.textBox1.Text = "1";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_SettingHours.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.textBox_SettingHours.Location = new System.Drawing.Point(15, 50);
+            this.textBox_SettingHours.MaxLength = 6;
+            this.textBox_SettingHours.Name = "textBox_SettingHours";
+            this.textBox_SettingHours.Size = new System.Drawing.Size(100, 29);
+            this.textBox_SettingHours.TabIndex = 33;
+            this.textBox_SettingHours.Text = "1";
+            this.textBox_SettingHours.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label5
             // 
@@ -283,25 +284,25 @@
             this.label5.TabIndex = 32;
             this.label5.Text = "측정 시간 설정";
             // 
-            // button1
+            // button_LoggingStart
             // 
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(645, 128);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(181, 72);
-            this.button1.TabIndex = 38;
-            this.button1.Text = "시작";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button_LoggingStart.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button_LoggingStart.Location = new System.Drawing.Point(645, 128);
+            this.button_LoggingStart.Name = "button_LoggingStart";
+            this.button_LoggingStart.Size = new System.Drawing.Size(181, 72);
+            this.button_LoggingStart.TabIndex = 38;
+            this.button_LoggingStart.Text = "시작";
+            this.button_LoggingStart.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // button_LoggingStop
             // 
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(645, 208);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(181, 72);
-            this.button2.TabIndex = 39;
-            this.button2.Text = "종료";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button_LoggingStop.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button_LoggingStop.Location = new System.Drawing.Point(645, 208);
+            this.button_LoggingStop.Name = "button_LoggingStop";
+            this.button_LoggingStop.Size = new System.Drawing.Size(181, 72);
+            this.button_LoggingStop.TabIndex = 39;
+            this.button_LoggingStop.Text = "종료";
+            this.button_LoggingStop.UseVisualStyleBackColor = true;
             // 
             // label7
             // 
@@ -317,15 +318,15 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.Gainsboro;
             this.panel4.Controls.Add(this.label14);
-            this.panel4.Controls.Add(this.textBox6);
+            this.panel4.Controls.Add(this.textBox_SamplingTime);
             this.panel4.Controls.Add(this.label15);
             this.panel4.Controls.Add(this.label12);
-            this.panel4.Controls.Add(this.textBox5);
+            this.panel4.Controls.Add(this.textBox_ProgressTime);
             this.panel4.Controls.Add(this.label13);
-            this.panel4.Controls.Add(this.button3);
-            this.panel4.Controls.Add(this.textBox4);
+            this.panel4.Controls.Add(this.button_OpenFileFolder);
+            this.panel4.Controls.Add(this.textBox_FileName);
             this.panel4.Controls.Add(this.label11);
-            this.panel4.Controls.Add(this.textBox3);
+            this.panel4.Controls.Add(this.textBox_SetHour);
             this.panel4.Controls.Add(this.textBox2);
             this.panel4.Controls.Add(this.label10);
             this.panel4.Controls.Add(this.label9);
@@ -336,27 +337,91 @@
             this.panel4.Size = new System.Drawing.Size(330, 273);
             this.panel4.TabIndex = 41;
             // 
-            // button3
+            // label14
             // 
-            this.button3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button3.Location = new System.Drawing.Point(18, 228);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(299, 34);
-            this.button3.TabIndex = 42;
-            this.button3.Text = "파일 경로 열기";
-            this.button3.UseVisualStyleBackColor = true;
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label14.Location = new System.Drawing.Point(275, 159);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(32, 21);
+            this.label14.TabIndex = 53;
+            this.label14.Text = "sec";
             // 
-            // textBox4
+            // textBox_SamplingTime
             // 
-            this.textBox4.Enabled = false;
-            this.textBox4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox4.Location = new System.Drawing.Point(79, 190);
-            this.textBox4.MaxLength = 25;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(238, 29);
-            this.textBox4.TabIndex = 47;
-            this.textBox4.Text = "TML-R_20250315170000.txt";
-            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_SamplingTime.Enabled = false;
+            this.textBox_SamplingTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.textBox_SamplingTime.Location = new System.Drawing.Point(110, 155);
+            this.textBox_SamplingTime.MaxLength = 6;
+            this.textBox_SamplingTime.Name = "textBox_SamplingTime";
+            this.textBox_SamplingTime.Size = new System.Drawing.Size(162, 29);
+            this.textBox_SamplingTime.TabIndex = 52;
+            this.textBox_SamplingTime.Text = "1";
+            this.textBox_SamplingTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label15.Location = new System.Drawing.Point(20, 159);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(73, 20);
+            this.label15.TabIndex = 51;
+            this.label15.Text = "측정 주기";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label12.Location = new System.Drawing.Point(274, 124);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(43, 21);
+            this.label12.TabIndex = 50;
+            this.label12.Text = "hour";
+            // 
+            // textBox_ProgressTime
+            // 
+            this.textBox_ProgressTime.Enabled = false;
+            this.textBox_ProgressTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.textBox_ProgressTime.Location = new System.Drawing.Point(109, 120);
+            this.textBox_ProgressTime.MaxLength = 6;
+            this.textBox_ProgressTime.Name = "textBox_ProgressTime";
+            this.textBox_ProgressTime.Size = new System.Drawing.Size(162, 29);
+            this.textBox_ProgressTime.TabIndex = 49;
+            this.textBox_ProgressTime.Text = "1";
+            this.textBox_ProgressTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label13.Location = new System.Drawing.Point(19, 124);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(73, 20);
+            this.label13.TabIndex = 48;
+            this.label13.Text = "경과 시간";
+            // 
+            // button_OpenFileFolder
+            // 
+            this.button_OpenFileFolder.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button_OpenFileFolder.Location = new System.Drawing.Point(18, 228);
+            this.button_OpenFileFolder.Name = "button_OpenFileFolder";
+            this.button_OpenFileFolder.Size = new System.Drawing.Size(299, 34);
+            this.button_OpenFileFolder.TabIndex = 42;
+            this.button_OpenFileFolder.Text = "파일 경로 열기";
+            this.button_OpenFileFolder.UseVisualStyleBackColor = true;
+            // 
+            // textBox_FileName
+            // 
+            this.textBox_FileName.Enabled = false;
+            this.textBox_FileName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox_FileName.Location = new System.Drawing.Point(79, 190);
+            this.textBox_FileName.MaxLength = 25;
+            this.textBox_FileName.Name = "textBox_FileName";
+            this.textBox_FileName.Size = new System.Drawing.Size(238, 29);
+            this.textBox_FileName.TabIndex = 47;
+            this.textBox_FileName.Text = "TML-R_20250315170000.txt";
+            this.textBox_FileName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label11
             // 
@@ -368,17 +433,17 @@
             this.label11.TabIndex = 46;
             this.label11.Text = "hour";
             // 
-            // textBox3
+            // textBox_SetHour
             // 
-            this.textBox3.Enabled = false;
-            this.textBox3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.textBox3.Location = new System.Drawing.Point(109, 85);
-            this.textBox3.MaxLength = 6;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(162, 29);
-            this.textBox3.TabIndex = 45;
-            this.textBox3.Text = "1";
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_SetHour.Enabled = false;
+            this.textBox_SetHour.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.textBox_SetHour.Location = new System.Drawing.Point(109, 85);
+            this.textBox_SetHour.MaxLength = 6;
+            this.textBox_SetHour.Name = "textBox_SetHour";
+            this.textBox_SetHour.Size = new System.Drawing.Size(162, 29);
+            this.textBox_SetHour.TabIndex = 45;
+            this.textBox_SetHour.Text = "1";
+            this.textBox_SetHour.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox2
             // 
@@ -422,78 +487,27 @@
             this.label8.TabIndex = 41;
             this.label8.Text = "시작 시간";
             // 
-            // label12
+            // label_Status
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(274, 124);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(43, 21);
-            this.label12.TabIndex = 50;
-            this.label12.Text = "hour";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Enabled = false;
-            this.textBox5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.textBox5.Location = new System.Drawing.Point(109, 120);
-            this.textBox5.MaxLength = 6;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(162, 29);
-            this.textBox5.TabIndex = 49;
-            this.textBox5.Text = "1";
-            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(19, 124);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(73, 20);
-            this.label13.TabIndex = 48;
-            this.label13.Text = "경과 시간";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label14.Location = new System.Drawing.Point(275, 159);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(32, 21);
-            this.label14.TabIndex = 53;
-            this.label14.Text = "sec";
-            // 
-            // textBox6
-            // 
-            this.textBox6.Enabled = false;
-            this.textBox6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.textBox6.Location = new System.Drawing.Point(110, 155);
-            this.textBox6.MaxLength = 6;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(162, 29);
-            this.textBox6.TabIndex = 52;
-            this.textBox6.Text = "1";
-            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label15.Location = new System.Drawing.Point(20, 159);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(73, 20);
-            this.label15.TabIndex = 51;
-            this.label15.Text = "측정 주기";
+            this.label_Status.AutoSize = true;
+            this.label_Status.BackColor = System.Drawing.Color.Gainsboro;
+            this.label_Status.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label_Status.ForeColor = System.Drawing.Color.White;
+            this.label_Status.Location = new System.Drawing.Point(491, 250);
+            this.label_Status.Name = "label_Status";
+            this.label_Status.Size = new System.Drawing.Size(130, 30);
+            this.label_Status.TabIndex = 42;
+            this.label_Status.Text = "측정 대기 중";
             // 
             // MonitorCh2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 661);
+            this.Controls.Add(this.label_Status);
             this.Controls.Add(this.panel4);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button_LoggingStop);
+            this.Controls.Add(this.button_LoggingStart);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -530,33 +544,34 @@
         private Button button_Connect;
         private Panel panel1;
         private Panel panel2;
-        private RadioButton radioButton5;
-        private RadioButton radioButton4;
-        private RadioButton radioButton3;
-        private RadioButton radioButton2;
-        private RadioButton radioButton1;
+        private RadioButton radioButton_60sec;
+        private RadioButton radioButton_30sec;
+        private RadioButton radioButton_10sec;
+        private RadioButton radioButton_5sec;
+        private RadioButton radioButton_1sec;
         private Label label1;
         private Panel panel3;
         private Label label6;
-        private TextBox textBox1;
+        private TextBox textBox_SettingHours;
         private Label label5;
-        private Button button1;
-        private Button button2;
+        private Button button_LoggingStart;
+        private Button button_LoggingStop;
         private Label label7;
         private Panel panel4;
         private Label label11;
-        private TextBox textBox3;
+        private TextBox textBox_SetHour;
         private TextBox textBox2;
         private Label label10;
         private Label label9;
         private Label label8;
-        private Button button3;
-        private TextBox textBox4;
+        private Button button_OpenFileFolder;
+        private TextBox textBox_FileName;
         private Label label14;
-        private TextBox textBox6;
+        private TextBox textBox_SamplingTime;
         private Label label15;
         private Label label12;
-        private TextBox textBox5;
+        private TextBox textBox_ProgressTime;
         private Label label13;
+        private Label label_Status;
     }
 }
