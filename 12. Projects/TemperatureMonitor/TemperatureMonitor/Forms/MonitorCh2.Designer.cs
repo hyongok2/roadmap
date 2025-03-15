@@ -75,12 +75,19 @@
             this.radioButton_10min = new System.Windows.Forms.RadioButton();
             this.radioButton_1min = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.formsPlot1 = new ScottPlot.WinForms.FormsPlot();
+            this.timerChart = new System.Windows.Forms.Timer(this.components);
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.formsPlot2 = new ScottPlot.WinForms.FormsPlot();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -405,7 +412,7 @@
             // 
             // button_OpenFileFolder
             // 
-            this.button_OpenFileFolder.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button_OpenFileFolder.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button_OpenFileFolder.Location = new System.Drawing.Point(18, 228);
             this.button_OpenFileFolder.Name = "button_OpenFileFolder";
             this.button_OpenFileFolder.Size = new System.Drawing.Size(299, 34);
@@ -499,7 +506,7 @@
             this.label_Temp1.Name = "label_Temp1";
             this.label_Temp1.Size = new System.Drawing.Size(113, 59);
             this.label_Temp1.TabIndex = 35;
-            this.label_Temp1.Text = "99";
+            this.label_Temp1.Text = "0";
             this.label_Temp1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label_Alarm1
@@ -557,24 +564,24 @@
             // radioButton_10min
             // 
             this.radioButton_10min.AutoSize = true;
-            this.radioButton_10min.Checked = true;
             this.radioButton_10min.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.radioButton_10min.Location = new System.Drawing.Point(18, 68);
             this.radioButton_10min.Name = "radioButton_10min";
             this.radioButton_10min.Size = new System.Drawing.Size(62, 24);
             this.radioButton_10min.TabIndex = 34;
-            this.radioButton_10min.TabStop = true;
             this.radioButton_10min.Text = "10 분";
             this.radioButton_10min.UseVisualStyleBackColor = true;
             // 
             // radioButton_1min
             // 
             this.radioButton_1min.AutoSize = true;
+            this.radioButton_1min.Checked = true;
             this.radioButton_1min.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.radioButton_1min.Location = new System.Drawing.Point(18, 41);
             this.radioButton_1min.Name = "radioButton_1min";
             this.radioButton_1min.Size = new System.Drawing.Size(54, 24);
             this.radioButton_1min.TabIndex = 33;
+            this.radioButton_1min.TabStop = true;
             this.radioButton_1min.Text = "1 분";
             this.radioButton_1min.UseVisualStyleBackColor = true;
             // 
@@ -588,11 +595,58 @@
             this.label2.TabIndex = 32;
             this.label2.Text = "차트 표시 범위";
             // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.Silver;
+            this.panel6.Controls.Add(this.formsPlot1);
+            this.panel6.Location = new System.Drawing.Point(12, 294);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(1160, 358);
+            this.panel6.TabIndex = 45;
+            // 
+            // formsPlot1
+            // 
+            this.formsPlot1.DisplayScale = 1F;
+            this.formsPlot1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.formsPlot1.Enabled = false;
+            this.formsPlot1.Location = new System.Drawing.Point(0, 0);
+            this.formsPlot1.Name = "formsPlot1";
+            this.formsPlot1.Padding = new System.Windows.Forms.Padding(5);
+            this.formsPlot1.Size = new System.Drawing.Size(1160, 358);
+            this.formsPlot1.TabIndex = 0;
+            // 
+            // timerChart
+            // 
+            this.timerChart.Interval = 1000;
+            this.timerChart.Tick += new System.EventHandler(this.timerChart_Tick);
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.Silver;
+            this.panel7.Controls.Add(this.formsPlot2);
+            this.panel7.Location = new System.Drawing.Point(12, 658);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(1160, 141);
+            this.panel7.TabIndex = 46;
+            // 
+            // formsPlot2
+            // 
+            this.formsPlot2.DisplayScale = 1F;
+            this.formsPlot2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.formsPlot2.Enabled = false;
+            this.formsPlot2.Location = new System.Drawing.Point(0, 0);
+            this.formsPlot2.Name = "formsPlot2";
+            this.formsPlot2.Padding = new System.Windows.Forms.Padding(5);
+            this.formsPlot2.Size = new System.Drawing.Size(1160, 141);
+            this.formsPlot2.TabIndex = 1;
+            // 
             // MonitorCh2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 661);
+            this.ClientSize = new System.Drawing.Size(1184, 811);
+            this.Controls.Add(this.panel7);
+            this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.label_Leak1);
             this.Controls.Add(this.label_Alarm1);
@@ -621,6 +675,8 @@
             this.panel4.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -673,5 +729,10 @@
         private RadioButton radioButton_10min;
         private RadioButton radioButton_1min;
         private Label label2;
+        private Panel panel6;
+        private ScottPlot.WinForms.FormsPlot formsPlot1;
+        private System.Windows.Forms.Timer timerChart;
+        private Panel panel7;
+        private ScottPlot.WinForms.FormsPlot formsPlot2;
     }
 }

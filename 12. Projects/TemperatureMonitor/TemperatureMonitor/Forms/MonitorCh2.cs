@@ -1,9 +1,12 @@
-﻿using System;
+﻿using ScottPlot;
+using ScottPlot.WinForms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
@@ -38,6 +41,12 @@ namespace TemperatureMonitor.Forms
             InitializeComponent();
 
             SetUpComboBox();
+
+            InitialChartControl();
+
+            timer_Display.Start();
+
+            //timerChart.Start();//임시
         }
         #endregion
 
@@ -98,6 +107,9 @@ namespace TemperatureMonitor.Forms
                 {
                     MessageBox.Show("정상적으로 연결되었습니다.");
                     _isConnected = true;
+                    ChartDataClear();
+                    _maxDataCount = GetMaxDataCount();
+                    timerChart.Start();
                 }
             }
             catch (Exception)
@@ -109,6 +121,7 @@ namespace TemperatureMonitor.Forms
                 _isStarting = false;
             }
         }
+
         #endregion
 
         #region 화면 표시 처리
@@ -120,42 +133,42 @@ namespace TemperatureMonitor.Forms
                 label_Temp1.Text = device.ModbusDataDictionary[DeviceDataType.Temperature1].Value.ToString();
                 if (device.ModbusDataDictionary[DeviceDataType.Alarm1].Value == 1)
                 {
-                    label_Alarm1.ForeColor = Color.Red;
+                    label_Alarm1.ForeColor = System.Drawing.Color.Red;
                 }
                 else
                 {
-                    label_Alarm1.ForeColor = Color.Gray;
+                    label_Alarm1.ForeColor = System.Drawing.Color.Gray;
                 }
                 if (device.ModbusDataDictionary[DeviceDataType.Leak1].Value == 1)
                 {
-                    label_Leak1.ForeColor = Color.Red;
+                    label_Leak1.ForeColor = System.Drawing.Color.Red;
                 }
                 else
                 {
-                    label_Leak1.ForeColor = Color.Gray;
+                    label_Leak1.ForeColor = System.Drawing.Color.Gray;
                 }
             }));
         }
 
         private void timer_Display_Tick(object sender, EventArgs e)
         {
-            if (_isConnected) label_Running.ForeColor = Color.Lime;
-            else label_Running.ForeColor = Color.Gray;
+            if (_isConnected) label_Running.ForeColor = System.Drawing.Color.Lime;
+            else label_Running.ForeColor = System.Drawing.Color.Gray;
 
             if (_isLogging)
             {
                 label_Status.Text = "측정 기록 중";
                 if (DateTime.Now.Second % 2 == 0)
-                    label_Status.ForeColor = Color.Black;
+                    label_Status.ForeColor = System.Drawing.Color.Black;
                 else
-                    label_Status.ForeColor = Color.White;
+                    label_Status.ForeColor = System.Drawing.Color.White;
 
                 textBox_ProgressHour.Text = (DateTime.Now - _loggingStartTime).Hours.ToString();
             }
             else
             {
                 label_Status.Text = "측정 대기 중";
-                label_Status.ForeColor = Color.White;
+                label_Status.ForeColor = System.Drawing.Color.White;
             }
         }
         #endregion
@@ -291,5 +304,75 @@ namespace TemperatureMonitor.Forms
         }
 
         #endregion
+
+        #region Chart 관련 함수
+
+        private ScottPlot.Plottables.DataLogger _loggerTemperature1;
+        private ScottPlot.Plottables.DataLogger _loggerLeak1;
+
+        private List<int> _motorTemperature = new ();
+        private List<int> _leakData = new ();
+        private int _maxDataCount = 60;
+        private void InitialChartControl()
+        {
+            formsPlot1.Plot.Title("Real Time Temperature Chart");
+            //formsPlot1.Plot.YLabel("Temperature");
+
+            _loggerTemperature1 = formsPlot1.Plot.Add.DataLogger();
+
+            _loggerTemperature1.LegendText = "Motor";
+            _loggerTemperature1.LineColor = ScottPlot.Color.FromColor(System.Drawing.Color.Black);
+
+            formsPlot2.Plot.Title("Real Time Leak State Chart");
+
+            _loggerLeak1 = formsPlot2.Plot.Add.DataLogger();
+
+            _loggerLeak1.LegendText = "Leak";
+            _loggerLeak1.LineColor = ScottPlot.Color.FromColor(System.Drawing.Color.Red);
+        }
+
+        private void timerChart_Tick(object sender, EventArgs e)
+        {
+            if (_motorTemperature.Count == _maxDataCount) { _motorTemperature.RemoveAt(0); }
+            if (_leakData.Count == _maxDataCount) { _leakData.RemoveAt(0); }
+
+            _motorTemperature.Add(_controller!.Device!.ModbusDataDictionary[DeviceDataType.Temperature1].Value);
+            _leakData.Add(_controller!.Device!.ModbusDataDictionary[DeviceDataType.Leak1].Value);
+
+            //_motorTemperature.Add(new Random().Next(30));
+            //_leakData.Add(new Random().Next(2));
+
+            _loggerTemperature1.Clear();
+            _loggerLeak1.Clear();
+
+            for (int i = 0; i < _motorTemperature.Count; i++)
+            {
+                _loggerTemperature1.Add(i + 1, _motorTemperature[i]);
+                _loggerLeak1.Add(i + 1, _leakData[i]);
+            }
+
+            formsPlot1.Plot.Axes.SetLimitsY(bottom: 0, top: 200);
+            formsPlot2.Plot.Axes.SetLimitsY(bottom: 0, top: 2);
+
+            formsPlot1.Refresh();
+            formsPlot2.Refresh();
+        }
+
+        private void ChartDataClear()
+        {
+            _motorTemperature.Clear();
+            _leakData.Clear();
+        }
+
+        private int GetMaxDataCount()
+        {
+            if (radioButton_1min.Checked) return 60;
+            if (radioButton_10min.Checked) return 600;
+            /*if (radioButton_60min.Checked)*/
+            return 3600;
+
+        }
+        #endregion
+
     }
 }
