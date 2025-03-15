@@ -16,5 +16,10 @@ namespace TemperatureMonitor.Forms
         {
             InitializeComponent();
         }
+
+        private void MonitorCh2_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
