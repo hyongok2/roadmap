@@ -16,9 +16,12 @@ namespace TemperatureMonitor.Controller
         public event Action<TemperatureDevice>? OnTemperatureDeviceValueChanged;
         #endregion
 
+        #region 속성
+        public TemperatureDevice? Device { get; }
+        #endregion
+
         #region Member 변수 정의
         private readonly SerialCommunication? _serialCommunication;
-        protected readonly TemperatureDevice? _device;
 
         private readonly Queue<RequestDataSet> _requestQueue = new();
         protected readonly List<RequestDataSet> _requestList = new();
@@ -34,8 +37,8 @@ namespace TemperatureMonitor.Controller
         {
             _serialCommunication = new SerialCommunication(portName, baudRate, dataBit: 8, Parity.None, StopBits.One);// 본 설비에서는 databit 등의 옵션은 고정이므로 여기에 하드코드 함.
             _serialCommunication.OnDataReceived += SerialCommunication_DataReceived;
-            _device = temperatureDevice;
-            _device.OnValueChanged += Device_OnValueChanged;
+            Device = temperatureDevice;
+            Device.OnValueChanged += Device_OnValueChanged;
 
             InitialModbusDataSet();
 
@@ -88,7 +91,7 @@ namespace TemperatureMonitor.Controller
         #region 이벤트 핸들러
         private void Device_OnValueChanged()
         {
-            OnTemperatureDeviceValueChanged?.Invoke(_device!);
+            OnTemperatureDeviceValueChanged?.Invoke(Device!);
         }
 
         private void SerialCommunication_DataReceived(byte[] receivedData)

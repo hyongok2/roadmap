@@ -18,27 +18,27 @@ namespace TemperatureMonitor.Controller
 
             _requestList.Add(new RequestDataSet(new List<ModbusData>
                 {
-                    _device!.ModbusDataDictionary[DeviceDataType.Temperature1],
-                    _device!.ModbusDataDictionary[DeviceDataType.Temperature2],
-                    _device!.ModbusDataDictionary[DeviceDataType.Temperature3],
-                    _device!.ModbusDataDictionary[DeviceDataType.Temperature4],
-                    _device!.ModbusDataDictionary[DeviceDataType.Temperature5]
+                    Device!.ModbusDataDictionary[DeviceDataType.Temperature1],
+                    Device!.ModbusDataDictionary[DeviceDataType.Temperature2],
+                    Device!.ModbusDataDictionary[DeviceDataType.Temperature3],
+                    Device!.ModbusDataDictionary[DeviceDataType.Temperature4],
+                    Device!.ModbusDataDictionary[DeviceDataType.Temperature5]
                 },
-            _device.SlaveId));
+            Device.SlaveId));
 
             _requestList.Add(new RequestDataSet(new List<ModbusData>
                 {
-                    _device!.ModbusDataDictionary[DeviceDataType.Alarm1],
-                    _device!.ModbusDataDictionary[DeviceDataType.Alarm2]
+                    Device!.ModbusDataDictionary[DeviceDataType.Alarm1],
+                    Device!.ModbusDataDictionary[DeviceDataType.Alarm2]
                 },
-            _device.SlaveId));
+            Device.SlaveId));
 
             _requestList.Add(new RequestDataSet(new List<ModbusData>
                 {
-                _device !.ModbusDataDictionary[DeviceDataType.Leak1],
-                _device !.ModbusDataDictionary[DeviceDataType.Leak2]
+                Device !.ModbusDataDictionary[DeviceDataType.Leak1],
+                Device !.ModbusDataDictionary[DeviceDataType.Leak2]
             },
-            _device.SlaveId));
+            Device.SlaveId));
         }
     }
 }

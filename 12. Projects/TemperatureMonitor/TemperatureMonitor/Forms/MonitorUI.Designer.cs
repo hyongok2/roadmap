@@ -29,212 +29,204 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MonitorUI));
-            button_Start = new Button();
-            comboBox_Comport = new ComboBox();
-            comboBox_Baudrate = new ComboBox();
-            label3 = new Label();
-            label4 = new Label();
-            label_Temp1 = new Label();
-            label_Temp2 = new Label();
-            label_Alarm1 = new Label();
-            label_Alarm2 = new Label();
-            label_Leak1 = new Label();
-            label_Leak2 = new Label();
-            pictureBox1 = new PictureBox();
-            label1 = new Label();
-            label2 = new Label();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            SuspendLayout();
+            this.button_Start = new System.Windows.Forms.Button();
+            this.comboBox_Comport = new System.Windows.Forms.ComboBox();
+            this.comboBox_Baudrate = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label_Temp1 = new System.Windows.Forms.Label();
+            this.label_Temp2 = new System.Windows.Forms.Label();
+            this.label_Alarm1 = new System.Windows.Forms.Label();
+            this.label_Alarm2 = new System.Windows.Forms.Label();
+            this.label_Leak1 = new System.Windows.Forms.Label();
+            this.label_Leak2 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.SuspendLayout();
             // 
             // button_Start
             // 
-            button_Start.Location = new Point(557, 365);
-            button_Start.Name = "button_Start";
-            button_Start.Size = new Size(93, 29);
-            button_Start.TabIndex = 2;
-            button_Start.Text = "Start";
-            button_Start.UseVisualStyleBackColor = true;
-            button_Start.Click += button_Start_Click;
+            this.button_Start.Location = new System.Drawing.Point(433, 274);
+            this.button_Start.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_Start.Name = "button_Start";
+            this.button_Start.Size = new System.Drawing.Size(72, 22);
+            this.button_Start.TabIndex = 2;
+            this.button_Start.Text = "Start";
+            this.button_Start.UseVisualStyleBackColor = true;
+            this.button_Start.Click += new System.EventHandler(this.button_Start_Click_1);
             // 
             // comboBox_Comport
             // 
-            comboBox_Comport.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox_Comport.FormattingEnabled = true;
-            comboBox_Comport.Location = new Point(120, 364);
-            comboBox_Comport.Name = "comboBox_Comport";
-            comboBox_Comport.Size = new Size(151, 28);
-            comboBox_Comport.TabIndex = 3;
+            this.comboBox_Comport.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_Comport.FormattingEnabled = true;
+            this.comboBox_Comport.Location = new System.Drawing.Point(93, 273);
+            this.comboBox_Comport.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox_Comport.Name = "comboBox_Comport";
+            this.comboBox_Comport.Size = new System.Drawing.Size(118, 23);
+            this.comboBox_Comport.TabIndex = 3;
             // 
             // comboBox_Baudrate
             // 
-            comboBox_Baudrate.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox_Baudrate.FormattingEnabled = true;
-            comboBox_Baudrate.Location = new Point(396, 364);
-            comboBox_Baudrate.Name = "comboBox_Baudrate";
-            comboBox_Baudrate.Size = new Size(151, 28);
-            comboBox_Baudrate.TabIndex = 4;
+            this.comboBox_Baudrate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_Baudrate.FormattingEnabled = true;
+            this.comboBox_Baudrate.Location = new System.Drawing.Point(308, 273);
+            this.comboBox_Baudrate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox_Baudrate.Name = "comboBox_Baudrate";
+            this.comboBox_Baudrate.Size = new System.Drawing.Size(118, 23);
+            this.comboBox_Baudrate.TabIndex = 4;
             // 
             // label3
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(21, 369);
-            label3.Margin = new Padding(4, 0, 4, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(83, 20);
-            label3.TabIndex = 5;
-            label3.Text = "COMPORT";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(16, 277);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(64, 15);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "COMPORT";
             // 
             // label4
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(297, 369);
-            label4.Margin = new Padding(4, 0, 4, 0);
-            label4.Name = "label4";
-            label4.Size = new Size(85, 20);
-            label4.TabIndex = 6;
-            label4.Text = "BAUDRATE";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(231, 277);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(65, 15);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "BAUDRATE";
             // 
             // label_Temp1
             // 
-            label_Temp1.BackColor = SystemColors.ActiveCaptionText;
-            label_Temp1.Font = new Font("Microsoft Sans Serif", 36F, FontStyle.Bold, GraphicsUnit.Point);
-            label_Temp1.ForeColor = Color.Red;
-            label_Temp1.Location = new Point(224, 129);
-            label_Temp1.Margin = new Padding(4, 0, 4, 0);
-            label_Temp1.Name = "label_Temp1";
-            label_Temp1.Size = new Size(145, 79);
-            label_Temp1.TabIndex = 18;
-            label_Temp1.Text = "38";
-            label_Temp1.TextAlign = ContentAlignment.MiddleRight;
+            this.label_Temp1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label_Temp1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label_Temp1.ForeColor = System.Drawing.Color.Red;
+            this.label_Temp1.Location = new System.Drawing.Point(174, 97);
+            this.label_Temp1.Name = "label_Temp1";
+            this.label_Temp1.Size = new System.Drawing.Size(113, 59);
+            this.label_Temp1.TabIndex = 18;
+            this.label_Temp1.Text = "38";
+            this.label_Temp1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label_Temp2
             // 
-            label_Temp2.BackColor = SystemColors.ActiveCaptionText;
-            label_Temp2.Font = new Font("Microsoft Sans Serif", 36F, FontStyle.Bold, GraphicsUnit.Point);
-            label_Temp2.ForeColor = Color.Red;
-            label_Temp2.Location = new Point(450, 129);
-            label_Temp2.Margin = new Padding(4, 0, 4, 0);
-            label_Temp2.Name = "label_Temp2";
-            label_Temp2.Size = new Size(145, 79);
-            label_Temp2.TabIndex = 19;
-            label_Temp2.Text = "38";
-            label_Temp2.TextAlign = ContentAlignment.MiddleRight;
+            this.label_Temp2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label_Temp2.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label_Temp2.ForeColor = System.Drawing.Color.Red;
+            this.label_Temp2.Location = new System.Drawing.Point(350, 97);
+            this.label_Temp2.Name = "label_Temp2";
+            this.label_Temp2.Size = new System.Drawing.Size(113, 59);
+            this.label_Temp2.TabIndex = 19;
+            this.label_Temp2.Text = "38";
+            this.label_Temp2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label_Alarm1
             // 
-            label_Alarm1.AutoSize = true;
-            label_Alarm1.BackColor = SystemColors.ControlDark;
-            label_Alarm1.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label_Alarm1.ForeColor = Color.Gray;
-            label_Alarm1.Location = new Point(186, 171);
-            label_Alarm1.Margin = new Padding(4, 0, 4, 0);
-            label_Alarm1.Name = "label_Alarm1";
-            label_Alarm1.Size = new Size(20, 20);
-            label_Alarm1.TabIndex = 20;
-            label_Alarm1.Text = "●";
+            this.label_Alarm1.AutoSize = true;
+            this.label_Alarm1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.label_Alarm1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label_Alarm1.ForeColor = System.Drawing.Color.Gray;
+            this.label_Alarm1.Location = new System.Drawing.Point(145, 128);
+            this.label_Alarm1.Name = "label_Alarm1";
+            this.label_Alarm1.Size = new System.Drawing.Size(16, 16);
+            this.label_Alarm1.TabIndex = 20;
+            this.label_Alarm1.Text = "●";
             // 
             // label_Alarm2
             // 
-            label_Alarm2.AutoSize = true;
-            label_Alarm2.BackColor = SystemColors.ControlDark;
-            label_Alarm2.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label_Alarm2.ForeColor = Color.Gray;
-            label_Alarm2.Location = new Point(412, 171);
-            label_Alarm2.Margin = new Padding(4, 0, 4, 0);
-            label_Alarm2.Name = "label_Alarm2";
-            label_Alarm2.Size = new Size(20, 20);
-            label_Alarm2.TabIndex = 21;
-            label_Alarm2.Text = "●";
+            this.label_Alarm2.AutoSize = true;
+            this.label_Alarm2.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.label_Alarm2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label_Alarm2.ForeColor = System.Drawing.Color.Gray;
+            this.label_Alarm2.Location = new System.Drawing.Point(320, 128);
+            this.label_Alarm2.Name = "label_Alarm2";
+            this.label_Alarm2.Size = new System.Drawing.Size(16, 16);
+            this.label_Alarm2.TabIndex = 21;
+            this.label_Alarm2.Text = "●";
             // 
             // label_Leak1
             // 
-            label_Leak1.AutoSize = true;
-            label_Leak1.BackColor = SystemColors.ControlDark;
-            label_Leak1.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label_Leak1.ForeColor = Color.Gray;
-            label_Leak1.Location = new Point(192, 251);
-            label_Leak1.Margin = new Padding(4, 0, 4, 0);
-            label_Leak1.Name = "label_Leak1";
-            label_Leak1.Size = new Size(20, 20);
-            label_Leak1.TabIndex = 25;
-            label_Leak1.Text = "●";
+            this.label_Leak1.AutoSize = true;
+            this.label_Leak1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.label_Leak1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label_Leak1.ForeColor = System.Drawing.Color.Gray;
+            this.label_Leak1.Location = new System.Drawing.Point(149, 188);
+            this.label_Leak1.Name = "label_Leak1";
+            this.label_Leak1.Size = new System.Drawing.Size(16, 16);
+            this.label_Leak1.TabIndex = 25;
+            this.label_Leak1.Text = "●";
             // 
             // label_Leak2
             // 
-            label_Leak2.AutoSize = true;
-            label_Leak2.BackColor = SystemColors.ControlDark;
-            label_Leak2.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label_Leak2.ForeColor = Color.Gray;
-            label_Leak2.Location = new Point(192, 295);
-            label_Leak2.Margin = new Padding(4, 0, 4, 0);
-            label_Leak2.Name = "label_Leak2";
-            label_Leak2.Size = new Size(20, 20);
-            label_Leak2.TabIndex = 26;
-            label_Leak2.Text = "●";
+            this.label_Leak2.AutoSize = true;
+            this.label_Leak2.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.label_Leak2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label_Leak2.ForeColor = System.Drawing.Color.Gray;
+            this.label_Leak2.Location = new System.Drawing.Point(149, 221);
+            this.label_Leak2.Name = "label_Leak2";
+            this.label_Leak2.Size = new System.Drawing.Size(16, 16);
+            this.label_Leak2.TabIndex = 26;
+            this.label_Leak2.Text = "●";
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(15, 16);
-            pictureBox1.Margin = new Padding(4);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(634, 333);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 27;
-            pictureBox1.TabStop = false;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(493, 250);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 27;
+            this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.BackColor = SystemColors.ControlDark;
-            label1.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.ForeColor = Color.Lime;
-            label1.Location = new Point(412, 120);
-            label1.Margin = new Padding(4, 0, 4, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(20, 20);
-            label1.TabIndex = 29;
-            label1.Text = "●";
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.Lime;
+            this.label1.Location = new System.Drawing.Point(320, 90);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(16, 16);
+            this.label1.TabIndex = 29;
+            this.label1.Text = "●";
             // 
             // label2
             // 
-            label2.AutoSize = true;
-            label2.BackColor = SystemColors.ControlDark;
-            label2.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.ForeColor = Color.Lime;
-            label2.Location = new Point(186, 120);
-            label2.Margin = new Padding(4, 0, 4, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(20, 20);
-            label2.TabIndex = 28;
-            label2.Text = "●";
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.Color.Lime;
+            this.label2.Location = new System.Drawing.Point(145, 90);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(16, 16);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "●";
             // 
             // MonitorUI
             // 
-            AutoScaleDimensions = new SizeF(9F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(661, 405);
-            Controls.Add(label1);
-            Controls.Add(label2);
-            Controls.Add(label_Leak2);
-            Controls.Add(label_Leak1);
-            Controls.Add(label_Alarm2);
-            Controls.Add(label_Alarm1);
-            Controls.Add(label_Temp2);
-            Controls.Add(label_Temp1);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(comboBox_Baudrate);
-            Controls.Add(comboBox_Comport);
-            Controls.Add(button_Start);
-            Controls.Add(pictureBox1);
-            Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(4);
-            Name = "MonitorUI";
-            Text = "Temperature Monitor";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(514, 304);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label_Leak2);
+            this.Controls.Add(this.label_Leak1);
+            this.Controls.Add(this.label_Alarm2);
+            this.Controls.Add(this.label_Alarm1);
+            this.Controls.Add(this.label_Temp2);
+            this.Controls.Add(this.label_Temp1);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.comboBox_Baudrate);
+            this.Controls.Add(this.comboBox_Comport);
+            this.Controls.Add(this.button_Start);
+            this.Controls.Add(this.pictureBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "MonitorUI";
+            this.Text = "Temperature Monitor";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion

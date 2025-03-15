@@ -110,6 +110,11 @@ namespace TemperatureMonitor
             }));
         }
 
+        private void button_Start_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
         //private void button_Stop_Click(object sender, EventArgs e)
         //{
         //    Task.Run(_controller!.Stop);
