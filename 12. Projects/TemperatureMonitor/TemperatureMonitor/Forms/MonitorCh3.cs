@@ -294,7 +294,7 @@ namespace TemperatureMonitor.Forms
         #region Model별 Logging 상세
         private string GetHeaderString()
         {
-            return "시간,모터온도1,모터온도2,알람1,알람2,누수";
+            return "시간,모터온도,베어링온도,모터알람,베어링알람,누수";
         }
 
         private string GetMeasuredDataString(DateTime current, Dictionary<DeviceDataType, ModbusData> data)
@@ -344,6 +344,9 @@ namespace TemperatureMonitor.Forms
             _loggerTemperature2.LegendText = "Bearing";
             _loggerTemperature2.LineColor = ScottPlot.Color.FromColor(System.Drawing.Color.Green);
 
+            _loggerTemperature1.LineWidth = 1.5f;
+            _loggerTemperature2.LineWidth = 1.5f;
+
             formsPlot2.Plot.Title("Real Time Leak State Chart");
 
             _loggerLeak1 = formsPlot2.Plot.Add.DataLogger();
@@ -351,8 +354,13 @@ namespace TemperatureMonitor.Forms
             _loggerLeak1.LegendText = "Leak";
             _loggerLeak1.LineColor = ScottPlot.Color.FromColor(System.Drawing.Color.Red);
 
+            _loggerLeak1.LineWidth = 1.5f;
+
             formsPlot1.Plot.Legend.Alignment = ScottPlot.Alignment.UpperRight;
             formsPlot2.Plot.Legend.Alignment = ScottPlot.Alignment.UpperRight;
+
+            formsPlot1.Plot.DataBackground.Color = ScottPlot.Color.FromHex("#F0F0F0");
+            formsPlot2.Plot.DataBackground.Color = ScottPlot.Color.FromHex("#F0F0F0");
         }
 
         private void timer_Chart_Tick(object sender, EventArgs e)

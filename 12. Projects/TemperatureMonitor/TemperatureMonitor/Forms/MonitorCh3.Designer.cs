@@ -586,7 +586,7 @@
             this.formsPlot2.Enabled = false;
             this.formsPlot2.Location = new System.Drawing.Point(0, 0);
             this.formsPlot2.Name = "formsPlot2";
-            this.formsPlot2.Padding = new System.Windows.Forms.Padding(5);
+            this.formsPlot2.Padding = new System.Windows.Forms.Padding(3);
             this.formsPlot2.Size = new System.Drawing.Size(1160, 141);
             this.formsPlot2.TabIndex = 1;
             // 
@@ -606,7 +606,7 @@
             this.formsPlot1.Enabled = false;
             this.formsPlot1.Location = new System.Drawing.Point(0, 0);
             this.formsPlot1.Name = "formsPlot1";
-            this.formsPlot1.Padding = new System.Windows.Forms.Padding(5);
+            this.formsPlot1.Padding = new System.Windows.Forms.Padding(3);
             this.formsPlot1.Size = new System.Drawing.Size(1160, 358);
             this.formsPlot1.TabIndex = 0;
             // 
