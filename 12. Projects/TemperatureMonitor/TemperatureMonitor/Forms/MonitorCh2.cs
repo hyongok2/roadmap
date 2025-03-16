@@ -310,8 +310,8 @@ namespace TemperatureMonitor.Forms
         private ScottPlot.Plottables.DataLogger _loggerTemperature1;
         private ScottPlot.Plottables.DataLogger _loggerLeak1;
 
-        private List<int> _motorTemperature = new ();
-        private List<int> _leakData = new ();
+        private List<int> _motorTemperature = new();
+        private List<int> _leakData = new();
         private int _maxDataCount = 60;
         private void InitialChartControl()
         {
