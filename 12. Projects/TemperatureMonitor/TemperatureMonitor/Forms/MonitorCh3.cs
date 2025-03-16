@@ -320,7 +320,6 @@ namespace TemperatureMonitor.Forms
 
         #endregion
 
-
         #region Chart 관련 함수
 
         private ScottPlot.Plottables.DataLogger _loggerTemperature1;
