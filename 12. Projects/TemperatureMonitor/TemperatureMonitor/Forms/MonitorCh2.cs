@@ -329,6 +329,9 @@ namespace TemperatureMonitor.Forms
 
             _loggerLeak1.LegendText = "Leak";
             _loggerLeak1.LineColor = ScottPlot.Color.FromColor(System.Drawing.Color.Red);
+
+            formsPlot1.Plot.Legend.Alignment = ScottPlot.Alignment.UpperRight;
+            formsPlot2.Plot.Legend.Alignment = ScottPlot.Alignment.UpperRight;
         }
 
         private void timer_Chart_Tick(object sender, EventArgs e)
@@ -350,6 +353,9 @@ namespace TemperatureMonitor.Forms
                 _loggerTemperature1.Add(i + 1, _motorTemperature[i]);
                 _loggerLeak1.Add(i + 1, _leakData[i]);
             }
+
+            formsPlot1.Plot.Axes.Margins(0, 0);
+            formsPlot2.Plot.Axes.Margins(0, 0);
 
             formsPlot1.Plot.Axes.SetLimitsY(bottom: 0, top: 200);
             formsPlot2.Plot.Axes.SetLimitsY(bottom: 0, top: 2);

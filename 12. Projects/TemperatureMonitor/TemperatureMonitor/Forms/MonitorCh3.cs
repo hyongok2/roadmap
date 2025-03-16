@@ -351,6 +351,9 @@ namespace TemperatureMonitor.Forms
 
             _loggerLeak1.LegendText = "Leak";
             _loggerLeak1.LineColor = ScottPlot.Color.FromColor(System.Drawing.Color.Red);
+
+            formsPlot1.Plot.Legend.Alignment = ScottPlot.Alignment.UpperRight;
+            formsPlot2.Plot.Legend.Alignment = ScottPlot.Alignment.UpperRight;
         }
 
         private void timer_Chart_Tick(object sender, EventArgs e)
@@ -363,8 +366,8 @@ namespace TemperatureMonitor.Forms
             _bearingTemperature.Add(_controller!.Device!.ModbusDataDictionary[DeviceDataType.Temperature2].Value);
             _leakData.Add(_controller!.Device!.ModbusDataDictionary[DeviceDataType.Leak1].Value);
 
-            //_motorTemperature.Add(new Random().Next(30));
-            //_bearingTemperature.Add(new Random().Next(30));
+            //_motorTemperature.Add(new Random().Next(50));//임시
+            //_bearingTemperature.Add(new Random().Next(50));
             //_leakData.Add(new Random().Next(2));
 
             _loggerTemperature1.Clear();
@@ -377,6 +380,9 @@ namespace TemperatureMonitor.Forms
                 _loggerTemperature2.Add(i + 1, _bearingTemperature[i]);
                 _loggerLeak1.Add(i + 1, _leakData[i]);
             }
+
+            formsPlot1.Plot.Axes.Margins(0, 0);
+            formsPlot2.Plot.Axes.Margins(0, 0);
 
             formsPlot1.Plot.Axes.SetLimitsY(bottom: 0, top: 200);
             formsPlot2.Plot.Axes.SetLimitsY(bottom: 0, top: 2);
