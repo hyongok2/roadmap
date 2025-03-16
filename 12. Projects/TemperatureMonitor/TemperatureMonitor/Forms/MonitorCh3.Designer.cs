@@ -371,7 +371,7 @@
             this.textBox_FileName.Name = "textBox_FileName";
             this.textBox_FileName.Size = new System.Drawing.Size(238, 29);
             this.textBox_FileName.TabIndex = 47;
-            this.textBox_FileName.Text = "TML-R_20250315170000.csv";
+            this.textBox_FileName.Text = "TML-R-D_20250315170000.csv";
             this.textBox_FileName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label11
