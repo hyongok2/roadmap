@@ -23,7 +23,7 @@ namespace TemperatureMonitor.Forms
         #region 멤버 변수
         private MonitorController? _controller;
 
-        private const string ModelName = "TML-R";
+        private const string ModelName = "TML-R-S";
         private const string LoggingFilePath = @"C:\Temperature Log\";// 고정 경로로 지정함.
 
         private bool _isConnected = false;
@@ -46,7 +46,7 @@ namespace TemperatureMonitor.Forms
 
             timer_Display.Start();
 
-            //timerChart.Start();//임시
+            //timer_Chart.Start();//임시
         }
         #endregion
 
@@ -109,7 +109,7 @@ namespace TemperatureMonitor.Forms
                     _isConnected = true;
                     ChartDataClear();
                     _maxDataCount = GetMaxDataCount();
-                    timerChart.Start();
+                    timer_Chart.Start();
                 }
             }
             catch (Exception)
@@ -331,7 +331,7 @@ namespace TemperatureMonitor.Forms
             _loggerLeak1.LineColor = ScottPlot.Color.FromColor(System.Drawing.Color.Red);
         }
 
-        private void timerChart_Tick(object sender, EventArgs e)
+        private void timer_Chart_Tick(object sender, EventArgs e)
         {
             if (_motorTemperature.Count == _maxDataCount) { _motorTemperature.RemoveAt(0); }
             if (_leakData.Count == _maxDataCount) { _leakData.RemoveAt(0); }
@@ -373,6 +373,5 @@ namespace TemperatureMonitor.Forms
 
         }
         #endregion
-
     }
 }

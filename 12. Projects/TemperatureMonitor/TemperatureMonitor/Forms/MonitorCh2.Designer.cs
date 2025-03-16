@@ -77,7 +77,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.formsPlot1 = new ScottPlot.WinForms.FormsPlot();
-            this.timerChart = new System.Windows.Forms.Timer(this.components);
+            this.timer_Chart = new System.Windows.Forms.Timer(this.components);
             this.panel7 = new System.Windows.Forms.Panel();
             this.formsPlot2 = new ScottPlot.WinForms.FormsPlot();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -615,10 +615,10 @@
             this.formsPlot1.Size = new System.Drawing.Size(1160, 358);
             this.formsPlot1.TabIndex = 0;
             // 
-            // timerChart
+            // timer_Chart
             // 
-            this.timerChart.Interval = 1000;
-            this.timerChart.Tick += new System.EventHandler(this.timerChart_Tick);
+            this.timer_Chart.Interval = 1000;
+            this.timer_Chart.Tick += new System.EventHandler(this.timer_Chart_Tick);
             // 
             // panel7
             // 
@@ -731,7 +731,7 @@
         private Label label2;
         private Panel panel6;
         private ScottPlot.WinForms.FormsPlot formsPlot1;
-        private System.Windows.Forms.Timer timerChart;
+        private System.Windows.Forms.Timer timer_Chart;
         private Panel panel7;
         private ScottPlot.WinForms.FormsPlot formsPlot2;
     }
