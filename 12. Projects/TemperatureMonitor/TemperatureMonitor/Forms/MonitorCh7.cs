@@ -477,9 +477,12 @@ namespace TemperatureMonitor.Forms
         }
         #endregion
 
+        #region 종료 처리
         private void MonitorCh7_FormClosing(object sender, FormClosingEventArgs e)
         {
             cts?.Cancel();
+            _controller?.Stop();
         }
+        #endregion
     }
 }
