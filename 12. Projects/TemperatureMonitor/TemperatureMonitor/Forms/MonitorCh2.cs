@@ -386,5 +386,10 @@ namespace TemperatureMonitor.Forms
 
         }
         #endregion
+
+        private void MonitorCh2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            cts?.Cancel();
+        }
     }
 }

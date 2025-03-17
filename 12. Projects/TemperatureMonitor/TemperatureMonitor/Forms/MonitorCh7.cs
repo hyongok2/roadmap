@@ -307,7 +307,7 @@ namespace TemperatureMonitor.Forms
         #region Model별 Logging 상세
         private string GetHeaderString()
         {
-            return "Time,Motor R Temperature,Motor S Temperature,Motor T Temperature,Bearing H Temperature,Bearing L Temperature,Motor Alarm,Bearing Alarm,Leak1,Leak2"; 
+            return "Time,Motor R Temperature,Motor S Temperature,Motor T Temperature,Bearing H Temperature,Bearing L Temperature,Motor Alarm,Bearing Alarm,Leak1,Leak2";
         }
 
         private string GetMeasuredDataString(DateTime current, Dictionary<DeviceDataType, ModbusData> data)
@@ -476,5 +476,10 @@ namespace TemperatureMonitor.Forms
 
         }
         #endregion
+
+        private void MonitorCh7_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            cts?.Cancel();
+        }
     }
 }

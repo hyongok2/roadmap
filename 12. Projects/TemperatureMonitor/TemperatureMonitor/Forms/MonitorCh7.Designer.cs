@@ -788,6 +788,7 @@
             MaximizeBox = false;
             Name = "MonitorCh7";
             Text = "TML-T (7ch)";
+            FormClosing += MonitorCh7_FormClosing;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
