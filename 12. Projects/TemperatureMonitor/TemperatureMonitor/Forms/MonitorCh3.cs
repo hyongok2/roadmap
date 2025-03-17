@@ -202,7 +202,7 @@ namespace TemperatureMonitor.Forms
             #region 설정 정보 확인 및 화면 표시
             int samplingRateSecond = GetSamplingRate();
             DateTime _loggingStartTime = DateTime.Now;
-            string loggingFileName = $"{ModelName}_{_loggingStartTime:yyyyMMddHHmmss}.csv";
+            string loggingFileName = $"{ModelName}_{_loggingStartTime:yyyyMMddHHmmss}.log";
             DateTime loggingEndTime = _loggingStartTime + TimeSpan.FromHours(settingHours);
 
             textBox_StartTime.Text = _loggingStartTime.ToString("yyyy-MM-dd HH:mm:ss");
@@ -262,9 +262,9 @@ namespace TemperatureMonitor.Forms
                 string[] strings = new string[1];
 
                 strings[0] = GetHeaderString();
-                File.AppendAllLines(loggingFile, strings, Encoding.Default);
+                File.AppendAllLines(loggingFile, strings, Encoding.UTF8);
 
-                while (loggingEndTime < DateTime.Now)
+                while (loggingEndTime > DateTime.Now)
                 {
                     Task.Delay(1);
                     if (token.IsCancellationRequested) break;
@@ -278,7 +278,7 @@ namespace TemperatureMonitor.Forms
 
                     strings[0] = GetMeasuredDataString(current, modbusDataDictionary);
 
-                    File.AppendAllLines(loggingFile, strings, Encoding.Default);
+                    File.AppendAllLines(loggingFile, strings, Encoding.UTF8);
                 }
 
                 return true;
@@ -294,7 +294,7 @@ namespace TemperatureMonitor.Forms
         #region Model별 Logging 상세
         private string GetHeaderString()
         {
-            return "시간,모터온도,베어링온도,모터알람,베어링알람,누수";
+            return "Time,Motor Temperature,Bearing Temperature,Motor Alarm,Bearing Alarm,Leak";
         }
 
         private string GetMeasuredDataString(DateTime current, Dictionary<DeviceDataType, ModbusData> data)
