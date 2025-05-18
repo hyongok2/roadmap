@@ -34,11 +34,14 @@ namespace TemperatureMonitor.Modbus
             }
         }
 
+        public bool IsWriteData { get; }
+
         public ModbusData(DeviceDataType type, byte functionCode, ushort address)
         {
             Type = type;
             FunctionCode = functionCode;
             Address = address;
+            IsWriteData = functionCode == 6;//하나 쓰기만 먼저 대응하도록 한다.
         }
     }
 }

@@ -394,5 +394,37 @@ namespace TemperatureMonitor.Forms
             _controller?.Stop();
         }
         #endregion
+
+        private async void WriteSampleBaudrate()
+        {
+            //button_WriteControllerId.Enabled = false;
+
+            //try
+            //{
+            //    if (_controller == null) return;
+
+            //    var data = _controller.Device!.ModbusDataDictionary[DeviceDataType.BaudrateSet];
+            //    short value = short.Parse(textBox_ControllerId.Text);
+
+            //    bool success = await _controller.WriteAndVerifyAsync(data, value);
+
+            //    MessageBox.Show(success ? "설정 성공" : "설정 실패 - 응답 비정상");
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("오류 발생: " + ex.Message);
+            //}
+            //finally
+            //{
+            //    button_WriteControllerId.Enabled = true;
+            //}
+        }
+
+        private void button_SetUp_Click(object sender, EventArgs e)
+        {
+            if (_controller == null) return;
+            var setUpForm = new DeviceSetupForm(_controller);
+            setUpForm.ShowDialog();
+        }
     }
 }

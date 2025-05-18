@@ -17,5 +17,7 @@ namespace TemperatureMonitor.Device
         Alarm2,
         Leak1,
         Leak2,
+        ControllerIdSet,
+        BaudrateSet
     }
 }

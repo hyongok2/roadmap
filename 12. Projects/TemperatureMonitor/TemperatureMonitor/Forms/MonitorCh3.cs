@@ -422,5 +422,12 @@ namespace TemperatureMonitor.Forms
             _controller?.Stop();
         }
         #endregion
+
+        private void button_SetUp_Click(object sender, EventArgs e)
+        {
+            if (_controller == null) return;
+            var setUpForm = new DeviceSetupForm(_controller);
+            setUpForm.ShowDialog();
+        }
     }
 }

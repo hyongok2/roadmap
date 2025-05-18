@@ -22,6 +22,8 @@ namespace TemperatureMonitor.Device
             ModbusDataDictionary.Add(DeviceDataType.Alarm2, new ModbusData(DeviceDataType.Alarm2, functionCode: 2, address: 1));
             ModbusDataDictionary.Add(DeviceDataType.Leak1, new ModbusData(DeviceDataType.Leak1, functionCode: 2, address: 4));
             ModbusDataDictionary.Add(DeviceDataType.Leak2, new ModbusData(DeviceDataType.Leak2, functionCode: 2, address: 5));
+            ModbusDataDictionary.Add(DeviceDataType.ControllerIdSet, new ModbusData(DeviceDataType.ControllerIdSet, functionCode: 6, address: 30));//추후 확인 후 수정
+            ModbusDataDictionary.Add(DeviceDataType.BaudrateSet, new ModbusData(DeviceDataType.BaudrateSet, functionCode: 6, address: 31));//추후 확인 후 수정
         }
     }
 }
