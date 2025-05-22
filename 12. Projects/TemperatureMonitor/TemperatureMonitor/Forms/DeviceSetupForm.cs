@@ -48,14 +48,15 @@ namespace TemperatureMonitor.Forms
                 DropDownStyle = ComboBoxStyle.DropDownList
             };
 
+            // TODO:추후 수정 필요
             _comboBaud.Items.AddRange(new object[]
             {
-                            57600,
-                            38400,
-                            19200,
-                            9600,
-                            4800,
-                            2400
+                57600,
+                38400,
+                19200,
+                9600,
+                4800,
+                2400
             });
             _comboBaud.SelectedIndex = 3;
 
@@ -67,7 +68,7 @@ namespace TemperatureMonitor.Forms
                 Width = 120,
                 Height = 35,
             };
-            _buttonSend.Click += ButtonSend_Click;
+            _buttonSend.Click += ButtonSend_Click!;
 
             this.Controls.Add(labelId);
             this.Controls.Add(_textBoxId);
@@ -83,16 +84,16 @@ namespace TemperatureMonitor.Forms
 
             try
             {
-                if (!short.TryParse(_textBoxId.Text, out short controllerId))
-                {
+                if (!short.TryParse(_textBoxId.Text, out short controllerId))// TODO: 확인 후 수정 필요
+                    {
                     MessageBox.Show("유효한 숫자 ID를 입력하세요.", "입력 오류", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                short baudValue = (short)(_comboBaud.SelectedIndex + 1); // 1~6
+                short baudValue = (short)(_comboBaud.SelectedIndex + 1); // 1~6 <- TODO: 방식 추후수정 필요
 
-                var idData = _controller.Device!.ModbusDataDictionary[DeviceDataType.ControllerIdSet];
-                var baudData = _controller.Device.ModbusDataDictionary[DeviceDataType.BaudrateSet];
+                var idData = _controller.Device!.GetModbusData(DeviceDataType.ControllerIdSet);
+                var baudData = _controller.Device.GetModbusData(DeviceDataType.BaudrateSet);
 
                 var idResult = await _controller.WriteAndVerifyAsync(idData, controllerId);
                 var baudResult = await _controller.WriteAndVerifyAsync(baudData, baudValue);

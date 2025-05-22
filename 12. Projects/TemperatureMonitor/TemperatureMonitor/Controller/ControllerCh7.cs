@@ -18,25 +18,25 @@ namespace TemperatureMonitor.Controller
 
             _requestList.Add(new RequestDataSet(new List<ModbusData>
                 {
-                    Device!.ModbusDataDictionary[DeviceDataType.Temperature1],
-                    Device!.ModbusDataDictionary[DeviceDataType.Temperature2],
-                    Device!.ModbusDataDictionary[DeviceDataType.Temperature3],
-                    Device!.ModbusDataDictionary[DeviceDataType.Temperature4],
-                    Device!.ModbusDataDictionary[DeviceDataType.Temperature5]
+                    Device!.GetModbusData(DeviceDataType.Temperature1),
+                    Device!.GetModbusData(DeviceDataType.Temperature2),
+                    Device!.GetModbusData(DeviceDataType.Temperature3),
+                    Device!.GetModbusData(DeviceDataType.Temperature4),
+                    Device!.GetModbusData(DeviceDataType.Temperature5)
                 },
             Device.SlaveId));
 
             _requestList.Add(new RequestDataSet(new List<ModbusData>
                 {
-                    Device!.ModbusDataDictionary[DeviceDataType.Alarm1],
-                    Device!.ModbusDataDictionary[DeviceDataType.Alarm2]
+                    Device!.GetModbusData(DeviceDataType.Alarm1),
+                    Device!.GetModbusData(DeviceDataType.Alarm2)
                 },
             Device.SlaveId));
 
             _requestList.Add(new RequestDataSet(new List<ModbusData>
                 {
-                Device !.ModbusDataDictionary[DeviceDataType.Leak1],
-                Device !.ModbusDataDictionary[DeviceDataType.Leak2]
+                Device!.GetModbusData(DeviceDataType.Leak1),
+                Device!.GetModbusData(DeviceDataType.Leak2)
             },
             Device.SlaveId));
         }

@@ -127,13 +127,13 @@ namespace TemperatureMonitor.Forms
         {
             this.Invoke(new Action(() =>
             {
-                label_Temp1.Text = device.ModbusDataDictionary[DeviceDataType.Temperature1].Value.ToString();
-                label_Temp2.Text = device.ModbusDataDictionary[DeviceDataType.Temperature2].Value.ToString();
-                label_Temp3.Text = device.ModbusDataDictionary[DeviceDataType.Temperature3].Value.ToString();
-                label_Temp4.Text = device.ModbusDataDictionary[DeviceDataType.Temperature4].Value.ToString();
-                label_Temp5.Text = device.ModbusDataDictionary[DeviceDataType.Temperature5].Value.ToString();
+                label_Temp1.Text = device.GetModbusData(DeviceDataType.Temperature1).Value.ToString();
+                label_Temp2.Text = device.GetModbusData(DeviceDataType.Temperature2).Value.ToString();
+                label_Temp3.Text = device.GetModbusData(DeviceDataType.Temperature3).Value.ToString();
+                label_Temp4.Text = device.GetModbusData(DeviceDataType.Temperature4).Value.ToString();
+                label_Temp5.Text = device.GetModbusData(DeviceDataType.Temperature5).Value.ToString();
 
-                if (device.ModbusDataDictionary[DeviceDataType.Alarm1].Value == 1)
+                if (device.GetModbusData(DeviceDataType.Alarm1).Value == 1)
                 {
                     label_Alarm1.ForeColor = System.Drawing.Color.Red;
                 }
@@ -142,7 +142,7 @@ namespace TemperatureMonitor.Forms
                     label_Alarm1.ForeColor = System.Drawing.Color.Gray;
                 }
 
-                if (device.ModbusDataDictionary[DeviceDataType.Alarm2].Value == 1)
+                if (device.GetModbusData(DeviceDataType.Alarm2).Value == 1)
                 {
                     label_Alarm2.ForeColor = System.Drawing.Color.Red;
                 }
@@ -151,7 +151,7 @@ namespace TemperatureMonitor.Forms
                     label_Alarm2.ForeColor = System.Drawing.Color.Gray;
                 }
 
-                if (device.ModbusDataDictionary[DeviceDataType.Leak1].Value == 1)
+                if (device.GetModbusData(DeviceDataType.Leak1).Value == 1)
                 {
                     label_Leak1.ForeColor = System.Drawing.Color.Red;
                 }
@@ -160,7 +160,7 @@ namespace TemperatureMonitor.Forms
                     label_Leak1.ForeColor = System.Drawing.Color.Gray;
                 }
 
-                if (device.ModbusDataDictionary[DeviceDataType.Leak2].Value == 1)
+                if (device.GetModbusData(DeviceDataType.Leak2).Value == 1)
                 {
                     label_Leak2.ForeColor = System.Drawing.Color.Red;
                 }
@@ -235,7 +235,7 @@ namespace TemperatureMonitor.Forms
                     loggingFileName,
                     loggingEndTime,
                     samplingRateSecond,
-                    _controller!.Device!.ModbusDataDictionary,
+                    _controller!.Device!.GetAllModbusData(),
                     cts.Token
                     ));
 
@@ -411,21 +411,13 @@ namespace TemperatureMonitor.Forms
             if (_leak1Data.Count == _maxDataCount) { _leak1Data.RemoveAt(0); }
             if (_leak2Data.Count == _maxDataCount) { _leak2Data.RemoveAt(0); }
 
-            _motor1Temperature.Add(_controller!.Device!.ModbusDataDictionary[DeviceDataType.Temperature1].Value);
-            _motor2Temperature.Add(_controller!.Device!.ModbusDataDictionary[DeviceDataType.Temperature2].Value);
-            _motor3Temperature.Add(_controller!.Device!.ModbusDataDictionary[DeviceDataType.Temperature3].Value);
-            _bearing1Temperature.Add(_controller!.Device!.ModbusDataDictionary[DeviceDataType.Temperature4].Value);
-            _bearing2Temperature.Add(_controller!.Device!.ModbusDataDictionary[DeviceDataType.Temperature5].Value);
-            _leak1Data.Add(_controller!.Device!.ModbusDataDictionary[DeviceDataType.Leak1].Value);
-            _leak2Data.Add(_controller!.Device!.ModbusDataDictionary[DeviceDataType.Leak2].Value);
-
-            //_motor1Temperature.Add(new Random().Next(50));//임시
-            //_motor2Temperature.Add(new Random().Next(50));//임시
-            //_motor3Temperature.Add(new Random().Next(50));//임시
-            //_bearing1Temperature.Add(new Random().Next(50));
-            //_bearing2Temperature.Add(new Random().Next(50));
-            //_leak1Data.Add(new Random().Next(2));
-            //_leak2Data.Add(new Random().Next(2));
+            _motor1Temperature.Add(_controller!.Device!.GetModbusData(DeviceDataType.Temperature1).Value);
+            _motor2Temperature.Add(_controller!.Device!.GetModbusData(DeviceDataType.Temperature2).Value);
+            _motor3Temperature.Add(_controller!.Device!.GetModbusData(DeviceDataType.Temperature3).Value);
+            _bearing1Temperature.Add(_controller!.Device!.GetModbusData(DeviceDataType.Temperature4).Value);
+            _bearing2Temperature.Add(_controller!.Device!.GetModbusData(DeviceDataType.Temperature5).Value);
+            _leak1Data.Add(_controller!.Device!.GetModbusData(DeviceDataType.Leak1).Value);
+            _leak2Data.Add(_controller!.Device!.GetModbusData(DeviceDataType.Leak2).Value);
 
             _loggerTemperature1.Clear();
             _loggerTemperature2.Clear();

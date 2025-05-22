@@ -130,8 +130,8 @@ namespace TemperatureMonitor.Forms
         {
             this.Invoke(new Action(() =>
             {
-                label_Temp1.Text = device.ModbusDataDictionary[DeviceDataType.Temperature1].Value.ToString();
-                if (device.ModbusDataDictionary[DeviceDataType.Alarm1].Value == 1)
+                label_Temp1.Text = device.GetModbusData(DeviceDataType.Temperature1).Value.ToString();
+                if (device.GetModbusData(DeviceDataType.Alarm1).Value == 1)
                 {
                     label_Alarm1.ForeColor = System.Drawing.Color.Red;
                 }
@@ -139,7 +139,7 @@ namespace TemperatureMonitor.Forms
                 {
                     label_Alarm1.ForeColor = System.Drawing.Color.Gray;
                 }
-                if (device.ModbusDataDictionary[DeviceDataType.Leak1].Value == 1)
+                if (device.GetModbusData(DeviceDataType.Leak1).Value == 1)
                 {
                     label_Leak1.ForeColor = System.Drawing.Color.Red;
                 }
@@ -207,7 +207,7 @@ namespace TemperatureMonitor.Forms
                     loggingFileName,
                     loggingEndTime,
                     samplingRateSecond,
-                    _controller!.Device!.ModbusDataDictionary,
+                    _controller!.Device!.GetAllModbusData(),
                     cts.Token
                     ));
 
@@ -346,8 +346,8 @@ namespace TemperatureMonitor.Forms
             if (_motorTemperature.Count == _maxDataCount) { _motorTemperature.RemoveAt(0); }
             if (_leakData.Count == _maxDataCount) { _leakData.RemoveAt(0); }
 
-            _motorTemperature.Add(_controller!.Device!.ModbusDataDictionary[DeviceDataType.Temperature1].Value);
-            _leakData.Add(_controller!.Device!.ModbusDataDictionary[DeviceDataType.Leak1].Value);
+            _motorTemperature.Add(_controller!.Device!.GetModbusData(DeviceDataType.Temperature1).Value);
+            _leakData.Add(_controller!.Device!.GetModbusData(DeviceDataType.Leak1).Value);
 
             //_motorTemperature.Add(new Random().Next(30));
             //_leakData.Add(new Random().Next(2));

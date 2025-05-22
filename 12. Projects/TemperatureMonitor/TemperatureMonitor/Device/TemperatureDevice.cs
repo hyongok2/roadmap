@@ -13,7 +13,7 @@ namespace TemperatureMonitor.Device
         public event Action? OnValueChanged;
         public byte SlaveId { get; }
 
-        public Dictionary<DeviceDataType, ModbusData> ModbusDataDictionary { get; } = new Dictionary<DeviceDataType, ModbusData>();
+        private Dictionary<DeviceDataType, ModbusData> ModbusDataDictionary { get; } = new Dictionary<DeviceDataType, ModbusData>();
 
         public TemperatureDevice(byte slaveId)
         {
@@ -26,9 +26,24 @@ namespace TemperatureMonitor.Device
 
         protected abstract void DeviceSetUp();
 
+        protected void AddDeviceData(DeviceDataType type, byte functionCode, ushort address)
+        {
+            ModbusDataDictionary.Add(type, new ModbusData(type, functionCode, address));
+        }
+
         private void OnModbusDataChanged()
         {
             OnValueChanged?.Invoke();
+        }
+
+        public ModbusData GetModbusData(DeviceDataType type)
+        {
+            return ModbusDataDictionary.TryGetValue(type, out ModbusData? value) ? value : throw new Exception();
+        }
+
+        public Dictionary<DeviceDataType, ModbusData> GetAllModbusData()
+        {
+            return ModbusDataDictionary;
         }
     }
 }

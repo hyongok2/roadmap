@@ -13,13 +13,13 @@ namespace TemperatureMonitor.Device
 
         protected override void DeviceSetUp()
         {
-            ModbusDataDictionary.Add(DeviceDataType.Temperature1, new ModbusData(DeviceDataType.Temperature1, functionCode: 4, address: 0));
-            ModbusDataDictionary.Add(DeviceDataType.Temperature2, new ModbusData(DeviceDataType.Temperature2, functionCode: 4, address: 1));
-            ModbusDataDictionary.Add(DeviceDataType.Alarm1, new ModbusData(DeviceDataType.Alarm1, functionCode: 2, address: 0));
-            ModbusDataDictionary.Add(DeviceDataType.Alarm2, new ModbusData(DeviceDataType.Alarm2, functionCode: 2, address: 1));
-            ModbusDataDictionary.Add(DeviceDataType.Leak1, new ModbusData(DeviceDataType.Leak1, functionCode: 2, address: 4));
-            ModbusDataDictionary.Add(DeviceDataType.ControllerIdSet, new ModbusData(DeviceDataType.ControllerIdSet, functionCode: 6, address: 30));//추후 확인 후 수정
-            ModbusDataDictionary.Add(DeviceDataType.BaudrateSet, new ModbusData(DeviceDataType.BaudrateSet, functionCode: 6, address: 31));//추후 확인 후 수정
+            AddDeviceData(DeviceDataType.Temperature1, functionCode: 4, address: 0);
+            AddDeviceData(DeviceDataType.Temperature2, functionCode: 4, address: 1);
+            AddDeviceData(DeviceDataType.Alarm1, functionCode: 2, address: 0);
+            AddDeviceData(DeviceDataType.Alarm2, functionCode: 2, address: 1);
+            AddDeviceData(DeviceDataType.Leak1, functionCode: 2, address: 4);
+            AddDeviceData(DeviceDataType.ControllerIdSet, functionCode: 6, address: 10);// TODO:추후 수정
+            AddDeviceData(DeviceDataType.BaudrateSet, functionCode: 6, address: 11);// TODO:추후 수정
         }
     }
 }
