@@ -21,4 +21,4 @@
   - 데이터베이스와 ORM을 활용해 보자.
   - Git을 사용하자!
   - 리팩토링은 꾸준히!
-  - Architure를 배워보자. Micro Service / Clean Architure.. 
+  - Architecture를 배워보자. Micro Service / Clean Architecture.. 
