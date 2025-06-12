@@ -480,6 +480,12 @@ namespace TemperatureMonitor.Forms
         private void button_SetUp_Click(object sender, EventArgs e)
         {
             if(_controller == null) return;
+
+            var passwordForm = new Password();
+            passwordForm.ShowDialog();
+
+            if (passwordForm.IsPasswordValid == false) return;
+
             var setUpForm = new DeviceSetupForm(_controller);
             setUpForm.ShowDialog();
         }
