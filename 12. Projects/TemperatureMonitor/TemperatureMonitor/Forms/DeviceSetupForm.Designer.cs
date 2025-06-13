@@ -48,11 +48,10 @@
             // textBox_ControllerId
             // 
             textBox_ControllerId.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox_ControllerId.Location = new Point(255, 90);
-            textBox_ControllerId.Margin = new Padding(4);
+            textBox_ControllerId.Location = new Point(170, 60);
             textBox_ControllerId.MaxLength = 8;
             textBox_ControllerId.Name = "textBox_ControllerId";
-            textBox_ControllerId.Size = new Size(222, 45);
+            textBox_ControllerId.Size = new Size(149, 33);
             textBox_ControllerId.TabIndex = 53;
             textBox_ControllerId.TextAlign = HorizontalAlignment.Center;
             // 
@@ -60,22 +59,21 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.Location = new Point(48, 94);
-            label10.Margin = new Padding(4, 0, 4, 0);
+            label10.Location = new Point(32, 63);
             label10.Name = "label10";
-            label10.Size = new Size(194, 40);
+            label10.Size = new Size(128, 25);
             label10.TabIndex = 50;
             label10.Text = "Controller ID";
             // 
             // button_Baudrate
             // 
+            button_Baudrate.FlatAppearance.BorderSize = 0;
             button_Baudrate.FlatStyle = FlatStyle.Flat;
             button_Baudrate.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
             button_Baudrate.Image = (Image)resources.GetObject("button_Baudrate.Image");
-            button_Baudrate.Location = new Point(514, 158);
-            button_Baudrate.Margin = new Padding(4);
+            button_Baudrate.Location = new Point(343, 105);
             button_Baudrate.Name = "button_Baudrate";
-            button_Baudrate.Size = new Size(140, 51);
+            button_Baudrate.Size = new Size(93, 34);
             button_Baudrate.TabIndex = 54;
             button_Baudrate.UseVisualStyleBackColor = true;
             button_Baudrate.Click += button_Baudrate_Click;
@@ -84,10 +82,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(75, 164);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(50, 109);
             label1.Name = "label1";
-            label1.Size = new Size(143, 40);
+            label1.Size = new Size(93, 25);
             label1.TabIndex = 55;
             label1.Text = "Baudrate";
             // 
@@ -96,20 +93,21 @@
             comboBox_Baudrate.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox_Baudrate.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             comboBox_Baudrate.FormattingEnabled = true;
-            comboBox_Baudrate.Location = new Point(254, 159);
+            comboBox_Baudrate.Location = new Point(169, 106);
+            comboBox_Baudrate.Margin = new Padding(2, 2, 2, 2);
             comboBox_Baudrate.Name = "comboBox_Baudrate";
-            comboBox_Baudrate.Size = new Size(223, 48);
+            comboBox_Baudrate.Size = new Size(150, 33);
             comboBox_Baudrate.TabIndex = 57;
             // 
             // button_ControllerId
             // 
+            button_ControllerId.FlatAppearance.BorderSize = 0;
             button_ControllerId.FlatStyle = FlatStyle.Flat;
             button_ControllerId.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
             button_ControllerId.Image = (Image)resources.GetObject("button_ControllerId.Image");
-            button_ControllerId.Location = new Point(514, 88);
-            button_ControllerId.Margin = new Padding(4);
+            button_ControllerId.Location = new Point(343, 59);
             button_ControllerId.Name = "button_ControllerId";
-            button_ControllerId.Size = new Size(140, 51);
+            button_ControllerId.Size = new Size(93, 34);
             button_ControllerId.TabIndex = 58;
             button_ControllerId.UseVisualStyleBackColor = true;
             button_ControllerId.Click += button_ControllerId_Click;
@@ -118,10 +116,9 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(81, 12);
-            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Location = new Point(54, 8);
             label2.Name = "label2";
-            label2.Size = new Size(75, 40);
+            label2.Size = new Size(50, 25);
             label2.TabIndex = 59;
             label2.Text = "항목";
             // 
@@ -129,10 +126,9 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(298, 12);
-            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Location = new Point(199, 8);
             label3.Name = "label3";
-            label3.Size = new Size(104, 40);
+            label3.Size = new Size(69, 25);
             label3.TabIndex = 60;
             label3.Text = "설정값";
             // 
@@ -140,10 +136,9 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(526, 12);
-            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Location = new Point(351, 8);
             label4.Name = "label4";
-            label4.Size = new Size(75, 40);
+            label4.Size = new Size(50, 25);
             label4.TabIndex = 61;
             label4.Text = "설정";
             // 
@@ -153,10 +148,9 @@
             button1.Enabled = false;
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
-            button1.Location = new Point(24, 78);
-            button1.Margin = new Padding(4);
+            button1.Location = new Point(16, 52);
             button1.Name = "button1";
-            button1.Size = new Size(656, 3);
+            button1.Size = new Size(437, 2);
             button1.TabIndex = 62;
             button1.UseVisualStyleBackColor = false;
             // 
@@ -166,10 +160,9 @@
             button2.Enabled = false;
             button2.FlatAppearance.BorderSize = 0;
             button2.FlatStyle = FlatStyle.Flat;
-            button2.Location = new Point(24, 148);
-            button2.Margin = new Padding(4);
+            button2.Location = new Point(16, 99);
             button2.Name = "button2";
-            button2.Size = new Size(656, 3);
+            button2.Size = new Size(437, 2);
             button2.TabIndex = 63;
             button2.UseVisualStyleBackColor = false;
             // 
@@ -179,10 +172,9 @@
             button3.Enabled = false;
             button3.FlatAppearance.BorderSize = 0;
             button3.FlatStyle = FlatStyle.Flat;
-            button3.Location = new Point(24, 218);
-            button3.Margin = new Padding(4);
+            button3.Location = new Point(16, 145);
             button3.Name = "button3";
-            button3.Size = new Size(656, 3);
+            button3.Size = new Size(437, 2);
             button3.TabIndex = 64;
             button3.UseVisualStyleBackColor = false;
             // 
@@ -192,18 +184,17 @@
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label4);
-            panel1.Location = new Point(24, 16);
-            panel1.Margin = new Padding(4);
+            panel1.Location = new Point(16, 11);
             panel1.Name = "panel1";
-            panel1.Size = new Size(656, 60);
+            panel1.Size = new Size(437, 40);
             panel1.TabIndex = 65;
             // 
             // DeviceSetupForm
             // 
-            AutoScaleDimensions = new SizeF(144F, 144F);
+            AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.White;
-            ClientSize = new Size(705, 238);
+            ClientSize = new Size(470, 159);
             Controls.Add(panel1);
             Controls.Add(button3);
             Controls.Add(button2);
@@ -215,7 +206,7 @@
             Controls.Add(textBox_ControllerId);
             Controls.Add(label10);
             FormBorderStyle = FormBorderStyle.FixedDialog;
-            Margin = new Padding(62, 28, 62, 28);
+            Margin = new Padding(41, 19, 41, 19);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "DeviceSetupForm";
